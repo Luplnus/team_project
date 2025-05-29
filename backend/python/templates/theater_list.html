@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Theater Page</title>
+  <style>
+    ul, li { list-style: none; border: 1px solid #ccc; padding: 10px; margin: 5px; }
+  </style>
+</head>
+<body>
+  <h1>연극 리스트</h1>
+  {% if theaters %}
+    <ul>
+      {% for t in theaters %}
+        <li>
+          <strong>{{ t.t_title }}</strong><br>
+          시작일: {{ t.t_start_date }}<br>
+          종료일: {{ t.t_end_date }}<br>
+          장르: {{ t.t_genre }}<br>
+          공연장: {{ t.t_venue }}분<br>
+          <img src="{{ t.t_poster }}" width="350" height="350"><br>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>현재 보여줄 연극 정보가 없습니다.</p>
+  {% endif %}
+</body>
+</html>
