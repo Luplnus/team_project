@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Musical Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    ul {
+      padding: 0;
+    }
+    li {
+      list-style: none;
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin: 10px 0;
+      border-radius: 5px;
+      display: flex;
+    }
+    .poster {
+      margin-right: 20px;
+    }
+    .info {
+      flex: 1;
+    }
+    .dates {
+      color: #666;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <h1>뮤지컬 리스트</h1>
+  {% if musicals %}
+    <ul>
+      {% for musical in musicals %}
+        <li>
+          <div class="poster">
+            {% if musical.mu_poster %}
+            <img src="{{ musical.mu_poster }}" width="350" height="350" alt="{{ musical.mu_title }} 포스터">
+            {% else %}
+            <div style="width:100px;height:150px;background:#eee;display:flex;align-items:center;justify-content:center;">No Image</div>
+            {% endif %}
+          </div>
+          <div class="info">
+            <h2>{{ musical.mu_title }}</h2>
+            <p class="dates">공연기간: {{ musical.mu_prfpdfrom }} ~ {{ musical.mu_prfpdto }}</p>
+            <p>장소: {{ musical.mu_venue }}</p>
+            <p>장르: {{ musical.mu_genre }}</p>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>현재 보여줄 뮤지컬 정보가 없습니다.</p>
+  {% endif %}
+</body>
+</html>
