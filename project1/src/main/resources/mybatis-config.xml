@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias alias="MusicalDto" type="com.bitstudy.app.domain.MusicalDto" />
+        <typeAlias alias="TheaterDto" type="com.bitstudy.app.domain.TheaterDto" />
+        <typeAlias alias="UserDto" type="com.bitstudy.app.domain.UserDto" />
+        <typeAlias alias="Book_musicalDto" type="com.bitstudy.app.domain.Book_musicalDto" />
+        <typeAlias alias="Book_movieDto" type="com.bitstudy.app.domain.Book_movieDto" />
+        <typeAlias alias="Book_theaterDto" type="com.bitstudy.app.domain.Book_theaterDto" />
+    </typeAliases>
+</configuration>

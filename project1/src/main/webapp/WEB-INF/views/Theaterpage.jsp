@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <title>연극 페이지</title>
+    <style>
+        body {
+            user-select: none;
+            margin: 0;
+            overflow-x: hidden;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #000;
+        }   
+        #wrap {
+            width: 100%;
+            height: 960px;
+            background-color: #000;
+            position: relative;
+            overflow: hidden;
+            border: none;
+        }
+        .main_menu {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 20;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .h_menubox {
+            max-width: 1285px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-sizing: border-box;
+            padding: 0 10px;
+        }
+
+        .main_logo h2 {
+            margin: 0;
+            width: 70px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: #fff;
+            box-sizing: border-box;
+            font-weight: bold;
+        }
+
+        .menu_bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+            justify-content: flex-end;
+            flex: 1;
+        }
+
+        .menu_box {
+            width: 80px;
+            height: 35px;
+            margin: 0 15px;
+            text-align: center;
+            line-height: 35px;
+            color: #fff;
+            box-sizing: border-box;
+            cursor: pointer;
+            transition: color 0.3s;
+            font-size: 15px;
+        }
+        
+        .menu_box:hover {
+            color: #E50914;
+        }
+
+        .content {
+            width: 100px;
+            height: 30px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .content_box {
+            width: 30px;
+            line-height: 35px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .content_box a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .view_box {
+            width: 100%;
+            height: calc(100% - 50px);
+            position: relative;
+        }
+        
+        .banner_container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .movie_banner {
+            width: 100%;
+            height: 635px;
+            display: flex;
+            opacity: 1;
+        }
+        
+        .gradient_overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to top, 
+                rgba(0,0,0,1) 0%,
+                rgba(0,0,0,0.8) 15%, 
+                rgba(0,0,0,0.4) 40%, 
+                rgba(0,0,0,0.2) 60%,
+                rgba(0,0,0,0.1) 100%
+            );
+            z-index: 2;
+        }
+        
+        .view_wcht {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 10;
+            padding-bottom: 50px;
+        }
+
+        .main-swiper {
+            width: 100%;
+            max-width: 2400px;
+            z-index: 10;
+        }
+        
+        .main-slide {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 204px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+        
+        .main-slide:hover {
+            transform: scale(1.05);
+        }
+
+        .main-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .swiper-wrapper{
+            width: 100%;
+            height: 210px;
+        }
+
+        .swiper-free-mode>.swiper-wrapper {
+            transition-timing-function: ease-out;
+            margin-top: 5px;
+        }
+
+        .post_box {
+            width: 1300px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .post_img {
+            width: 1150px;
+            height: 550px;
+            border-radius: 10px;
+            transition: filter 0.3s ease;
+            filter: drop-shadow(0 15px 35px rgba(0,0,0,0.5));
+            object-fit: contain;
+        }
+
+        .part_box {
+            width: 650px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 40px;
+            color: #fff;
+            z-index: 3;
+            position: relative;
+        }
+
+        .movie_title {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 0 0 15px 0;
+            line-height: 1.2;
+        }
+
+        .movie_meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        .rating {
+            background-color: #E50914;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .year, .runtime, .genre {
+            margin-right: 20px;
+        }
+
+        .movie_description {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            color: #e5e5e5;
+            max-width: 500px;
+        }
+
+        .button_group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .btn_primary {
+            background-color: #E50914;
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn_primary:hover {
+            background-color: #c8070f;
+        }
+
+        .btn_secondary {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            padding: 10px 28px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn_secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .movie_info {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .info_row {
+            margin-bottom: 8px;
+        }
+
+        .info_label {
+            color: #ccc;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        /* 아이콘 스타일 */
+        .icon {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .play-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <div id="wrap">
+        <div class="main_menu">
+            <div class="h_menubox">
+                <div class="main_logo">
+                    <h2>JPIEL</h2>
+                </div>
+                <div class="menu_bar">
+                    <div class="menu_box">영화</div>
+                    <div class="menu_box">뮤지컬</div>
+                    <div class="menu_box">연극</div>
+                    <div class="menu_box">예매</div>
+                </div>
+                <div class="content">
+                    <div class="content_box">
+                        <a href="#">
+                           <img src="./pt_img/search.svg" alt="">
+                        </a>
+                    </div>
+                     <div class="content_box">
+                        <a href="#">
+                           <img src="./pt_img/user.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="view_box">
+            <div class="banner_container">
+                <div class="movie_banner">
+                    <div class="post_box">
+                        <img src="" alt="메인 포스터" class="post_img">
+                    </div>
+                    <div class="part_box">
+                        <h1 class="movie_title">연극 이름</h1>
+                        
+                        <div class="movie_meta">
+                            <span class="year">시작일</span>
+                            <span class="runtime">종료일</span>
+                            <span class="genre">극장</span>
+                        </div>
+                        
+                        <p class="movie_description">
+                            내용
+                        </p>
+                        
+                        <div class="button_group">
+                            <button class="btn_primary">
+                                <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                                예매하기
+                            </button>
+                            <button class="btn_secondary">
+                                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                </svg>
+                                찜하기
+                            </button>
+                        </div>
+                        
+                        <div class="movie_info">
+                            <div class="info_row">
+                                <span class="info_label">공연장</span>
+                                <span>공연장 위치</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gradient_overlay"></div>
+            </div>
+            <div class="view_wcht">
+                <div class="swiper main-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 1">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 2">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 3">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 4">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 5">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 6">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 7">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 8">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 9">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 10">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 11">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 12">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 13">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 14">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 15">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 16">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 17">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 18">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 19">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 20">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 21">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 22">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 23">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 24">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 25">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 26">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 27">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 28">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 29">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 30">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ </header>
+
+     <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        
+        // 메인 슬라이더 설정
+        var mainSwiper = new Swiper(".main-swiper", {
+            slidesPerView: 5,
+            spaceBetween: 30,
+            freeMode: true,
+            loop: true,
+            speed: 800,
+            scrollbar: {
+                el: ".swiper-scrollbar",
+                 hide: true,
+            },
+            breakpoints: {
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 10
+                },
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 20
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 30
+                },
+                1440: {
+                    slidesPerView: 5,
+                    spaceBetween: 30
+                }
+            }
+        });
+
+        // 팝업 슬라이더 설정
+        var popupSwiper = new Swiper(".popup-swiper", {
+            slidesPerView: 'auto',
+            spaceBetween: 10,
+            grabCursor: true,
+            preventClicks: true,
+            preventClicksPropagation: true,
+            slidesOffsetBefore: 0,
+            slidesOffsetAfter: 0,  
+            breakpoints: {
+                320: {
+                    slidesPerView: 1.5,
+                    spaceBetween: 10
+                },
+                640: {
+                    slidesPerView: 2.5,
+                    spaceBetween: 10
+                },
+                800: {
+                    slidesPerView: 3,
+                    spaceBetween: 10
+                }
+            }
+        });
+    
+
+    </script>
+</body>
+</html>
