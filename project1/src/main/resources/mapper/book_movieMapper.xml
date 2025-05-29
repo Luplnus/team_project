@@ -12,8 +12,8 @@
 
     <!-- 영화 예매 등록 - Book_movieDto 받아서 저장  -->
     <insert id="insert" parameterType="Book_movieDto">
-        INSERT into book_movie_tbl ( b_user_seqno, m_code, s_id, b_time, b_price)
-        values ( #{b_user_seqno}, #{m_code}, #{s_id}, #{b_time}, #{b_price})
+        INSERT into book_movie_tbl ( b_user_seqno, m_code, b_time, b_price, b_movie_time)
+        values ( #{b_user_seqno}, #{m_code}, #{b_time}, #{b_price}, #{b_movie_time})
     </insert>
 
     <!--  영화 예매 전체 취소  -->

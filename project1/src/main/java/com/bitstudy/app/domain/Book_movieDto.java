@@ -10,6 +10,7 @@ public class Book_movieDto {
     private Integer s_id;
     private Date b_time;
     private Integer b_price = 15000;
+    private Date b_movie_time;
 
     public Book_movieDto() {
         this(0, "", 0, 15000);
@@ -72,6 +73,14 @@ public class Book_movieDto {
 
     public void setB_price(Integer b_price) {
         this.b_price = b_price;
+    }
+
+    public Date getB_muvie_time() {
+        return b_movie_time;
+    }
+
+    public void setB_muvie_time(Date b_muvie_time) {
+        this.b_movie_time = b_muvie_time;
     }
 
     @Override

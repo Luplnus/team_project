@@ -12,8 +12,8 @@
 
     <!-- 뮤지컬 예매 등록 - Book_musicalDto 받아서 저장  -->
     <insert id="insert" parameterType="Book_musicalDto">
-        INSERT into book_musical_tbl ( b_user_seqno, mu_id, s_id, b_time, b_price)
-        values ( #{b_user_seqno}, #{mu_id}, #{s_id}, #{b_time}, #{b_price})
+        INSERT into book_musical_tbl ( b_user_seqno, mu_id, b_time, b_price, b_musical_time)
+        values ( #{b_user_seqno}, #{mu_id}, #{b_time}, #{b_price}, ${b_musical_time})
     </insert>
 
     <!--  뮤지컬 예매 전체 취소  -->

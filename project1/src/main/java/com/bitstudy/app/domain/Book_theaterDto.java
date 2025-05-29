@@ -10,6 +10,7 @@ public class Book_theaterDto {
     private Integer s_id;
     private Date b_time;
     private Integer b_price;
+    private Date b_theater_time;
 
     public Book_theaterDto() {
         this(0, "", 0, 15000);
@@ -72,6 +73,14 @@ public class Book_theaterDto {
 
     public void setB_price(Integer b_price) {
         this.b_price = b_price;
+    }
+
+    public Date getB_theater_time() {
+        return b_theater_time;
+    }
+
+    public void setB_theater_time(Date b_theater_time) {
+        this.b_theater_time = b_theater_time;
     }
 
     @Override
