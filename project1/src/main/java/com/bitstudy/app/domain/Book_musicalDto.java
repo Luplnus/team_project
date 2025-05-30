@@ -1,8 +1,11 @@
 package com.bitstudy.app.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.sql.Timestamp;
 import java.util.Date;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Book_musicalDto {
     private Integer b_seqno;
     private Integer b_user_seqno;
@@ -10,18 +13,17 @@ public class Book_musicalDto {
     private Integer s_id;
     private Date b_time ;
     private Integer b_price = 15000;
-    private Date b_musical_time;
+    private String b_musical_time;
 
     public Book_musicalDto() {
-        this(0, "", 0, 15000);
+        this(0, "",15000);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         this.b_time = timestamp;
     }
 
-    public Book_musicalDto(Integer b_user_seqno, String mu_id, Integer s_id, Integer b_price) {
+    public Book_musicalDto(Integer b_user_seqno, String mu_id, Integer b_price) {
         this.b_user_seqno = b_user_seqno;
         this.mu_id = mu_id;
-        this.s_id = s_id;
         this.b_price = b_price;
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         this.b_time = timestamp;
@@ -75,11 +77,11 @@ public class Book_musicalDto {
         this.b_price = b_price;
     }
 
-    public Date getB_musical_time() {
+    public String getB_musical_time() {
         return b_musical_time;
     }
 
-    public void setB_musical_time(Date b_musical_time) {
+    public void setB_musical_time(String b_musical_time) {
         this.b_musical_time = b_musical_time;
     }
 

@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPIEL - 로그인</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .demo_button {
+            padding: 12px 24px;
+            font-size: 16px;
+            background: rgb(229, 9, 20);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .demo_button:hover {
+            background: rgb(192, 0, 10);
+            transform: translateY(-2px);
+        }
+
+        /* 팝업 오버레이 */
+        .popup_overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .popup_overlay.active {
+            display: flex;
+        }
+
+        /* 공통 팝업 스타일 */
+        .popup_container {
+            border: none;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 400px;
+            padding: 40px 35px;
+            background: rgba(40, 40, 40, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            position: relative;
+            animation: slideUp 0.5s ease-out;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .popup_header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .popup_title {
+            margin: 0;
+            padding: 0;
+            font-size: 28px;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .popup_subtitle {
+            color: #ccc;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .close_box {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+
+        .close_button {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+            color: #ccc;
+        }
+
+        .close_button:hover {
+            opacity: 1;
+        }
+
+        .input_box {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .input_title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .input_field {
+            width: 100%;
+            height: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 0 15px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+        }
+
+        .input_field::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .input_field:focus {
+            outline: none;
+            border-color: rgb(229, 9, 20);
+            box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.1);
+        }
+
+        .checkbox_container {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .checkbox_input {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        .checkbox_label {
+            font-size: 14px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .primary_button {
+            width: 100%;
+            height: 50px;
+            margin-top: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            background: rgb(229, 9, 20);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .primary_button:hover {
+            background: rgb(192, 0, 10);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(229, 9, 20, 0.3);
+        }
+
+        .secondary_button {
+            width: 100%;
+            height: 45px;
+            border: 1px solid rgb(87, 87, 87);
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            margin-top: 20px;
+            color: #fff;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .secondary_button:hover {
+            background: rgb(87, 87, 87);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .forgot_password {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .forgot_password a {
+            color: rgb(229, 9, 20);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .forgot_password a:hover {
+            color: rgb(192, 0, 10);
+            text-decoration: underline;
+        }
+
+        .already_member {
+            text-align: center;
+            margin-top: 20px;
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        .already_member a {
+            color: rgb(229, 9, 20);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .already_member a:hover {
+            color: rgb(192, 0, 10);
+            text-decoration: underline;
+        }
+
+        /* 애니메이션 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 회원가입 전용 스타일 */
+        .signup_container {
+            width: 450px;
+        }
+
+        .name_container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .name_container .input_box {
+            flex: 1;
+            margin-top: 20px;
+        }
+
+        .terms_container {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .terms_title {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .terms_item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .terms_item:last-child {
+            margin-bottom: 0;
+        }
+
+        .terms_checkbox {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        .terms_label {
+            font-size: 14px;
+            color: #ccc;
+            cursor: pointer;
+        }
+
+        .terms_all {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        .terms_all .terms_label {
+            color: #fff;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- 데모용 버튼 -->
+    <button class="demo_button" onclick="openLoginPopup()">로그인</button>
+
+    <!-- 로그인 팝업 -->
+    <div id="loginPopup" class="popup_overlay">
+        <form id="loginForm" class="popup_container">
+            <div class="close_box">
+                <div class="close_button" onclick="closePopup('loginPopup')">
+                   <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                       <circle cx="12" cy="12" r="10"></circle>
+                       <line x1="15" y1="9" x2="9" y2="15"></line>
+                       <line x1="9" y1="9" x2="15" y2="15"></line>
+                   </svg>
+                </div>
+            </div>
+
+            <div class="popup_header">
+                <h2 class="popup_title">JPIEL</h2>
+                <p class="popup_subtitle">계정에 로그인하세요</p>
+            </div>
+
+            <div class="input_box">
+                <div class="input_title">아이디</div>
+                <input type="text" id="login_username" class="input_field" placeholder="아이디를 입력하세요" required>
+            </div>
+
+            <div class="input_box">
+                <div class="input_title">비밀번호</div>
+                <input type="password" id="login_password" class="input_field" placeholder="비밀번호를 입력하세요" required>
+            </div>
+
+            <div class="checkbox_container">
+                <input type="checkbox" id="save_id" class="checkbox_input">
+                <label for="save_id" class="checkbox_label">아이디 저장</label>
+            </div>
+
+            <button type="submit" class="primary_button">로그인</button>
+
+            <button type="button" class="secondary_button" onclick="switchToSignup()">회원가입</button>
+
+            <div class="forgot_password">
+                <a href="#" onclick="showForgotPassword()">비밀번호를 잊으셨나요?</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- 회원가입 팝업 -->
+    <div id="signupPopup" class="popup_overlay">
+        <form id="signupForm" class="popup_container signup_container">
+            <div class="close_box">
+                <div class="close_button" onclick="closePopup('signupPopup')">
+                   <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                       <circle cx="12" cy="12" r="10"></circle>
+                       <line x1="15" y1="9" x2="9" y2="15"></line>
+                       <line x1="9" y1="9" x2="15" y2="15"></line>
+                   </svg>
+                </div>
+            </div>
+
+            <div class="popup_header">
+                <h2 class="popup_title">JPIEL</h2>
+                <p class="popup_subtitle">새 계정을 만드세요</p>
+            </div>
+
+            <div class="input_box">
+                <div class="input_title">아이디</div>
+                <input type="text" id="signup_username" class="input_field" placeholder="아이디를 입력하세요" required>
+            </div>
+
+            <div class="input_box">
+                <div class="input_title">이메일</div>
+                <input type="email" id="signup_email" class="input_field" placeholder="이메일을 입력하세요" required>
+            </div>
+
+            <div class="name_container">
+                <div class="input_box">
+                    <div class="input_title">성</div>
+                    <input type="text" id="signup_lastname" class="input_field" placeholder="성" required>
+                </div>
+                <div class="input_box">
+                    <div class="input_title">이름</div>
+                    <input type="text" id="signup_firstname" class="input_field" placeholder="이름" required>
+                </div>
+            </div>
+
+            <div class="input_box">
+                <div class="input_title">비밀번호</div>
+                <input type="password" id="signup_password" class="input_field" placeholder="비밀번호를 입력하세요" required>
+            </div>
+
+            <div class="input_box">
+                <div class="input_title">비밀번호 확인</div>
+                <input type="password" id="signup_password_confirm" class="input_field" placeholder="비밀번호를 다시 입력하세요" required>
+            </div>
+
+            <div class="input_box">
+                <div class="input_title">전화번호</div>
+                <input type="tel" id="signup_phone" class="input_field" placeholder="전화번호를 입력하세요" required>
+            </div>
+
+            <div class="terms_container">
+                <div class="terms_title">약관 동의</div>
+                
+                <div class="terms_item">
+                    <input type="checkbox" id="terms_service" class="terms_checkbox" required>
+                    <label for="terms_service" class="terms_label">서비스 이용약관 동의 (필수)</label>
+                </div>
+                
+                <div class="terms_item">
+                    <input type="checkbox" id="terms_privacy" class="terms_checkbox" required>
+                    <label for="terms_privacy" class="terms_label">개인정보 처리방침 동의 (필수)</label>
+                </div>
+                
+                <div class="terms_item">
+                    <input type="checkbox" id="terms_marketing" class="terms_checkbox">
+                    <label for="terms_marketing" class="terms_label">마케팅 정보 수신 동의 (선택)</label>
+                </div>
+                
+                <div class="terms_item terms_all">
+                    <input type="checkbox" id="terms_all" class="terms_checkbox">
+                    <label for="terms_all" class="terms_label">전체 동의</label>
+                </div>
+            </div>
+
+            <button type="submit" class="primary_button">회원가입</button>
+
+            <div class="already_member">
+                이미 계정이 있으신가요? <a href="#" onclick="switchToLogin()">로그인</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // 팝업 열기/닫기 함수들
+        function openLoginPopup() {
+            document.getElementById('loginPopup').classList.add('active');
+        }
+
+        function openSignupPopup() {
+            document.getElementById('signupPopup').classList.add('active');
+        }
+
+        function closePopup(popupId) {
+            document.getElementById(popupId).classList.remove('active');
+        }
+
+        function switchToSignup() {
+            closePopup('loginPopup');
+            setTimeout(() => {
+                openSignupPopup();
+            }, 300);
+        }
+
+        function switchToLogin() {
+            closePopup('signupPopup');
+            setTimeout(() => {
+                openLoginPopup();
+            }, 300);
+        }
+
+        function showForgotPassword() {
+            alert('비밀번호 찾기 기능은 준비중입니다.');
+        }
+
+        // 팝업 외부 클릭시 닫기
+        document.getElementById('loginPopup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePopup('loginPopup');
+            }
+        });
+
+        document.getElementById('signupPopup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePopup('signupPopup');
+            }
+        });
+
+        // ESC 키로 팝업 닫기
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closePopup('loginPopup');
+                closePopup('signupPopup');
+            }
+        });
+
+        // 로그인 폼 제출
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('login_username').value;
+            const password = document.getElementById('login_password').value;
+            
+            console.log('로그인 시도:', {
+                username: username,
+                password: password
+            });
+            
+            alert('로그인 기능은 준비중입니다.');
+        });
+
+        // 회원가입 폼 제출
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('signup_password').value;
+            const passwordConfirm = document.getElementById('signup_password_confirm').value;
+            
+            if (password !== passwordConfirm) {
+                alert('비밀번호가 일치하지 않습니다.');
+                return;
+            }
+            
+            const termsService = document.getElementById('terms_service').checked;
+            const termsPrivacy = document.getElementById('terms_privacy').checked;
+            
+            if (!termsService || !termsPrivacy) {
+                alert('필수 약관에 동의해주세요.');
+                return;
+            }
+            
+            const formData = {
+                username: document.getElementById('signup_username').value,
+                email: document.getElementById('signup_email').value,
+                lastname: document.getElementById('signup_lastname').value,
+                firstname: document.getElementById('signup_firstname').value,
+                password: password,
+                phone: document.getElementById('signup_phone').value,
+                marketing: document.getElementById('terms_marketing').checked
+            };
+            
+            console.log('회원가입 데이터:', formData);
+            alert('회원가입 기능은 준비중입니다.');
+        });
+
+        // 전체 약관 동의 체크박스 기능
+        document.getElementById('terms_all').addEventListener('change', function() {
+            const checkboxes = ['terms_service', 'terms_privacy', 'terms_marketing'];
+            checkboxes.forEach(id => {
+                document.getElementById(id).checked = this.checked;
+            });
+        });
+
+        // 개별 약관 체크박스 상태 변경시 전체 동의 체크박스 업데이트
+        ['terms_service', 'terms_privacy', 'terms_marketing'].forEach(id => {
+            document.getElementById(id).addEventListener('change', function() {
+                const allChecked = ['terms_service', 'terms_privacy', 'terms_marketing']
+                    .every(checkId => document.getElementById(checkId).checked);
+                document.getElementById('terms_all').checked = allChecked;
+            });
+        });
+    </script>
+</body>
+</html>

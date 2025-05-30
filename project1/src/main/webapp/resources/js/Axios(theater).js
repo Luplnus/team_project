@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    axios.get("http://3.36.29.175:5000/api/theaters").then(function (response) {
+    axios.get("https://3.36.29.175:5003/api/theaters").then(function (response) {
         const data = response.data;
         const wrapper = document.querySelector('.main-swiper .swiper-wrapper');
 

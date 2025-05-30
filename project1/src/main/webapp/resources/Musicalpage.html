@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="./css/function_more.css">
-    <title>Theater Page</title>
+    <title>뮤지컬 페이지</title>
     <style>
         body {
             user-select: none;
@@ -13,7 +12,7 @@
             overflow-x: hidden;
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             background-color: #000;
-        }
+        }   
         #wrap {
             width: 100%;
             height: 960px;
@@ -76,7 +75,7 @@
             transition: color 0.3s;
             font-size: 15px;
         }
-
+        
         .menu_box:hover {
             color: #E50914;
         }
@@ -100,13 +99,13 @@
             text-decoration: none;
             display: block;
         }
-
+        
         .view_box {
             width: 100%;
             height: calc(100% - 50px);
             position: relative;
         }
-
+        
         .banner_container {
             position: absolute;
             top: 0;
@@ -115,15 +114,14 @@
             height: 100%;
             overflow: hidden;
         }
-
+        
         .movie_banner {
             width: 100%;
             height: 635px;
             display: flex;
             opacity: 1;
-
         }
-
+        
         .gradient_overlay {
             position: absolute;
             bottom: 0;
@@ -131,16 +129,16 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(
-                    to top,
-                    rgba(0,0,0,1) 0%,
-                    rgba(0,0,0,0.8) 15%,
-                    rgba(0,0,0,0.4) 40%,
-                    rgba(0,0,0,0.2) 60%,
-                    rgba(0,0,0,0.1) 100%
+                to top, 
+                rgba(0,0,0,1) 0%,
+                rgba(0,0,0,0.8) 15%, 
+                rgba(0,0,0,0.4) 40%, 
+                rgba(0,0,0,0.2) 60%,
+                rgba(0,0,0,0.1) 100%
             );
             z-index: 2;
         }
-
+        
         .view_wcht {
             position: absolute;
             bottom: 0;
@@ -156,7 +154,7 @@
             max-width: 2400px;
             z-index: 10;
         }
-
+        
         .main-slide {
             text-align: center;
             display: flex;
@@ -168,7 +166,7 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             transition: transform 0.3s;
         }
-
+        
         .main-slide:hover {
             transform: scale(1.05);
         }
@@ -177,7 +175,7 @@
             display: block;
             width: 100%;
             height: 100%;
-            object-fit: fill;
+            object-fit: cover;
         }
 
         .swiper-wrapper{
@@ -196,7 +194,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-
         }
 
         .post_img {
@@ -330,7 +327,6 @@
         }
 
     </style>
-
 </head>
 <body>
 <header>
@@ -338,7 +334,7 @@
         <div class="main_menu">
             <div class="h_menubox">
                 <div class="main_logo">
-                    <h2><a href="/" style="color: inherit; text-decoration: none" >JPIEL</a></h2>
+                    <h2>JPIEL</h2>
                 </div>
                 <div class="menu_bar">
                     <div class="menu_box">영화</div>
@@ -348,25 +344,20 @@
                 </div>
                 <div class="content">
                     <div class="content_box">
-                        <a href="">
-                            <img src="./pt_img/search.svg" alt="">
+                        <a href="#">
+                           <img src="./pt_img/search.svg" alt="">
                         </a>
                     </div>
-                    <div class="content_box content_box_myPageIcon">
-                        <img src="./pt_img/user.svg" alt="">
-                        <div class="more_btn_nav">
-                            <div class="more_btn_nav_myPage more_menu">
-                                <a href="/myPage">My Page</a>
-                            </div>
-                            <div class="more_btn_nav_logOut more_menu">
-                                <a href="/logOut">로그아웃</a>
-                            </div>
-                        </div>
+                     <div class="content_box">
+                        <a href="#">
+                           <img src="./pt_img/user.svg" alt="">
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-
+        
+        
         <div class="view_box">
             <div class="banner_container">
                 <div class="movie_banner">
@@ -374,13 +365,14 @@
                         <img src="" alt="메인 포스터" class="post_img">
                     </div>
                     <div class="part_box">
-                        <h1 class="movie_title">연극 이름</h1>
-
+                        <h1 class="movie_title">뮤지컬 이름</h1>
+                        
                         <div class="movie_meta">
                             <span class="year">시작일</span>
                             <span class="runtime">종료일</span>
+                            <span class="genre">극장</span>
                         </div>
-
+                                           
                         <div class="button_group">
                             <button class="btn_primary">
                                 <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -395,11 +387,10 @@
                                 찜하기
                             </button>
                         </div>
-
+                        
                         <div class="movie_info">
                             <div class="info_row">
                                 <span class="info_label">공연장</span>
-                                <span class="pfm_hall">공연장 위치</span>
                             </div>
                         </div>
                     </div>
@@ -504,78 +495,79 @@
             </div>
         </div>
     </div>
-</header>
+ </header>
 
-<!-- Swiper JS -->
+     <!-- Swiper JS -->
+     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <script>
+       // 날짜 포맷 함수 (예시)
+       function formatKoreanDate(dateStr) {
+    const date = new Date(dateStr);
+    const days = ['일', '월', '화', '수', '목', '금', '토'];
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const weekday = days[date.getDay()];
+    return `${year}년 ${month}월 ${day}일 (${weekday})`;
+}
+   
+       // Swiper 초기화
+       const mainSwiper = new Swiper(".main-swiper", {
+         slidesPerView: 5,
+         spaceBetween: 30,
+         freeMode: true,
+         loop: true,
+         speed: 800,
+         breakpoints: {
+           320: { slidesPerView: 1 },
+           640: { slidesPerView: 2 },
+           768: { slidesPerView: 3 },
+           1024: { slidesPerView: 4 },
+           1440: { slidesPerView: 5 }
+         }
+       });
+   
+       $(document).ready(function () {
+         $.getJSON("http://3.36.29.175:5000/api/musicals")
+           .done(function (data) {
+             const wrapper = $(".main-swiper .swiper-wrapper").empty();
+             data.forEach((item) => {
+               const slide = $(`
+                 <div class="swiper-slide main-slide">
+                   <img
+                     src="http://3.36.29.175:5000/image-proxy?url=${encodeURIComponent(
+                       item.mu_poster
+                     )}"
+                     alt="${item.mu_title}"
+                     onerror="this.src='https://via.placeholder.com/240x204?text=No+Image'"
+                   />
+                 </div>
+               `);
+   
+               // 클릭 시 정보 갱신
+               slide.click(function () {
+                 const proxyUrl = `http://3.36.29.175:5000/image-proxy?url=${encodeURIComponent(
+                   item.mu_poster
+                 )}`;
+                 $(".post_img").attr("src", proxyUrl);
+                 $(".movie_title").text(item.mu_title);
+                 $(".year").   text( formatKoreanDate(item.mu_prfpdfrom) );
+                 $(".runtime").text( formatKoreanDate(item.mu_prfpdto ) );    
+                 $(".genre").text(item.mu_genre);                           
+                 $(".info_label").text(item.mu_venue);                           
+               });
+   
+               wrapper.append(slide);
+             });
+             mainSwiper.update();
+           })
+           .fail(function (xhr, status, error) {
+             console.error("뮤지컬 데이터 로드 실패:", status, error);
+           });
+       });
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="js/Axios(theater).js"></script>
-<script src="js/function_more.js"></script>
-<script>
 
-    // 메인 슬라이더 설정
-    var mainSwiper = new Swiper(".main-swiper", {
-        slidesPerView: 5,
-        spaceBetween: 30,
-        freeMode: true,
-        loop: true,
-        speed: 800,
-        scrollbar: {
-            el: ".swiper-scrollbar",
-            hide: true,
-        },
-        breakpoints: {
-            320: {
-                slidesPerView: 1,
-                spaceBetween: 10
-            },
-            640: {
-                slidesPerView: 2,
-                spaceBetween: 20
-            },
-            768: {
-                slidesPerView: 3,
-                spaceBetween: 20
-            },
-            1024: {
-                slidesPerView: 4,
-                spaceBetween: 30
-            },
-            1440: {
-                slidesPerView: 5,
-                spaceBetween: 30
-            }
-        }
-    });
-
-    // 팝업 슬라이더 설정
-    var popupSwiper = new Swiper(".popup-swiper", {
-        slidesPerView: 'auto',
-        spaceBetween: 10,
-        grabCursor: true,
-        preventClicks: true,
-        preventClicksPropagation: true,
-        slidesOffsetBefore: 0,
-        slidesOffsetAfter: 0,
-        breakpoints: {
-            320: {
-                slidesPerView: 1.5,
-                spaceBetween: 10
-            },
-            640: {
-                slidesPerView: 2.5,
-                spaceBetween: 10
-            },
-            800: {
-                slidesPerView: 3,
-                spaceBetween: 10
-            }
-        }
-    });
-
-
-</script>
+    </script>
 </body>
 </html>

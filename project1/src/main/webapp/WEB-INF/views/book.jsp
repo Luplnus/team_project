@@ -72,6 +72,8 @@
 
         const mu_id = "${musicalDto.mu_id}";
         const t_id = "${theaterDto.t_id}";
+        const s_label = "A10"
+        const vm_name = ""
         const b_musical_time = "2025-05-30 14:25:00";
         $('#${musicalDto.mu_id}').addClass('blue');
         $('#${theaterDto.t_id}').addClass('blue');
@@ -83,7 +85,7 @@
                     url: '/app/book/musical',
                     headers : { "content-type": "application/json" },
                     // b_user_seqno는 세션으로 받고, mu_id, b_musical_time 입력받고
-                    data : JSON.stringify({mu_id: mu_id, b_musical_time: b_musical_time}),
+                    data : JSON.stringify({mu_id: mu_id, b_musical_time: b_musical_time, s_label: s_label}),
                     success : function(result) {
                         if (result == "BOOK_FAIL") {
                             alert("예매 실패");

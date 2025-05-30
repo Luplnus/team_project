@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="./CSS/Main_page.css"/>
+    <title>JPIEL</title>
+</head>
+<body>
+<header>
+    <div id="wrap">
+        <!-- iframe 대신 video 태그 사용 -->
+        <div class="video_background" id="videoBackground">
+            <video id="videoPlayer" autoplay muted loop playsinline>
+                <source src="" type="video/mp4">
+                브라우저가 비디오 태그를 지원하지 않습니다.
+            </video>
+        </div>
+        
+        <!-- 비디오 오버레이 추가 -->
+        <div class="video_overlay"></div>
+
+        <div class="main_menu">
+            <div class="h_menubox">
+                <div class="main_logo">
+                    <h2>JPIEL</h2>
+                </div>
+                <div class="menu_bar">
+                    <div class="menu_box">영화</div>
+                    <div class="menu_box">뮤지컬</div>
+                    <div class="menu_box">연극</div>
+                    <div class="menu_box">예매</div>
+                </div>
+                <div class="content">
+                    <div class="content_box">
+                        <a href="">
+                            <img src="./pt_img/search.svg" alt="">
+                        </a>
+                    </div>
+                     <div class="content_box">
+                        <a href="">
+                            <img src="./pt_img/user.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="genre_bar">
+            <div class="intro_ttl">
+                <!--JS로 구현-->
+            </div>
+            
+            <div class="intro_view">
+                <div class="main-container">
+                    <div class="swiper main-swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide main-slide">
+                                <img src="./pt_img/19636c6ce2a211e76.jpg" alt="" class="img_box">
+                            </div>
+                             <div class="swiper-slide main-slide" data-video-src="">
+                                <img src="./pt_img/yFHHfHcUgGAxziP1C3lLt0q2T4s.webp" alt="" class="img_box">
+                            </div>
+                             <div class="swiper-slide main-slide" data-video-src="">
+                                <img src="./pt_img/MISSION1.jpg" alt="" class="img_box">
+                            </div>
+                             <div class="swiper-slide main-slide" data-video-src="">
+                                <img src="./pt_img/2893d8b7b3f94f.webp" alt="" class="img_box">
+                            </div>
+                             <div class="swiper-slide main-slide" data-video-src="">
+                                <img src="./pt_img/위키드.webp" alt="약한영웅 Class 2" class="img_box">
+                            </div>
+                             <div class="swiper-slide main-slide" data-video-src="">
+                                <img src="./pt_img/25005672_p.gif" alt="" class="img_box">
+                            </div>
+                             <div class="swiper-slide main-slide" data-video-src="">
+                                <img src="./pt_img/L0000113_p.gif" alt="" class="img_box">
+                            </div>
+                             <div class="swiper-slide main-slide" data-video-src="">
+                                <img src="./pt_img/25004642_p.gif" alt="" class="img_box">
+                             </div>
+                              <div class="swiper-slide main-slide" data-video-src="">
+                                <img src="./pt_img/23005704_p.gif" alt="" class="img_box">
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+           
+</header>
+
+
+<div class="genrn_tool">
+        
+        <div class="genrn_mn">
+            <nav class="genrn_menu">영화</nav>
+            <nav class="genrn_menu">연극</nav>
+            <nav class="genrn_menu">뮤지컬</nav>
+        </div>
+
+        <div class="genrn_ttl">
+            <div class="genrn_new">
+                <strong>장르별 리스트</strong>
+                <ul class="detail_nm">
+                    <li class="detail_mn">영화이름</li>
+                    <li class="detail_lating">평점</li>
+                    <li class="detail_mn">장르</li>
+                    <li class="detail_mn">개봉일</li>
+                </ul>
+                <div class="btn_mv">
+                    <button class="ticketing">예매하기</button>
+                    <button class="zzim">찜하기</button>
+                </div>
+            </div>
+
+            <div class="slide_box">
+                <div class="swiper movie-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide movie-slide">슬라이드 1</div>
+                        <div class="swiper-slide movie-slide">슬라이드 2</div>
+                        <div class="swiper-slide movie-slide">슬라이드 3</div>
+                        <div class="swiper-slide movie-slide">슬라이드 4</div>
+                        <div class="swiper-slide movie-slide">슬라이드 5</div>
+                        <div class="swiper-slide movie-slide">슬라이드 5</div>
+                        <div class="swiper-slide movie-slide">슬라이드 6</div>
+                        <div class="swiper-slide movie-slide">슬라이드 7</div>
+                        <div class="swiper-slide movie-slide">슬라이드 8</div>
+                        <div class="swiper-slide movie-slide">슬라이드 9</div>
+                        <div class="swiper-slide movie-slide">슬라이드 10</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="fot_end">
+            <div class="footer_content">
+                <div class="footer_logo">JPIEL</div>
+                <div class="footer_box">
+                    <a href="#">회사소개</a>
+                    <a href="#">서비스이용약관</a>
+                    <a href="#">개인정보처리방침</a>
+                    <a href="#">고객센터</a>
+                    <a href="#">광고문의</a>
+                </div>
+                <div class="footer_end">
+                    <span>JPIEL STUDIO</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<!-- <script src="./JS/Main_page.js"></script>
+<script src="./JS/Main_list.js"></script> -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    // 1. 먼저 콘텐츠 데이터를 배열로 정의합니다
+    const contentData = [
+    {
+        id: 1,
+        title: "썬더볼츠",
+        badges: [
+        { type: "new", text: "영화" },
+        { type: "hot", text: "인기" }
+        ],
+        rating: "8.5",
+        genre: "액션/어드벤처",
+        duration: "126분",
+        releaseDate: "2025.04.30 개봉",
+        description: "별난 놈들만 모인 이들은 어쩔 수 없이 한 팀이 되고 자신들의 어두운 과거와 맞서야 하는 위험한 임무에 투입된다 서로를 전혀 믿지 못하는 상황에서 스스로의 생존과 세상의 구원을 위해 이들은 진정한 팀으로 거듭나야만 하는데...",
+        videoSrc: "./videos/썬더볼츠 메인 예고편.mp4",
+        imageSrc: "./pt_img/19636c6ce2a211e76.jpg"
+    },
+    {
+        id: 2,
+        title: "A MINECRAFT MOVIE",
+        badges: [
+        { type: "hot", text: "인기"}
+        ],
+        rating: "8.7",
+        genre: "어드벤처/판타지",
+        duration: "100분",
+        releaseDate: "2025.04.25 개봉",
+        description: "현실 세계로 돌아가기 위해서는 일단 살아남아야 하는 법! 다섯명의 동글이 들을 오버월드를 구하기 위해 힘을 합치게 되는 수업이 쌓아 올린 네모난 세계 상상을 초월하는 모험이 펼쳐진다.",
+        videoSrc: "./videos/마인크래프트 1차 예고편.mp4",
+        imageSrc: "./pt_img/yFHHfHcUgGAxziP1C3lLt0q2T4s.webp"
+    },
+    {
+        id: 3,
+        title: "미션 임파서블 파이널 레코닝",
+        badges: [
+        { type: "new", text: "영화" }
+        ],
+        rating: "9.3",
+        genre: "액션",
+        duration: "169분",
+        releaseDate: "2025.05.17 개봉",
+        description: "디지털상의 모든 정보를 통제할 수 있는 사상초유의 무기로 인해 전세계 국가와 조직의 기능이 마비되고, 인류 전체가 위협받는 절체절명의 위기가 찾아온다.",
+        videoSrc: "./videos/미션 임파서블_ 파이널 레코닝  예고편.mp4",
+        imageSrc: "./pt_img/MISSION1.jpg"
+    },
+    {
+        id: 4,
+        title: "웃는 남자",
+        badges: [
+        { type: "new", text: "NEW" }
+        ],
+        rating: "예술의전당 오페라극장",
+        genre: "뮤지컬",
+        duration: "180분",
+        releaseDate: "2025.01.09 개봉 ~ 2025.03.09 종료",
+        description: "살을 에는 추위 속을 헤매던 그윈플렌은 얼어 죽은 여자의 품에 안겨 젖을 물고 있는 아기 데아를 발견하고 우연히 떠돌이 약장수 우르수스를 만나 도움을 청한다.",
+        videoSrc: "./videos/웃는남자예고편.mp4",
+        imageSrc: "https://image.tmdb.org/t/p/w500/8claugsQFr5SAx4K2anZPJuPRqL.jpg"
+    },
+    {
+        id: 5,
+        title: "WICKED",
+        badges: [
+        { type: "new", text: "NEW" }
+        ],
+        rating: "블루스퀘어 신한카드홀",
+        genre: "뮤지컬",
+        duration: "170분",
+        releaseDate: "2025.07.12 개봉 ~ 2025.10.26 종료",
+        description: "서로 너무나 다른 엘파바와 글린다는 마법 같은 우정을 쌓지만, 마법사의 초대로 에메랄드 시티에 간 후 예상치 못한 위기와 모험에 휘말린다.",
+        videoSrc: "./videos/위키드예고편.mp4",
+        imageSrc: "./pt_img/위키드.webp"
+    },
+    {
+        id: 6,
+        title: "알라딘",
+        badges: [
+        { type: "new", text: "NEW" }
+        ],
+        rating: "부산 드림씨어터",
+        genre: "뮤지컬",
+        duration: "150분",
+        releaseDate: "2025.07.11 개봉 ~ 2025.09.28 종료",
+        description: "사막 속에 자리한 아그라바 왕국, 좀도둑질로 생계를 유지하는 알라딘은 우연히 마주친 공주 자스민에게 신분도 모른 채 마음을 빼앗기게되는데...",
+        videoSrc: "./videos/알라딘예고편.mp4",
+        imageSrc: "./pt_img/25005672_p.gif"
+    },
+    {
+        id: 7,
+        title: "헤다 가블러",
+        badges: [
+        { type: "new", text: "NEW" }
+        ],
+        rating: "LG SIGNATURE 홀",
+        genre: "연극",
+        duration: "145분",
+        releaseDate: "2025.05.07 개봉 ~ 2025.06.08 종료",
+        description: "가블러 장군의 딸 헤다가 원치 않는 결혼과 함께 겪는 갇힌 삶의 이야기",
+        videoSrc: "./videos/헤다가블러 예고편.mp4",
+        imageSrc: "./pt_img/L0000113_p.gif"
+    },
+    {
+        id: 8,
+        title: "킬링시저",
+        badges: [
+        { type: "new", text: "NEW" }
+        ],
+        rating: "서강대학교 메리홀 대극장",
+        genre: "연극",
+        duration: "90분",
+        releaseDate: "2025.05.10 개봉 ~ 2025.07.20 종료",
+        description: "셰익스피어의 줄리어스 시저를 현대적으로 재해석한 작품으로, 시저 암살 전후의 권력 다툼과 갈등의 이야기",
+        videoSrc: "./videos/킬링시저예고편.mp4",
+        imageSrc: "./pt_img/25004642_p.gif"
+    },
+    {
+        id: 9,
+        title: "행오버",
+        badges: [
+        { type: "new", text: "NEW" }
+        ],
+        rating: "정극장",
+        genre: "연극",
+        duration: "90분",
+        releaseDate: "2023.05.01 개봉 ~ 2025.06.29 종료",
+        description: "모든 일은 파라다이스 호텔 506호에 시작된다.남편(철수)의 외도를 알게 된 지연(부인)은 이벤트 업체를 이용해서 남편에게 사과를 받고 싶어한다. 이벤트 업체 대표 태민은 지연의 계획대로 철수에게 사과를 받아보려고 했지만, 만취한 철수는 지연을 506호에서 살해한다. ",
+        videoSrc: "./videos/행오버예고편.mp4",
+        imageSrc: ""
+    },
+    // 필요한 만큼 데이터를 추가 가능
+    ];
+
+      let currentContentIndex = 0;
+
+    // 3. intro_ttl 콘텐츠를 렌더링하는 함수
+    function renderIntroContent(index) {
+    const content = contentData[index];
+    const introTtlElement = document.querySelector('.intro_ttl');
+    
+    // HTML 템플릿 생성
+    const html = `
+        <div class="content_info">
+            <div class="content_badge">
+                ${content.badges.map(badge => `<span class="badge ${badge.type}">${badge.text}</span>`).join('')}
+            </div>
+            <h2 class="ttl_nm">${content.title}</h2>
+                <div class="content_meta">
+                    <span class="rating">${content.rating}</span>
+                    <span class="genre">${content.genre}</span>
+                    <span class="duration">${content.duration}</span>
+                    <span class="release">${content.releaseDate}</span>
+                </div>
+            <p class="content_desc">
+                ${content.description}
+            </p>
+            <div class="button_group">
+                <a href="#" class="btn btn_primary">예매하기</a>
+                <a href="#" class="btn btn_outline">찜하기</a>
+            </div>
+        </div>
+    `;
+    
+    introTtlElement.innerHTML = html;
+    
+    const videoPlayer = document.getElementById('videoPlayer');
+    const videoSource = videoPlayer.querySelector('source');
+    videoSource.src = content.videoSrc;
+    videoPlayer.load();
+    videoPlayer.play();
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+    // 초기 콘텐츠 렌더링
+    renderIntroContent(currentContentIndex);
+    
+    // 메인 슬라이드 이벤트 설정
+    const mainSlides = document.querySelectorAll('.main-slide');
+    mainSlides.forEach(function(slide, index) {
+        // 이미 있던 이벤트 리스너는 제거하고 새로 추가
+        slide.removeEventListener('click', function() {});
+        
+        slide.addEventListener('click', function() {
+        const contentIndex = index % contentData.length;
+        currentContentIndex = contentIndex;
+        
+        renderIntroContent(contentIndex);
+        });
+    });
+    
+    mainSwiper.on('slideChange', function() {
+        const realIndex = mainSwiper.realIndex % contentData.length;
+        currentContentIndex = realIndex;
+        renderIntroContent(realIndex);
+    });
+    });
+
+    // 메인 슬라이더 초기화
+    var mainSwiper = new Swiper(".main-swiper", {
+        slidesPerView: 5,
+        spaceBetween: 30,
+        loop: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+    });
+
+    const videoBackground = document.getElementById('videoBackground');
+    const videoPlayer = document.getElementById('videoPlayer');
+    
+   
+    const videoSources = {
+        "약한영웅 Class 2": "./videos/약한영웅.mp4",
+        "썬더볼츠": "./videos/thunderbolts.mp4"
+    };
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const mainSlides = document.querySelectorAll('.main-slide');
+        
+        const autoPlayVideo = () => {
+            
+            const defaultVideo = "./videos/weak_hero.mp4";
+            videoPlayer.querySelector('source').src = defaultVideo;
+            videoPlayer.load();
+            videoPlayer.play();
+        };
+
+        
+        mainSlides.forEach(function(slide) {
+            slide.addEventListener('click', function() {
+                const videoSrc = this.getAttribute('data-video-src');
+                if (videoSrc) {
+                    videoPlayer.querySelector('source').src = videoSrc;
+                    videoPlayer.load();
+                    videoPlayer.play();
+                } else {
+                   
+                    mainSwiper.slideNext();
+                }
+            });
+        });
+    });
+
+
+        var swiper = new Swiper(".movie-swiper", {
+        slidesPerView: 5,
+        spaceBetween: 30,
+        freeMode: true,
+        loop: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+    });
+
+        // 메뉴 클릭 이벤트
+    document.querySelectorAll('.genrn_menu').forEach(menu => {
+        menu.addEventListener('click', function() {
+            // 모든 메뉴에서 active 클래스 제거
+            document.querySelectorAll('.genrn_menu').forEach(m => m.classList.remove('active'));
+            // 클릭된 메뉴에 active 클래스 추가
+            this.classList.add('active');
+        });
+    });
+
+    // /////////////////////////////////////////////////////////////////////////////////
+
+// 환경 설정
+const BASE = 'http://43.201.82.158:5000';
+const ENDPOINTS = {
+  '영화':    '/api/movies',
+  '연극':    '/api/theaters',
+  '뮤지컬':  '/api/musicals'
+};
+
+
+// 장르 메뉴 클릭 처리
+$('.genrn_menu').click(function() {
+  // active 클래스 토글
+  $('.genrn_menu').removeClass('active');
+  $(this).addClass('active');
+
+  const category = $(this).text().trim();
+  const url = BASE + ENDPOINTS[category];
+
+  // API 호출 → 슬라이드 박스 채우기
+  $.getJSON(url, function(data) {
+    const $wrapper = $('.slide_box .swiper-wrapper').empty();
+
+    data.forEach(item => {
+      // 공통된 필드 매핑
+      const poster  = item.m_poster_url || item.t_poster || item.mu_poster;
+      const title   = item.m_title     || item.t_title     || item.mu_title;
+      const rating  = item.m_rating    || item.t_venue    || item.mu_venue || '';
+      const genre   = item.m_genre  || item.t_genre     || item.mu_genre;
+      const release = item.m_opendate   ||
+                      (item.t_start_date + ' ~ ' + item.t_end_date) ||
+                      (item.mu_prfpdfrom + ' ~ ' + item.mu_prfpdto);
+
+
+      // 슬라이드 생성
+      const $slide = $(`
+        <div class="swiper-slide movie-slide">
+          <img src="${BASE}/image-proxy?url=${encodeURIComponent(poster)}"
+               alt="${title}">
+        </div>
+      `).data({ title, rating, genre, release });
+
+      $wrapper.append($slide);
+
+      // 4) 슬라이드 클릭 시 genrn_new 영역에 정보 표시
+      $slide.click(function() {
+        const d = $(this).data();
+        const $lis = $('.genrn_new ul li');
+        $lis.eq(0).text(d.title);
+        $lis.eq(1).text(d.rating);
+        $lis.eq(2).text(d.genre);
+        $lis.eq(3).text(d.release);
+
+        $('.detail_release').text(`${start} ~ ${end}`);
+
+      });
+
+      $wrapper.append($slide);
+    });
+
+    // 5) Swiper 초기화 또는 업데이트
+    if (window.movieSwiper) {
+      movieSwiper.update();
+    } else {
+      window.movieSwiper = new Swiper('.movie-swiper', {
+        slidesPerView: 5,
+        spaceBetween: 30,
+        freeMode: true,
+        loop: true
+      });
+    }
+  });
+});
+
+function formatKoreanDate(dateStr) {
+  const date = new Date(dateStr);
+  const days = ['일','월','화','수','목','금','토'];
+  return `${date.getFullYear()}년${date.getMonth()+1}월${date.getDate()}일(${days[date.getDay()]})`;
+}
+
+// (선택) 페이지 로드시 첫 장르 자동 클릭
+$('.genrn_menu').first().click();
+
+
+</script>
+</body>
+</html>
