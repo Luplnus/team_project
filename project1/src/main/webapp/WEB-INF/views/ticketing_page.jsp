@@ -464,14 +464,24 @@
 <body>
 <div class="main_menu">
     <div class="h_menubox">
-        <div class="main_logo">
-            <h2>JPIEL</h2>
-        </div>
+        <a href="/app">
+            <div class="main_logo">
+                <h2>JPIEL</h2>
+            </div>
+        </a>
         <div class="menu_bar">
-            <div class="menu_box">영화</div>
-            <div class="menu_box">뮤지컬</div>
-            <div class="menu_box">연극</div>
-            <div class="menu_box">예매</div>
+            <a href="/app/Moviepage.html">
+                <div class="menu_box">영화</div>
+            </a>
+            <a href="/app/musical">
+                <div class="menu_box">뮤지컬</div>
+            </a>
+            <a href="/app/Theaterpage.html">
+                <div class="menu_box">연극</div>
+            </a>
+            <a href="/app/book">
+                <div class="menu_box">예매</div>
+            </a>
         </div>
 
         <input type="text" class="search_bar" id="search_bar" placeholder="타이틀을 입력하세요.">

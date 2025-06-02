@@ -545,7 +545,6 @@
             location.href = '/app/book/musical?code=' + mu_id; // 뮤지컬 id를 담아 /book/musical로
         })
 
-
     </script>
 </body>
 </html>

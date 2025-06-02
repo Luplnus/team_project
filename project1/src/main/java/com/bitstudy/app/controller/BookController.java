@@ -159,8 +159,6 @@ public class BookController {
         return "ticketing_page";
     }
 
-//    @PostMapping("/book") // 그냥 예매 > ajax로 post - /book/해당장르
-
     @GetMapping("/book/movie") // 영화 상세 페이지에서 m_movie_cd받아서 예매하기로 들어옴
     public String book_movie(@RequestParam(value = "code", required = false) String m_movie_cd, HttpServletRequest request, Model model) {
         HttpSession session = request.getSession();
@@ -215,7 +213,7 @@ public class BookController {
             int rowCount = book_movieService.insert(book_movieDto); // insert가 성공하면 rowCount == 1
             if (rowCount == 0) { // insert 실패
                 return new ResponseEntity<String>("BOOK_FAIL", HttpStatus.OK);
-            } else { // insert 성공
+            } else { // insert 성공하면
                 seat_movieService.update_false(s_id); // s_is_available false로 업데이트
                 return new ResponseEntity<String>("BOOK_OK", HttpStatus.OK);
             }
