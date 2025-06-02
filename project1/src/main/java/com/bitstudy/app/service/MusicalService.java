@@ -15,5 +15,4 @@ public interface MusicalService {
     List<MusicalDto> selectAll_genre(String genre);
     MusicalDto select(String mu_id);
     List<MusicalDto> search_title(String title);
-    List<String> rand_venue();
 }

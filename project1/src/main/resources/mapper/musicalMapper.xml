@@ -63,12 +63,4 @@
         SELECT * FROM musical_tbl
         WHERE mu_title LIKE CONCAT('%',#{keyword},'%')
     </select>
-
-    <!--    -->
-    <select id="rand_venue" resultType="String">
-        SELECT DISTINCT mu_venue
-        FROM musical_tbl
-        ORDER BY RAND()
-        LIMIT 3;
-    </select>
 </mapper>

@@ -61,11 +61,4 @@ public class MusicalServiceImpl implements MusicalService {
     public List<MusicalDto> search_title(String title) {
         return musicalDao.search_title(title);
     }
-
-    @Override
-    public List<String> rand_venue() {
-        return musicalDao.rand_venue();
-    }
-
-
 }
