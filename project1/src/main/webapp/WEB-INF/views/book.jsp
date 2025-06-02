@@ -102,7 +102,7 @@
                 $.ajax({
                     type:'POST',
                     url: '/app/book/theater',
-                    headers : { "content-type": "application/json" },
+                    headers : { "content-type": "application/json"},
                     data : JSON.stringify({t_id: t_id, s_id: s_id}),
                     success : function(result) {
                         if (result == "BOOK_FAIL") {

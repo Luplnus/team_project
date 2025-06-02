@@ -64,4 +64,9 @@ public class MusicalDaoImpl implements MusicalDao {
     public List<MusicalDto> search_title(String keyword) {
         return session.selectList(namespace + "search_title", keyword);
     }
+
+    @Override
+    public List<String> rand_venue() {
+        return session.selectList(namespace + "rand_venue");
+    }
 }

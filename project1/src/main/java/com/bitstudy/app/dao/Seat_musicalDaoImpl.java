@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -33,4 +34,11 @@ public class Seat_musicalDaoImpl implements Seat_musicalDao {
     public int update_false(Integer s_id) {
         return session.update(namespace + "update_false", s_id);
     }
+
+    @Override
+    public List<Map<String, String>> select_false() {
+        return session.selectList(namespace + "select_false");
+    }
+
+
 }

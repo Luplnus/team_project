@@ -7,21 +7,21 @@
 <select id="selectAll" resultType="TheaterDto">
     select * from theater_tbl
 </select>
-<!--&lt;!&ndash;  곧 끝나는 작품들 불러오기  &ndash;&gt;-->
-<!--<select id="selectAllByEndDate" resultType="TheaterDto">-->
-<!--    select * from theater_tbl-->
-<!--    order by t_end_date asc-->
-<!--</select>-->
-<!--&lt;!&ndash;  theaterId로 하나 불러오기  &ndash;&gt;-->
-<!--<select id="select" parameterType="String" resultType="TheaterDto">-->
-<!--    select * from theater_tbl-->
-<!--    where t_id=#{t_id}-->
-<!--</select>-->
-<!--&lt;!&ndash;  장르별로 불러오기  &ndash;&gt;-->
-<!--<select id="selectByGenre" parameterType="String" resultType="TheaterDto">-->
-<!--    select * from theater_tbl-->
-<!--    where =t_genre#{t_genre}-->
-<!--</select>-->
+<!--  곧 끝나는 작품들 불러오기  -->
+<select id="selectAllByEndDate" resultType="TheaterDto">
+    select * from theater_tbl
+    order by t_end_date asc
+</select>
+<!--  theaterId로 하나 불러오기  -->
+<select id="select" parameterType="String" resultType="TheaterDto">
+    select * from theater_tbl
+    where t_id=#{t_id}
+</select>
+<!--  장르별로 불러오기  -->
+<select id="selectByGenre" parameterType="String" resultType="TheaterDto">
+    select * from theater_tbl
+    where =t_genre#{t_genre}
+</select>
 
 </mapper>
 

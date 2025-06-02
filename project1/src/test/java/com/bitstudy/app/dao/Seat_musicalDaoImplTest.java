@@ -32,4 +32,11 @@ public class Seat_musicalDaoImplTest {
         Integer s_id = 6;
         assertTrue(seat_musicalDao.update_true(s_id) == 1);
     }
+
+    @Test
+    public void select_false() {
+        System.out.println(seat_musicalDao.select_false());
+
+        assertTrue(seat_musicalDao.select_false().size() == 2);
+    }
 }

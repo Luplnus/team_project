@@ -15,4 +15,5 @@ public interface MusicalDao {
     List<MusicalDto> selectAll_genre(String genre);
     MusicalDto select(String mu_id);
     List<MusicalDto> search_title(String keyword);
+    List<String> rand_venue();
 }
