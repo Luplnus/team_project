@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="./css/function_more.css">
+    <link rel="stylesheet" href="./CSS/function_more.css">
     <title>Theater Page</title>
     <style>
         body {
@@ -330,7 +330,6 @@
         }
 
     </style>
-
 </head>
 <body>
 <header>
@@ -507,12 +506,11 @@
 </header>
 
 <!-- Swiper JS -->
-
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="js/Axios(theater).js"></script>
-<script src="js/function_more.js"></script>
+<script src="./js/Axios(theater).js"></script>
+<script src="./js/function_more.js"></script>
 <script>
 
     // 메인 슬라이더 설정
@@ -575,6 +573,157 @@
         }
     });
 
+    function formatKoreanDate(dateStr){
+    const date = new Date(dateStr);
+    const days = ['일', '월', '화', '수', '목', '금', '토'];
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const weekday = days[date.getDay()];
+    return `${year}년 ${month}월 ${day}일 (${weekday})`;
+    }
+
+//     // 5) 검색 핸들러 등록 (데이터 로딩 후)
+//   $('#search_bar').on('input', function() {
+//     const q = this.value.trim().toLowerCase();
+//     const $dd = $('#search_dropdown').empty();
+//     if (!q) return $dd.removeClass('active');
+
+//     const matches = allContent.filter(item =>
+//       item.title.toLowerCase().includes(q)
+//     );
+//     if (matches.length) {
+//       matches.forEach(item => {
+//         $('<div>')
+//           .addClass('search-item')
+//           .text(item.title)
+//           .appendTo($dd)
+//           .on('click', () => {
+//             showPopup(item);
+//             $dd.removeClass('active');
+//             $('#search_bar').val(item.title);
+//           });
+//       });
+//       $dd.addClass('active');
+//     } else {
+//       $dd.removeClass('active');
+//     }
+//   });
+
+//   // (옵션) 로딩 중 UI 비활성화 해제
+//   $('#search_bar').prop('disabled', false);
+
+//     // 4) Enter 키로 첫 번째 매칭 항목 팝업
+//     $('#search_bar').on('keypress', function(e){
+//       if (e.which!==13) return;
+//       e.preventDefault();
+//       const q = this.value.trim().toLowerCase();
+//       const first = allContent.find(item=> item.title.toLowerCase().includes(q) );
+//       if (first) showPopup(first);
+//       else       alert('일치하는 콘텐츠가 없습니다.');
+//     });
+
+//     // 유저 드롭다운
+//     const $uIcon = $('#user-icon'), $ud = $('#user-dropdown'), user=localStorage.getItem('loggedInUser');
+//     $ud.empty();
+//     if(user){
+//       $ud.append('<a href="#" id="logout-btn">로그아웃</a><a href="Mypage.html">마이페이지</a>');
+//     } else {
+//       $ud.append('<a href="Loginpage.html">로그인</a><a href="Mypage.html">마이페이지</a>');
+//     }
+//     $uIcon.on('click', e=>{$ud.toggle();});
+//     $(document).on('click', e=>{
+//       if (!$(e.target).closest('#user-menu-container').length) $ud.hide();
+//     });
+//     $ud.on('click','#logout-btn', e=>{
+//       e.preventDefault();
+//       localStorage.removeItem('loggedInUser');
+//       location.reload();
+//     });
+
+//     // 메인 히어로 슬라이더 & 콘텐츠 렌더링
+//     let currentContentIndex = 0;
+//     function renderIntroContent(i){
+//       const c = contentData[i];
+//       $('.intro_ttl').html(`
+//         <div class="content_info">
+//           <div class="content_badge">${c.badges.map(b=>`<span class="badge ${b.type}">${b.text}</span>`).join('')}</div>
+//           <h2 class="ttl_nm">${c.title}</h2>
+//           <div class="content_meta">
+//             <span class="rating">${c.rating}</span>
+//             <span class="genre">${c.genre}</span>
+//             <span class="duration">${c.duration}</span>
+//             <span class="release">${c.releaseDate}</span>
+//           </div>
+//           <p class="content_desc">${c.description}</p>
+//           <div class="button_group">
+//             <a href="#" class="btn btn_primary">예매하기</a>
+//             <a href="#" class="btn btn_outline">찜하기</a>
+//           </div>
+//         </div>
+//       `);
+//       $('#videoPlayer source').attr('src', c.videoSrc);
+//       $('#videoPlayer')[0].load();
+//       $('#videoPlayer')[0].play();
+//     }
+//     var mainSwiper = new Swiper(".main-swiper",{ slidesPerView:5, spaceBetween:30, loop:true });
+//     renderIntroContent(0);
+//     $('.main-slide').each(function(idx){
+//       $(this).off('click').on('click', ()=>{
+//         currentContentIndex = idx % contentData.length;
+//         renderIntroContent(currentContentIndex);
+//       });
+//     });
+//     mainSwiper.on('slideChange', ()=>{
+//       const ri = mainSwiper.realIndex % contentData.length;
+//       renderIntroContent(ri);
+//     });
+
+//     $(document).ready(function() {
+//         $.getJSON('http://43.201.82.158:5000/api/theaters')
+//             .done(function(data) {
+//                 const wrapper = $('.main-swiper .swiper-wrapper').empty();
+//                 data.forEach(item=> {
+//                     const slide = $(`
+//         <div class="swiper-slide main-slide">
+//             <img
+//             src="http://43.201.82.158:5000/image-proxy?url=${encodeURIComponent(item.t_poster)}"
+//             alt="${item.t_title}"
+//             onerror="this.src='https://via.placeholder.com/240x204?text=No+Image'">
+//         </div>
+// `);
+//                     // 이미지 클릭 이벤트
+//                     slide.click(function() {
+//                         const proxyUrl = `http://43.201.82.158:5000/image-proxy?url=${encodeURIComponent(item.t_poster)}`;
+//                         $('.post_img').attr('src', proxyUrl);
+//                         $('.movie_title').text(item.t_title);
+//                         $('.year').text(formatKoreanDate(item.t_start_date));
+//                         $('.runtime').text(formatKoreanDate(item.t_end_date));
+//                         $('.pfm_hall').text(item.t_venue);
+//                     });
+//                     wrapper.append(slide);
+//                 });
+//                 mainSwiper.update();
+//             })
+//             .fail(function(xhr, status, error) {
+//                 console.error('연극 데이터 로드 실패:', status, error);
+//             });
+//
+//         let idx = 0;
+//         $('.content_box_myPageIcon').click(function(){
+//             if(idx % 2 === 0) {
+//                 $('.more_btn_nav').css({
+//                     display:"block"
+//                 })
+//             }
+//             else if(idx % 2 === 1) {
+//                 $('.more_btn_nav').css({
+//                     display:'none'
+//                 })
+//             }
+//             idx++
+//         })
+//     })
 
 </script>
 </body>
