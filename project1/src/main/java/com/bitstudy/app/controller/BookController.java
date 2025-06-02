@@ -75,7 +75,7 @@ public class BookController {
         return new ResponseEntity<>("success", HttpStatus.OK);
     }
 
-    @GetMapping("/payment/data/movie") //
+    @GetMapping("/payment/data/movie") // Axios(payment_movie)에서 여기로 요청
     @ResponseBody
     public Map<String, Object> getPaymentData_movie(HttpSession session) {
         if(session.getAttribute("movieDto") != null) { // 영화 예매이면
@@ -149,6 +149,13 @@ public class BookController {
         List<TheaterDto> theaterList = theaterDao.selectAll(); // 연극 전부 불러옴
         model.addAttribute("theaterList", theaterList);
 
+        List<Map<String, String>> s_is_available_movie = seat_movieService.select_false(); //seat_movie에서 s_is_available = false인 것만 불러옴
+        List<Map<String, String>> s_is_available_musical = seat_musicalService.select_false(); //seat_musical에서 s_is_available = false인 것만 불러옴
+        List<Map<String, String>> s_is_available_theater = seat_theaterService.select_false(); //seat_theater에서 s_is_available = false인 것만 불러옴
+        model.addAttribute("s_is_available_movie", s_is_available_movie); // model에 넣음
+        model.addAttribute("s_is_available_musical", s_is_available_musical); // model에 넣음
+        model.addAttribute("s_is_available_theater", s_is_available_theater); // model에 넣음
+
         return "ticketing_page";
     }
 
@@ -185,16 +192,9 @@ public class BookController {
             model.addAttribute("s_is_available_musical", s_is_available_musical); // model에 넣음
             model.addAttribute("s_is_available_theater", s_is_available_theater); // model에 넣음
 
-//            List<Integer> randIndexes = new ArrayList<>();
-//            Random rand = new Random();
-//            for (int i = 0; i < 10; i++) {
-//                randIndexes.add(rand.nextInt(musicalList.size()));
-//            }
-//            model.addAttribute("randIndexes", randIndexes);
             return "ticketing_page";
         }
     }
-
 
     @PostMapping("/book/movie") // 영화 예매 > ajax로 Book_movieDto 받아서 m_movie_cd 받아옴 book_movie_tbl에 저장
     @ResponseBody
@@ -211,7 +211,6 @@ public class BookController {
         Integer s_id = seat_movieService.select_s_id(m_movie_cd, s_label); // 해당 s_id 구해서
         book_movieDto.setS_id(s_id); // book_musicalDto에 s_id set
 
-        // vm_name 은 ?
         try {
             int rowCount = book_movieService.insert(book_movieDto); // insert가 성공하면 rowCount == 1
             if (rowCount == 0) { // insert 실패

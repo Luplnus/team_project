@@ -1100,7 +1100,7 @@
             //     error   : function(){ alert("error") }
             // });
             if(type == "movie"){ // 선택한 작품이 영화이면
-                axios.post('/app/payment/movie', // /payment/movie로 post
+                axios.post('/app/payment/movie', // /payment/movie로 post, 컨트롤러에서 session에 movieDto set
                     {
                         content_id: content_id,
                         time: time,
@@ -1114,7 +1114,7 @@
                     }
                 )
                     .then(function(result) {
-                        // 성공 시 결제 페이지로 이동
+                        // 성공 시 결제 페이지로 이동 //
                         window.location.href = "/app/Pay_page.html";
                     })
                     .catch(function(error) {
