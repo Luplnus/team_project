@@ -65,7 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 $('#tag_box_movie').trigger('click'); // 영화 리스트 띄워줌
             }
 
-            let type = "";
             // 작품 클릭 // 왼쪽에 정보 변하고 극장 세팅
             $(document).on('click', '.mv_nm', function () { // 작품 클릭
                 if($(this).hasClass('mv_nm_active')){ // 이미 클릭됐으면
@@ -239,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const year = today.getFullYear();
             const month = String(today.getMonth() + 1).padStart(2, '0'); // 0~11이므로 +1
             const day = String(today.getDate()).padStart(2, '0');
-            const formattedDate = `\${year}-\${month}-\${day}`;
+            const formattedDate = year + "-" + month + "-" + day;
 
             $(document).on('click', '.time_box', function () { // 시간 클릭
                 if($(this).hasClass('cinema_box_active')){ // 이미 클릭됐으면
@@ -290,7 +289,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     alert("좌석을 선택하세요");
                 }
                 else{
-                    if(type == "movie"){ // 선택한 작품이 영화이면
+                    if(content_type == "movie"){ // 선택한 작품이 영화이면
                         axios.post("http://localhost:8080/app/payment/movie", // /payment/movie로 post, 컨트롤러에서 session에 movieDto set
                             {
                                 content_id: content_id,
@@ -313,7 +312,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 console.error(error);
                             });
                     }
-                    else if(type == "musical"){
+                    else if(content_type == "musical"){
                         axios.post("http://localhost:8080/app/payment/musical",
                             {
                                 content_id: content_id,
