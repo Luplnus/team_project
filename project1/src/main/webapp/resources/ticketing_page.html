@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+
+        body {
+            margin: 0;
+        }
+
+        h4, h2 {
+            padding: 0;
+            margin: 0;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .main_menu {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 20;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .h_menubox {
+            max-width: 1285px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-sizing: border-box;
+            padding: 0 10px;
+        }
+
+        .main_logo h2 {
+            margin: 0;
+            width: 70px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: #fff;
+            box-sizing: border-box;
+            font-weight: bold;
+        }
+
+        .menu_bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+            justify-content: flex-end;
+            flex: 1;
+        }
+
+        .menu_box {
+            width: 80px;
+            height: 35px;
+            margin: 0 15px;
+            text-align: center;
+            line-height: 35px;
+            color: #fff;
+            box-sizing: border-box;
+            cursor: pointer;
+            transition: color 0.3s;
+            font-size: 15px;
+        }
+
+        .menu_box:hover {
+            color: #E50914;
+        }
+
+        .content {
+            width: 100px;
+            height: 30px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .content_box {
+            width: 30px;
+            line-height: 35px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .content_box a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+        }
+
+
+        .search_bar {
+            border: 1px solid #fff;
+            width: 0;
+            height: 35px;
+            border-radius: 10px;
+            padding: 0;
+            font-size: 15px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .search_bar.active {
+            width: 350px;
+            padding: 0 13px;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .search_bar:focus {
+            outline: none;
+        }
+
+        .search_history {
+            width: 100px;
+            height: 500px;
+            border: 1px solid;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        .ticket_container {
+            max-width: 1215px;
+            height: 800px;
+            width: 100%;
+            padding: 20px 20px;
+            border: 1px solid;
+            margin: 40px auto;
+            border-radius: 15px;
+            display: none;
+        }
+
+        .ticket_container.active {
+            display: block;
+        }
+
+        .ticket_box {
+            height: 740px;
+            padding: 30px;
+        }
+
+        .step_late {
+            width: 100%;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 40px;
+        }
+
+        .step_box {
+            width: 200px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .step_box:hover {
+            transform: translateY(-3px);
+        }
+
+        .date_step {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50px;
+            border: 1px solid;
+            transition: all 0.3s ease;
+        }
+
+        .date_step:hover {
+            background-color: rgba(229, 9, 20, 0.1);
+            border-color: #E50914;
+            transform: scale(1.1);
+        }
+
+        .date_step.active {
+            background-color: #E50914;
+            color: white;
+            border-color: #E50914;
+        }
+
+        .tck_info {
+            height: 500px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 100px;
+            margin-top: 30px;
+        }
+
+        .mv_view_box {
+            width: 300px;
+            height: 460px;
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid;
+        }
+
+        .post_box {
+            height: 340px;
+            border-radius: 15px;
+            color: #fff;
+            display: flex;
+            background: linear-gradient(145deg, #000000 0%, #553fcf 100%);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .post_box img {
+            width:  100% ;
+            height: 100%;
+        }
+        .tck_info_box {
+            width: 670px;
+            padding: 20px;
+            height: 460px;
+            border-radius: 15px;
+            border: 1px solid;
+            transition: all 0.3s ease;
+        }
+
+        .tck_info_box:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .tck_seat_box {
+            width: 1110px;
+            padding: 20px;
+            height: 460px;
+            border-radius: 15px;
+            border: 1px solid;
+        }
+
+        .tag_tool_box {
+            width: 100%;
+            height: 50px;
+            gap: 20px;
+            display: flex;
+            cursor: pointer;
+        }
+
+        .tck_info_tool {
+            height: 370px;
+            max-height: 370px;
+            overflow-y: scroll;
+            margin-top: 30px;
+            padding-top: 10px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            padding-right: 10px;
+        }
+
+        .mv_nm {
+            width: 270px;
+            height: 72px;
+            border-radius: 15px;
+            border: 1px solid;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+
+            display: flex;
+            flex-direction: column;
+            justify-content:  space-between;
+            flex-wrap: wrap;
+        }
+
+        .mv_nm:hover,
+        .mv_nm_active {
+            background-color: #f8f9fa;
+            border-color: #E50914;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(229, 9, 20, 0.2);
+        }
+
+        .mv_nm:hover h4 {
+            color: #E50914;
+        }
+
+        .tag_box {
+            width: 125px;
+            height: 50px;
+            text-align: center;
+            line-height: 46px;
+            border-radius: 13px;
+            border: 1px solid;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tag_box:hover,
+        .tag_box_active{
+            background-color: #E50914;
+            color: white;
+            border-color: #E50914;
+            transform: translateY(-2px);
+        }
+
+        .tck_btn_box {
+            margin-top: 50px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .tck_btn {
+            width: 200px;
+            height: 50px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: #f8f9fa;
+        }
+
+        .tck_btn:hover {
+            background-color: #E50914;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(229, 9, 20, 0.3);
+        }
+
+        .mv_ttl_txt {
+            margin-top: 7px;
+            transition: color 0.3s ease;
+        }
+
+        .tck_cinema_list {
+            width: 100%;
+            height: 390px;
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            align-items: center;
+            justify-items: center;
+        }
+
+        .cinema_box {
+            width: 270px;
+            height: 50px;
+            padding: 20px;
+            line-height: 46px;
+            border-radius: 15px;
+            border: 1px solid;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .cinema_box:hover,
+        .cinema_box_active{
+            background-color: #E50914;
+            color: white;
+            border-color: #E50914;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(229, 9, 20, 0.3);
+        }
+
+        .tck_seat_box {
+            width: 1110px;
+            padding: 20px;
+            height: 460px;
+            border-radius: 15px;
+            border: 1px solid;
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            gap: 5px;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .tck_seat_box button {
+            width: 100px;
+            height: 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tck_seat_box button:hover {
+            background-color: #E50914;
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 3px 10px rgba(229, 9, 20, 0.4);
+        }
+
+        .tck_seat_box button.selected {
+            background-color: #E50914;
+            color: white;
+        }
+
+        .tck_info_tool::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .tck_info_tool::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .tck_info_tool::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .tck_info_tool::-webkit-scrollbar-thumb:hover {
+            background: #E50914;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .tck_btn:active {
+            animation: pulse 0.3s ease;
+        }
+
+        .mv_nm:active {
+            animation: pulse 0.2s ease;
+        }
+
+        .cinema_box:active {
+            animation: pulse 0.2s ease;
+        }
+
+        .tck_seat_box .disabled{
+            background-color: #373737;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+<div class="main_menu">
+    <div class="h_menubox">
+        <a href="/app">
+            <div class="main_logo">
+                <h2>JPIEL</h2>
+            </div>
+        </a>
+        <div class="menu_bar">
+            <a href="/app/Moviepage.html">
+                <div class="menu_box">영화</div>
+            </a>
+            <a href="/app/Musicalpage.html">
+                <div class="menu_box">뮤지컬</div>
+            </a>
+            <a href="/app/Theaterpage.html">
+                <div class="menu_box">연극</div>
+            </a>
+            <a href="/app/ticketing_page.html">
+                <div class="menu_box">예매</div>
+            </a>
+        </div>
+
+        <input type="text" class="search_bar" id="search_bar" placeholder="타이틀을 입력하세요.">
+
+
+        <div class="content">
+            <div class="content_box" id="search_icon">
+                <a href="#">
+                    <img src="./pt_img/search.svg" alt="">
+                </a>
+            </div>
+            <div class="content_box">
+                <a href="/app/Mypage.html">
+                    <img src="./pt_img/user.svg" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ticket_container active" id="step1">
+    <div class="ticket_box">
+        <div class="step_late">
+            <div class="step_box">
+                <div class="date_step active">1</div>
+                <span>
+                    <span class="content_type">영화</span>선택
+                </span>
+            </div>
+            <div class="step_box">
+                <div class="date_step">2</div>
+                <span>극장선택</span>
+            </div>
+            <div class="step_box">
+                <div class="date_step">3</div>
+                <span>시간선택</span>
+            </div>
+            <div class="step_box">
+                <div class="date_step">4</div>
+                <span>좌석선택</span>
+            </div>
+        </div>
+        <div class="tck_info">
+            <div class="mv_view_box">
+                <div class="post_box">
+                    <img src="" alt="">
+                </div>
+                <ul>  <!-- class="content_type"으로 영화-뮤지컬-연극 바꾸기 -->
+                    <div class="mv_ttl_txt content_name">영화 이름</div>
+                    <div class="mv_ttl_txt content_genre">장르</div>
+                    <div class="mv_ttl_txt content_venue">극장</div>
+                    <div class="mv_ttl_txt content_runtime">런타임</div>
+                </ul>
+            </div>
+            <div class="tck_info_box">
+                <div class="tag_tool_box">
+                    <div class="tag_box" id="tag_box_movie">영화</div>
+                    <div class="tag_box" id="tag_box_theater">연극</div>
+                    <div class="tag_box" id="tag_box_musical">뮤지컬</div>
+                </div>
+                <div class="tck_info_tool" id="movieList">
+
+                </div>
+            </div>
+        </div>
+        <div class="tck_btn_box">
+            <button class="tck_btn tck_btn_prev" id="prev_step_1">이전</button>
+            <button class="tck_btn tck_btn_next" id="step_1">다음</button>
+        </div>
+    </div>
+</div>
+
+<div class="ticket_container" id="step2">
+    <div class="ticket_box">
+        <div class="step_late">
+            <div class="step_box">
+                <div class="date_step active">1</div>
+                <span>
+                    <span class="content_type">영화</span>선택
+                </span>
+            </div>
+            <div class="step_box">
+                <div class="date_step active">2</div>
+                <span>극장선택</span>
+            </div>
+            <div class="step_box">
+                <div class="date_step">3</div>
+                <span>시간선택</span>
+            </div>
+            <div class="step_box">
+                <div class="date_step">4</div>
+                <span>좌석선택</span>
+            </div>
+        </div>
+        <div class="tck_info">
+            <div class="mv_view_box">
+                <div class="post_box">
+                    <img src="" alt="">
+                </div>
+
+                <ul>
+                    <div class="mv_ttl_txt content_name">영화 이름</div>
+                    <div class="mv_ttl_txt content_genre">장르</div>
+                    <div class="mv_ttl_txt content_venue">극장</div>
+                    <div class="mv_ttl_txt content_runtime">런타임</div>
+                </ul>
+            </div>
+            <div class="tck_info_box">
+                <h2>근처 상영관</h2>
+                <div class="tck_cinema_list" id="venue_list">
+
+                </div>
+            </div>
+        </div>
+        <div class="tck_btn_box">
+            <button class="tck_btn tck_btn_prev" id="prev_step_2">이전</button>
+            <button class="tck_btn tck_btn_next" id="step_2">다음</button>
+        </div>
+    </div>
+</div>
+
+<div class="ticket_container" id="step3">
+    <div class="ticket_box">
+        <div class="step_late">
+            <div class="step_box">
+                <div class="date_step active">1</div>
+                <span>
+                    <span class="content_type">영화</span>선택
+                </span>
+            </div>
+            <div class="step_box">
+                <div class="date_step active">2</div>
+                <span>극장선택</span>
+            </div>
+            <div class="step_box">
+                <div class="date_step active">3</div>
+                <span>시간선택</span>
+            </div>
+            <div class="step_box">
+                <div class="date_step">4</div>
+                <span>좌석선택</span>
+            </div>
+        </div>
+        <div class="tck_info">
+            <div class="mv_view_box">
+                <div class="post_box">
+                    <img src="" alt="">
+                </div>
+                <ul>
+                    <div class="mv_ttl_txt content_name">영화 이름</div>
+                    <div class="mv_ttl_txt content_genre">장르</div>
+                    <div class="mv_ttl_txt content_venue">극장</div>
+                    <div class="mv_ttl_txt content_runtime">런타임</div>
+                </ul>
+            </div>
+            <div class="tck_info_box">
+                <h2>상영 시간</h2>
+                <div class="tck_cinema_list" id="time_list">
+                    <div class="cinema_box time_box">11:00</div>
+                    <div class="cinema_box time_box">13:00</div>
+                    <div class="cinema_box time_box">15:00</div>
+                    <div class="cinema_box time_box">17:00</div>
+                    <div class="cinema_box time_box">19:00</div>
+                    <div class="cinema_box time_box">21:00</div>
+                </div>
+            </div>
+        </div>
+        <div class="tck_btn_box">
+            <button class="tck_btn tck_btn_prev" id="prev_step_3">이전</button>
+            <button class="tck_btn tck_btn_next" id="step_3">다음</button>
+        </div>
+    </div>
+</div>
+
+<div class="ticket_container" id="step4">
+    <div class="ticket_box">
+        <div class="step_late">
+            <div class="step_box">
+                <div class="date_step active">1</div>
+                <span>
+                    <span class="content_type">영화</span>선택
+                </span>
+            </div>
+            <div class="step_box">
+                <div class="date_step active">2</div>
+                <span>극장선택</span>
+            </div>
+            <div class="step_box">
+                <div class="date_step active">3</div>
+                <span>시간선택</span>
+            </div>
+            <div class="step_box">
+                <div class="date_step active">4</div>
+                <span>좌석선택</span>
+            </div>
+        </div>
+        <div class="tck_info">
+            <div class="tck_seat_box">
+                <button class="A" id="A01">A1</button>
+                <button class="A" id="A02">A2</button>
+                <button class="A" id="A03">A3</button>
+                <button class="A" id="A04">A4</button>
+                <button class="A" id="A05">A5</button>
+                <button class="A" id="A06">A6</button>
+                <button class="A" id="A07">A7</button>
+                <button class="A" id="A08">A8</button>
+                <button class="A" id="A09">A9</button>
+                <button class="A" id="A10">A10</button>
+                <button class="B" id="B01">B1</button>
+                <button class="B" id="B02">B2</button>
+                <button class="B" id="B03">B3</button>
+                <button class="B" id="B04">B4</button>
+                <button class="B" id="B05">B5</button>
+                <button class="B" id="B06">B6</button>
+                <button class="B" id="B07">B7</button>
+                <button class="B" id="B08">B8</button>
+                <button class="B" id="B09">B9</button>
+                <button class="B" id="B10">B10</button>
+                <button class="C" id="C01">C1</button>
+                <button class="C" id="C02">C2</button>
+                <button class="C" id="C03">C3</button>
+                <button class="C" id="C04">C4</button>
+                <button class="C" id="C05">C5</button>
+                <button class="C" id="C06">C6</button>
+                <button class="C" id="C07">C7</button>
+                <button class="C" id="C08">C8</button>
+                <button class="C" id="C09">C9</button>
+                <button class="C" id="C10">C10</button>
+                <button class="D" id="D01">D1</button>
+                <button class="D" id="D02">D2</button>
+                <button class="D" id="D03">D3</button>
+                <button class="D" id="D04">D4</button>
+                <button class="D" id="D05">D5</button>
+                <button class="D" id="D06">D6</button>
+                <button class="D" id="D07">D7</button>
+                <button class="D" id="D08">D8</button>
+                <button class="D" id="D09">D9</button>
+                <button class="D" id="D10">D10</button>
+                <button class="E" id="E01">E1</button>
+                <button class="E" id="E02">E2</button>
+                <button class="E" id="E03">E3</button>
+                <button class="E" id="E04">E4</button>
+                <button class="E" id="E05">E5</button>
+                <button class="E" id="E06">E6</button>
+                <button class="E" id="E07">E7</button>
+                <button class="E" id="E08">E8</button>
+                <button class="E" id="E09">E9</button>
+                <button class="E" id="E10">E10</button>
+            </div>
+        </div>
+        <div class="tck_btn_box">
+            <button class="tck_btn tck_btn_prev" id="prev_step_complete">이전</button>
+            <button class="tck_btn tck_btn_next" id="tck_complete">완료</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./js/Axios(book).js"></script>
+
+        <script>
+            const searchIcon = document.getElementById('search_icon');
+            const searchBar = document.getElementById('search_bar');
+            const movieList = document.getElementById('movieList');
+            
+            let currentStep = 1;
+            let movieCount = 10;
+
+            // 검색 기능
+            searchIcon.addEventListener('click', function(e) {
+                e.preventDefault();
+                searchBar.classList.toggle('active');
+                if (searchBar.classList.contains('active')) {
+                    setTimeout(() => {
+                        searchBar.focus();
+                    }, 100);
+                }
+            });
+
+            // 다음 단계로 이동
+            function nextStep() {
+                if (currentStep < 4) {
+                    document.getElementById('step' + currentStep).classList.remove('active');
+
+                    currentStep++;
+                    document.getElementById('step' + currentStep).classList.add('active');
+                } else {
+                    alert('예매가 완료되었습니다!');
+                }
+            }
+
+            // 이전 단계로 이동
+            function prevStep() {
+                if (currentStep > 1) {
+                
+                    document.getElementById('step' + currentStep).classList.remove('active');
+
+                    currentStep--;
+                    document.getElementById('step' + currentStep).classList.add('active');
+                }
+            }
+
+        </script>
+</body>
+</html>
