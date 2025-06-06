@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/Loginpage.css">
+    <link rel="icon" href="./pt_img/JPIEL.png">
+    <title>JPIEL</title>
+</head>
+<body>
+    <div class="backdrop" id="backdrop"></div>
+    
+    <div class="form-container">
+        <form id="loginForm">
+            <div class="login" id="loginPanel">
+                <div class="close_box">
+                    <div class="close_button" onclick="closeLogin()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="login_header">
+                    <h2>JPIEL</h2>
+                    <p class="subtitle">계정에 로그인하세요</p>
+                </div>
+
+                <div class="login_box">
+                    <div class="login_ttl">아이디</div>
+                    <input type="text" id="username" class="login_panel" placeholder="아이디를 입력하세요" required>
+                </div>
+
+                <div class="password_box">
+                    <div class="password_ttl">비밀번호</div>
+                    <input type="password" id="password" class="password_panel" placeholder="비밀번호를 입력하세요" required>
+                </div>
+
+                <div class="chk_btn">
+                    <input type="checkbox" id="save_id" class="chk_box">
+                    <label for="save_id">아이디 저장</label>
+                </div>
+
+                <button type="submit" class="login_put" id="loginBtn">로그인</button>
+
+                <button type="button" class="mb_put" onclick="goToSignup()">회원가입</button>
+            </div>
+        </form>
+
+        <form id="signupForm" class="hidden">
+            <div class="member_shp" id="signupPanel">
+                <div class="close_box">
+                    <div class="close_button" onclick="goToLogin()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="login_header">
+                    <h2>JPIEL</h2>
+                    <p class="subtitle">새 계정을 만드세요</p>
+                </div>
+
+                <div class="login_box">
+                    <div class="login_ttl">아이디</div>
+                    <input type="text" id="signupUsername" class="login_panel" placeholder="아이디를 입력하세요" required>
+                </div>
+
+                <div class="password_box">
+                    <div class="password_ttl">비밀번호</div>
+                    <input type="password" id="signupPassword" class="password_panel" placeholder="비밀번호를 입력하세요" required>
+                </div>
+
+                <div class="password_box">
+                    <div class="password_ttl">비밀번호 확인</div>
+                    <input type="password" id="confirmPassword" class="password_panel" placeholder="비밀번호를 다시 입력하세요" required>
+                </div>
+
+                <div class="login_box">
+                    <div class="login_ttl">사용자 이름</div>
+                    <input type="text" id="displayName" class="login_panel" placeholder="사용자 이름" required>
+                </div>
+
+                <div class="login_box">
+                    <div class="login_ttl">휴대전화번호</div>
+                    <input type="tel" id="phoneNumber" class="login_panel" placeholder="본인의 휴대전화번호를 입력하세요" required>
+                </div>
+
+                <div class="terms_container">
+                    <div class="terms_title">약관 동의</div>
+                    
+                    <div class="terms_item">
+                        <input type="checkbox" id="terms_service" class="terms_checkbox" required>
+                        <label for="terms_service" class="terms_label">서비스 이용약관 동의 (필수)</label>
+                    </div>
+                    
+                    <div class="terms_item">
+                        <input type="checkbox" id="terms_privacy" class="terms_checkbox" required>
+                        <label for="terms_privacy" class="terms_label">개인정보 처리방침 동의 (필수)</label>
+                    </div>
+                    
+                    <div class="terms_item">
+                        <input type="checkbox" id="terms_marketing" class="terms_checkbox">
+                        <label for="terms_marketing" class="terms_label">마케팅 정보 수신 동의 (선택)</label>
+                    </div>
+                    
+                    <div class="terms_item terms_all">
+                        <input type="checkbox" id="terms_all" class="terms_checkbox">
+                        <label for="terms_all" class="terms_label">전체 동의</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="login_put" id="signupBtn">회원가입</button>
+                
+                <button type="button" class="mb_put" onclick="goToLogin()">로그인으로 돌아가기</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="./JS/Loginpage.js"></script>
+</body>
+</html>

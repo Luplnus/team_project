@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/ticketingPage.css">
+    <link rel="icon" href="./pt_img/JPIEL.png">
+    <title>JPIEL</title>
+</head>
+<body>
+        <div class="main_menu">
+            <div class="h_menubox">
+                <div class="main_logo">
+                    <h2>JPIEL</h2>
+                </div>
+                <div class="menu_bar">
+                    <div class="menu_box">영화</div>
+                    <div class="menu_box">뮤지컬</div>
+                    <div class="menu_box">연극</div>
+                    <div class="menu_box">예매</div>
+                </div>
+                
+                <input type="text" class="search_bar" id="search_bar" placeholder="타이틀을 입력하세요.">
+    
+
+                <div class="content">
+                    <div class="content_box" id="search_icon">
+                        <a href="#">
+                           <img src="./pt_img/search.svg" alt="">
+                        </a>
+                    </div>
+                    <div class="content_box">
+                        <a href="#">
+                           <img src="./pt_img/user.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ticket_container active" id="step1">
+            <div class="ticket_box">
+                <div class="step_late">
+                    <div class="step_box">
+                        <div class="date_step active">1</div>
+                        <span>영화선택</span>
+                    </div>
+                    <div class="step_box">
+                        <div class="date_step">2</div>
+                        <span>극장선택</span>
+                    </div>
+                    <div class="step_box">
+                        <div class="date_step">3</div>
+                        <span>시간선택</span>
+                    </div>
+                    <div class="step_box">
+                        <div class="date_step">4</div>
+                        <span>좌석선택</span>
+                    </div>
+                </div>
+                <div class="tck_info">
+                    <div class="mv_view_box">
+                        <div class="post_box">
+                            <img src="" alt="">
+                            <div>이미지</div>
+                        </div>
+                        <ul>
+                            <div class="mv_ttl_txt">영화 이름</div>
+                            <div class="mv_ttl_txt">장르</div>
+                            <div class="mv_ttl_txt">극장</div>
+                            <div class="mv_ttl_txt">런타임</div>
+                        </ul>
+                    </div>
+                    <div class="tck_info_box">
+                        <div class="tag_tool_box">
+                            <div class="tag_box">영화</div>
+                            <div class="tag_box">연극</div>
+                            <div class="tag_box">뮤지컬</div>
+                        </div>  
+                        <div class="tck_info_tool" id="movieList">
+                            <div class="mv_nm">
+                                <h4>영화이름 1</h4>
+                                <p>장르/런타임/예매일자</p>
+                            </div>
+                            <div class="mv_nm">
+                                <h4>영화이름 2</h4>
+                                <p>장르/런타임/예매일자</p>
+                            </div>
+                            <div class="mv_nm">
+                                <h4>영화이름 3</h4>
+                                <p>장르/런타임/예매일자</p>
+                            </div>
+                            <div class="mv_nm">
+                                <h4>영화이름 4</h4>
+                                <p>장르/런타임/예매일자</p>
+                            </div>
+                            <div class="mv_nm">
+                                <h4>영화이름 5</h4>
+                                <p>장르/런타임/예매일자</p>
+                            </div>
+                            <div class="mv_nm">
+                                <h4>영화이름 6</h4>
+                                <p>장르/런타임/예매일자</p>
+                            </div>
+                            <div class="mv_nm">
+                                <h4>영화이름 7</h4>
+                                <p>장르/런타임/예매일자</p>
+                            </div>
+                            <div class="mv_nm">
+                                <h4>영화이름 8</h4>
+                                <p>장르/런타임/예매일자</p>
+                            </div>
+                            <div class="mv_nm">
+                                <h4>영화이름 9</h4>
+                                <p>장르/런타임/예매일자</p>
+                            </div>
+                            <div class="mv_nm">
+                                <h4>영화이름 10</h4>
+                                <p>장르/런타임/예매일자</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tck_btn_box">
+                    <button class="tck_btn" onclick="prevStep()">이전</button>
+                    <button class="tck_btn" onclick="nextStep()">다음</button>
+                </div>
+            </div>
+        </div>
+       
+        <div class="ticket_container" id="step2">
+            <div class="ticket_box">
+                <div class="step_late">
+                    <div class="step_box">
+                        <div class="date_step active">1</div>
+                        <span>영화선택</span>
+                    </div>
+                    <div class="step_box">
+                        <div class="date_step active">2</div>
+                        <span>극장선택</span>
+                    </div>
+                    <div class="step_box">
+                        <div class="date_step">3</div>
+                        <span>시간선택</span>
+                    </div>
+                    <div class="step_box">
+                        <div class="date_step">4</div>
+                        <span>좌석선택</span>
+                    </div>
+                </div>
+                <div class="tck_info">
+                    <div class="mv_view_box">
+                        <div class="post_box"></div>
+                        <ul>
+                            <div class="mv_ttl_txt">영화 이름</div>
+                            <div class="mv_ttl_txt">장르</div>
+                            <div class="mv_ttl_txt">극장</div>
+                            <div class="mv_ttl_txt">런타임</div>
+                        </ul>
+                    </div>
+                    <div class="tck_info_box">
+                        <h2>근처 상영관</h2>
+                        <div class="tck_cinema_list">
+                            <div class="cinema_box">영화관 이름</div>
+                            <div class="cinema_box">영화관 이름</div>
+                            <div class="cinema_box">영화관 이름</div>
+                            <div class="cinema_box">영화관 이름</div>
+                            <div class="cinema_box">영화관 이름</div>
+                            <div class="cinema_box">영화관 이름</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tck_btn_box">
+                    <button class="tck_btn" onclick="prevStep()">이전</button>
+                    <button class="tck_btn" onclick="nextStep()">다음</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="ticket_container" id="step3">
+            <div class="ticket_box">
+                <div class="step_late">
+                    <div class="step_box">
+                        <div class="date_step active">1</div>
+                        <span>영화선택</span>
+                    </div>
+                    <div class="step_box">
+                        <div class="date_step active">2</div>
+                        <span>극장선택</span>
+                    </div>
+                    <div class="step_box">
+                        <div class="date_step active">3</div>
+                        <span>시간선택</span>
+                    </div>
+                    <div class="step_box">
+                        <div class="date_step">4</div>
+                        <span>좌석선택</span>
+                    </div>
+                </div>
+                <div class="tck_info">
+                    <div class="mv_view_box">
+                        <div class="post_box"></div>
+                        <ul>
+                            <div class="mv_ttl_txt">영화 이름</div>
+                            <div class="mv_ttl_txt">장르</div>
+                            <div class="mv_ttl_txt">극장</div>
+                            <div class="mv_ttl_txt">런타임</div>
+                        </ul>
+                    </div>
+                    <div class="tck_info_box">
+                        <h2>상영 시간</h2>
+                        <div class="tck_cinema_list">
+                            <div class="cinema_box">시간 선택</div>
+                            <div class="cinema_box">시간 선택</div>
+                            <div class="cinema_box">시간 선택</div>
+                            <div class="cinema_box">시간 선택</div>
+                            <div class="cinema_box">시간 선택</div>
+                            <div class="cinema_box">시간 선택</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tck_btn_box">
+                    <button class="tck_btn" onclick="prevStep()">이전</button>
+                    <button class="tck_btn" onclick="nextStep()">다음</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="ticket_container" id="step4">
+            <div class="ticket_box">
+                <div class="step_late">
+                    <div class="step_box">
+                        <div class="date_step active">1</div>
+                        <span>영화선택</span>
+                    </div>
+                    <div class="step_box">
+                        <div class="date_step active">2</div>
+                        <span>극장선택</span>
+                    </div>
+                    <div class="step_box">
+                        <div class="date_step active">3</div>
+                        <span>시간선택</span>
+                    </div>
+                    <div class="step_box">
+                        <div class="date_step active">4</div>
+                        <span>좌석선택</span>
+                    </div>
+                </div>
+                <div class="tck_info">
+                    <div class="tck_seat_box">
+                        <button class="A">A1</button>
+                        <button class="A">A2</button>
+                        <button class="A">A3</button>
+                        <button class="A">A4</button>
+                        <button class="A">A5</button>
+                        <button class="A">A6</button>
+                        <button class="A">A7</button>
+                        <button class="A">A8</button>
+                        <button class="A">A9</button>
+                        <button class="A">A10</button>
+                        <button class="B">B1</button>
+                        <button class="B">B2</button>
+                        <button class="B">B3</button>
+                        <button class="B">B4</button>
+                        <button class="B">B5</button>
+                        <button class="B">B6</button>
+                        <button class="B">B7</button>
+                        <button class="B">B8</button>
+                        <button class="B">B9</button>
+                        <button class="B">B10</button>
+                        <button class="C">C1</button>
+                        <button class="C">C2</button>
+                        <button class="C">C3</button>
+                        <button class="C">C4</button>
+                        <button class="C">C5</button>
+                        <button class="C">C6</button>
+                        <button class="C">C7</button>
+                        <button class="C">C8</button>
+                        <button class="C">C9</button>
+                        <button class="C">C10</button>
+                        <button class="D">D1</button>
+                        <button class="D">D2</button>
+                        <button class="D">D3</button>
+                        <button class="D">D4</button>
+                        <button class="D">D5</button>
+                        <button class="D">D6</button>
+                        <button class="D">D7</button>
+                        <button class="D">D8</button>
+                        <button class="D">D9</button>
+                        <button class="D">D10</button>
+                        
+                    </div>
+                </div>
+                <div class="tck_btn_box">
+                    <button class="tck_btn" onclick="prevStep()">이전</button>
+                    <button class="tck_btn" onclick="nextStep()">완료</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="./JS/ticketing_page.js"></script>
+</body>
+</html>
