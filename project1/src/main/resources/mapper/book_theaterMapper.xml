@@ -12,8 +12,8 @@
 
     <!-- 연극 예매 등록 - Book_theaterDto 받아서 저장  -->
     <insert id="insert" parameterType="Book_theaterDto">
-        INSERT into book_theater_tbl ( b_user_seqno, t_id, b_time, b_price, b_theater_time)
-        values ( #{b_user_seqno}, #{t_id}, #{b_time}, #{b_price}, #{b_theater_time})
+        INSERT into book_theater_tbl ( b_user_seqno, t_id, s_id, b_time, b_price, b_theater_time)
+        values ( #{b_user_seqno}, #{t_id}, #{s_id}, #{b_time}, #{b_price}, #{b_theater_time})
     </insert>
 
     <!--  연극 예매 전체 취소  -->

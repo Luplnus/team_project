@@ -37,6 +37,37 @@ public class BookController {
     Seat_theaterDao seat_theaterDao;
     @Autowired
     UserDao userDao;
+    @Autowired
+    PaymentMovieDao paymentMovieDao;
+
+    //  ######################################여기부터 paymentController로 옮기기#############################
+    @ResponseBody
+    @PostMapping("/paypay/movie") 
+    public ResponseEntity<String> paypay(@RequestBody Map<String, String> map, HttpSession session) {
+        UserDto userDto = userDao.selectUser(map.get("u_id")); // u_id 받아서 해당 userDto 저장
+        Integer u_seqno = userDto.getU_seqno(); // 해당 u_id의 user_seqno 받아와서
+
+        ObjectMapper mapper = new ObjectMapper(); // Json을 객체로 변환
+        PaymentMovieDto paymentMovieDto = mapper.convertValue(map, PaymentMovieDto.class); // @RequestBody로 받은 JSON데이터 map을 PaymentMovieDto클래스로 리턴 - PaymentMovieDto 변수로 저장
+
+        paymentMovieDto.setU_seqno(u_seqno); // 받아온 user_seqno paymentMovieDto에 set
+        paymentMovieDto.setB_seqno(1); // b_seqno는 .then(function(result)에서 변수로 저장해서 axios 데이터에 넣는 형식으로 하면 됨 
+
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        System.out.println(paymentMovieDto);
+        try {
+            int rowCount = paymentMovieDao.insert(paymentMovieDto); // insert가 성공하면 rowCount == 1
+            if (rowCount == 0) { // insert 실패
+                return new ResponseEntity<String>("PAYMENT_FAIL", HttpStatus.OK);
+            } else { // insert 성공하면
+                return new ResponseEntity<String>("PAYMENT_OK", HttpStatus.OK);
+            }
+        }
+        catch (Exception e) { //
+            e.printStackTrace();
+            return new ResponseEntity<String>("PAYMENT_ERROR", HttpStatus.BAD_REQUEST);
+        }
+    }
 
     @ResponseBody
     @PostMapping("/payment/movie") // 받은 content_id로 movieDto 하나 select
@@ -87,10 +118,7 @@ public class BookController {
     @ResponseBody
     public Map<String, Object> getPaymentData_movie(HttpSession session) {
         if(session.getAttribute("movieDto") != null) { // 영화 예매이면
-//            session.removeAttribute("musicalDto"); // 뮤지컬 dto 세션 종료
-//            session.removeAttribute("theaterDto"); // 연극 dto 세션 종료
-
-            Map<String, Object> result = new HashMap<>();
+            Map<String, Object> result = new HashMap<>(); // map에 담아서 result에 put
             result.put("movieDto", session.getAttribute("movieDto"));
             result.put("time", session.getAttribute("time"));
             result.put("venue", session.getAttribute("venue"));
@@ -108,9 +136,6 @@ public class BookController {
     @ResponseBody
     public Map<String, Object> getPaymentData_musical(HttpSession session) {
         if(session.getAttribute("musicalDto") != null) {
-//            session.removeAttribute("movieDto");
-//            session.removeAttribute("theaterDto");
-
             Map<String, Object> result = new HashMap<>();
             result.put("musicalDto", session.getAttribute("musicalDto"));
             result.put("time", session.getAttribute("time"));
@@ -127,9 +152,6 @@ public class BookController {
     @ResponseBody
     public Map<String, Object> getPaymentData_theater(HttpSession session) {
         if(session.getAttribute("theaterDto") != null) {
-//            session.removeAttribute("movieDto");
-//            session.removeAttribute("musicalDto");
-
             Map<String, Object> result = new HashMap<>();
             result.put("theaterDto", session.getAttribute("theaterDto"));
             result.put("time", session.getAttribute("time"));
@@ -142,24 +164,25 @@ public class BookController {
         }
     }
 
-//    /////////////////////////////////////////////////////////////////////////////////////////////
+//    ///////////////////////////////////여기까지 paymentController로 옮기기/////////////////////////////////////////////////
 
 
     @PostMapping("/book/movie") // 영화 예매 > ajax로 Book_movieDto 받아서 m_movie_cd 받아옴 book_movie_tbl에 저장
     @ResponseBody
     public ResponseEntity<String> addBook_movie(@RequestBody Map<String, Object> map, HttpSession session) {
-        UserDto userDto = userDao.selectUser( (String)session.getAttribute("u_id")); // 세션에서 u_id 받아서 해당 userDto 저장
-        Integer b_user_seqno = userDto.getU_seqno(); // 해당 u_id의 user_seqno 받아와서
+        UserDto userDto = userDao.selectUser((String)map.get("u_id")); // u_id 받아서 해당 userDto 저장
+        Integer u_seqno = userDto.getU_seqno(); // 해당 u_id의 user_seqno 받아와서
 
         ObjectMapper mapper = new ObjectMapper(); // Json을 객체로 변환
         Book_movieDto book_movieDto = mapper.convertValue(map, Book_movieDto.class); // @RequestBody로 받은 JSON데이터 map을 Book_movieDto클래스로 리턴 - book_movieDto 변수로 저장
-        book_movieDto.setB_user_seqno(b_user_seqno); // book_movieDto에 b_user_seqno set
+        book_movieDto.setB_user_seqno(u_seqno); // book_movieDto에 b_user_seqno set
 
-        String m_movie_cd = book_movieDto.getM_movie_cd(); // 받아온 m_movie_cd와
+        String m_movie_cd = book_movieDto.getM_code(); // 받아온 m_movie_cd와
         String s_label = (String) map.get("s_label"); // 받아온 s_label로
         Integer s_id = seat_movieDao.select_s_id(m_movie_cd, s_label); // 해당 s_id 구해서
         book_movieDto.setS_id(s_id); // book_musicalDto에 s_id set
 
+        System.out.println(book_movieDto);
         try {
             int rowCount = book_movieDao.insert(book_movieDto); // insert가 성공하면 rowCount == 1
             if (rowCount == 0) { // insert 실패
@@ -181,12 +204,12 @@ public class BookController {
     @PostMapping("/book/musical") // 뮤지컬 예매 > ajax로 Book_musicalDto 받아서 m_code 받아옴 book_musical_tbl에 저장
     @ResponseBody
     public ResponseEntity<String> addBook_musical(@RequestBody Map<String, Object> map, HttpSession session) {
-        UserDto userDto = userDao.selectUser( (String)session.getAttribute("u_id")); // 세션에서 u_id 받아서 해당 userDto 저장
-        Integer b_user_seqno = userDto.getU_seqno(); // 해당 u_id의 user_seqno 받아와서
+        UserDto userDto = userDao.selectUser((String)map.get("u_id")); // u_id 받아서 해당 userDto 저장
+        Integer u_seqno = userDto.getU_seqno(); // 해당 u_id의 user_seqno 받아와서
 
         ObjectMapper mapper = new ObjectMapper(); // Json을 객체로 변환
         Book_musicalDto book_musicalDto = mapper.convertValue(map, Book_musicalDto.class); // @RequestBody로 받은 JSON데이터 map을 Book_muscialDto클래스로 리턴 - book_musicalDto 변수로 저장
-        book_musicalDto.setB_user_seqno(b_user_seqno); // book_musicalDto에 b_user_seqno set
+        book_musicalDto.setB_user_seqno(u_seqno); // book_musicalDto에 b_user_seqno set
 
         String mu_id = book_musicalDto.getMu_id(); // 받아온 mu_id와
         String s_label = (String) map.get("s_label"); // 받아온 s_label로
@@ -211,12 +234,12 @@ public class BookController {
     @PostMapping("/book/theater") // 연극 예매 > ajax로 Book_musicalDto 받아서 m_code, s_id 받아옴 book_musical_tbl에 저장
     @ResponseBody
     public ResponseEntity<String> addBook_theater(@RequestBody Map<String, Object> map, HttpSession session) {
-        UserDto userDto = userDao.selectUser( (String)session.getAttribute("u_id")); // 세션에서 u_id 받아서 해당 userDto 저장
-        Integer b_user_seqno = userDto.getU_seqno(); // 해당 user_seqno 받아와서
+        UserDto userDto = userDao.selectUser((String)map.get("u_id")); // u_id 받아서 해당 userDto 저장
+        Integer u_seqno = userDto.getU_seqno(); // 해당 u_id의 user_seqno 받아와서
 
         ObjectMapper mapper = new ObjectMapper(); // Json을 객체로 변환
         Book_theaterDto book_theaterDto = mapper.convertValue(map, Book_theaterDto.class); // @RequestBody로 받은 JSON데이터 map을 Book_muscialDto클래스로 리턴 - book_theaterDto 변수로 저장
-        book_theaterDto.setB_user_seqno(b_user_seqno); // book_theaterDto에 b_user_seqno set
+        book_theaterDto.setB_user_seqno(u_seqno); // book_theaterDto에 b_user_seqno set
 
         String t_id = book_theaterDto.getT_id(); // 받아온 t_id와
         String s_label = (String) map.get("s_label"); // 받아온 s_label로

@@ -1,26 +1,31 @@
 package com.bitstudy.app.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.sql.Timestamp;
 import java.util.Date;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Book_movieDto {
     private Integer b_seqno;
     private Integer b_user_seqno;
-    private String m_movie_cd;
+    private String m_code;
     private Integer s_id;
     private Date b_time;
     private Integer b_price = 15000;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private Date b_movie_time;
 
     public Book_movieDto() {
-        this(0, "", 0, 15000);
+        this.b_price = 15000;
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         this.b_time = timestamp;
     }
 
-    public Book_movieDto(Integer b_user_seqno, String m_movie_cd, Integer s_id, Integer b_price) {
+    public Book_movieDto(Integer b_user_seqno, String m_code, Integer s_id, Integer b_price) {
         this.b_user_seqno = b_user_seqno;
-        this.m_movie_cd = m_movie_cd;
+        this.m_code = m_code;
         this.s_id = s_id;
         this.b_price = b_price;
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -43,12 +48,12 @@ public class Book_movieDto {
         this.b_user_seqno = b_user_seqno;
     }
 
-    public String getM_movie_cd() {
-        return m_movie_cd;
+    public String getM_code() {
+        return m_code;
     }
 
-    public void setM_code(String m_movie_cd) {
-        this.m_movie_cd = m_movie_cd;
+    public void setM_code(String m_code) {
+        this.m_code = m_code;
     }
 
     public Integer getS_id() {
@@ -88,7 +93,7 @@ public class Book_movieDto {
         return "Book_musicalDto{" +
                 "b_seqno=" + b_seqno +
                 ", b_user_seqno=" + b_user_seqno +
-                ", m_movie_cd='" + m_movie_cd + '\'' +
+                ", m_code='" + m_code + '\'' +
                 ", s_id=" + s_id +
                 ", b_time=" + b_time +
                 ", b_price=" + b_price +

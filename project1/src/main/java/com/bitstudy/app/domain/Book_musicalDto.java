@@ -1,5 +1,6 @@
 package com.bitstudy.app.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.sql.Timestamp;
@@ -13,6 +14,7 @@ public class Book_musicalDto {
     private Integer s_id;
     private Date b_time ;
     private Integer b_price = 15000;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private String b_musical_time;
 
     public Book_musicalDto() {
