@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="./css/Main_page.css"/>
+  <title>JPIEL</title>
+</head>
+<body>
+<header>
+  <div id="wrap">
+    <div class="video_background" id="videoBackground">
+      <video id="videoPlayer" autoplay muted loop playsinline>
+        <source src="" type="video/mp4">
+        브라우저가 비디오 태그를 지원하지 않습니다.
+      </video>
+    </div>
+    <div class="video_overlay"></div>
+    <div class="main_menu">
+      <div class="h_menubox">
+        <div class="main_logo">
+          <a href="Main_page.html" target="_blank"><h2>JPIEL</h2></a>
+        </div>
+        <div class="menu_bar">
+          <div class="menu_box"><a href="Moviepage.html"   target="_blank">영화</a></div>
+          <div class="menu_box"><a href="Musicalpage.html" target="_blank">뮤지컬</a></div>
+          <div class="menu_box"><a href="Theaterpage.html" target="_blank">연극</a></div>
+          <div class="menu_box"><a href="Ticketingpage.html"    target="_blank">예매</a></div>
+        </div>
+
+        <!-- 검색바 -->
+        <div class="search_container">
+          <input type="text" class="search_bar" id="search_bar" placeholder="타이틀을 입력하세요." autocomplete="off">
+          <div class="search_dropdown" id="search_dropdown"></div>
+        </div>
+
+        <!-- 팝업창 -->
+        <div id="popup" class="popup" style="display:none;">
+          <div class="popup-overlay"></div>
+          <div class="popup-content">
+            <span class="popup-close">&times;</span>
+            <div id="popup-body"></div>
+          </div>
+        </div>
+        <div class="content">
+          <div class="content_box" id="search_icon">
+            <a href="#"><img src="./pt_img/search.svg" alt="" class="search_img"></a>
+          </div>
+
+          <div class="content_box" id="user-menu-container">
+            <img src="./pt_img/user.svg" alt="" id="user-icon">
+            <div id="user-dropdown" class="dropdown-menu" style="display: none;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="user-welcome"></div>
+    <div class="genre_bar">
+      <div class="intro_ttl"></div>
+      <div class="intro_view">
+        <div class="main-container">
+          <div class="swiper main-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide main-slide"><img src="./pt_img/19636c6ce2a211e76.jpg" alt="" class="img_box"></div>
+              <div class="swiper-slide main-slide" data-video-src=""><img src="./pt_img/yFHHfHcUgGAxziP1C3lLt0q2T4s.webp" alt="" class="img_box"></div>
+              <div class="swiper-slide main-slide" data-video-src=""><img src="./pt_img/MISSION1.jpg" alt="" class="img_box"></div>
+              <div class="swiper-slide main-slide" data-video-src=""><img src="./pt_img/2893d8b7b3f94f.webp" alt="" class="img_box"></div>
+              <div class="swiper-slide main-slide" data-video-src=""><img src="./pt_img/위키드.webp" alt="" class="img_box"></div>
+              <div class="swiper-slide main-slide" data-video-src=""><img src="./pt_img/25005672_p.gif" alt="" class="img_box"></div>
+              <div class="swiper-slide main-slide" data-video-src=""><img src="./pt_img/L0000113_p.gif" alt="" class="img_box"></div>
+              <div class="swiper-slide main-slide" data-video-src=""><img src="./pt_img/25004642_p.gif" alt="" class="img_box"></div>
+              <div class="swiper-slide main-slide" data-video-src=""><img src="./pt_img/23005704_p.gif" alt="" class="img_box"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="genrn_tool">
+  <div class="genrn_mn">
+    <nav class="genrn_menu">영화</nav>
+    <nav class="genrn_menu">연극</nav>
+    <nav class="genrn_menu">뮤지컬</nav>
+  </div>
+  <div class="genrn_ttl">
+    <div class="genrn_new">
+      <strong>장르별 최신순</strong>
+      <ul>
+        <li class="detail_mn">영화이름</li>
+        <li class="detail_lating">평점</li>
+        <li class="detail_mn">장르</li>
+      </ul>
+      <div class="btn_mv">
+        <button class="ticketing">예매하기</button>
+        <button class="zzim">찜하기</button>
+      </div>
+    </div>
+    <div class="slide_box">
+      <div class="swiper movie-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide movie-slide">슬라이드 1</div>
+          <div class="swiper-slide movie-slide">슬라이드 2</div>
+          <div class="swiper-slide movie-slide">슬라이드 3</div>
+          <div class="swiper-slide movie-slide">슬라이드 4</div>
+          <div class="swiper-slide movie-slide">슬라이드 5</div>
+          <div class="swiper-slide movie-slide">슬라이드 6</div>
+          <div class="swiper-slide movie-slide">슬라이드 7</div>
+          <div class="swiper-slide movie-slide">슬라이드 8</div>
+          <div class="swiper-slide movie-slide">슬라이드 9</div>
+          <div class="swiper-slide movie-slide">슬라이드 10</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="top_box">
+  <img src="./pt_img/arrow.svg" alt="" class="btn_top">
+</div>
+
+<footer>
+  <div class="fot_end">
+    <div class="footer_content">
+      <div class="footer_logo">JPIEL</div>
+      <div class="footer_box">
+        <a href="#">회사소개</a>
+        <a href="#">서비스이용약관</a>
+        <a href="#">개인정보처리방침</a>
+        <a href="#">고객센터</a>
+        <a href="#">광고문의</a>
+      </div>
+      <div class="footer_end">
+        <span>JPIEL STUDIO</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- 스크립트 -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  // ====== 전역 설정 ======
+  const BASE = 'http://3.36.29.175:5001';
+  const ENDPOINTS = { '영화':'/api/movies', '연극':'/api/theaters', '뮤지컬':'/api/musicals' };
+
+  // ====== 히어로용 static 데이터 ======
+  const contentData = [
+    { id:1, title:"썬더볼츠", badges:[{type:"new",text:"영화"},{type:"hot",text:"인기"}], rating:"8.5", genre:"액션/어드벤처", duration:"126분", releaseDate:"2025.04.30 개봉", description:"...", videoSrc:"./videos/썬더볼츠 메인 예고편.mp4", imageSrc:"./pt_img/19636c6ce2a211e76.jpg" },
+    { id:2, title:"A MINECRAFT MOVIE", badges:[{type:"hot",text:"인기"}], rating:"8.7", genre:"어드벤처/판타지", duration:"100분", releaseDate:"2025.04.25 개봉", description:"...", videoSrc:"./videos/마인크래프트 1차 예고편.mp4", imageSrc:"./pt_img/yFHHfHcUgGAxziP1C3lLt0q2T4s.webp" },
+    { id:3, title:"미션 임파서블 파이널 레코닝", badges:[{type:"new",text:"영화"}], rating:"9.3", genre:"액션", duration:"169분", releaseDate:"2025.05.17 개봉", description:"...", videoSrc:"./videos/미션 임파서블_ 파이널 레코닝  예고편.mp4", imageSrc:"./pt_img/MISSION1.jpg" },
+    { id:4, title:"웃는 남자", badges:[{type:"new",text:"NEW"}], rating:"예술의전당 오페라극장", genre:"뮤지컬", duration:"180분", releaseDate:"2025.01.09 개봉 ~ 2025.03.09 종료", description:"...", videoSrc:"./videos/웃는남자예고편.mp4", imageSrc:"https://image.tmdb.org/t/p/w500/8claugsQFr5SAx4K2anZPJuPRqL.jpg" },
+    { id:5, title:"WICKED", badges:[{type:"new",text:"NEW"}], rating:"블루스퀘어 신한카드홀", genre:"뮤지컬", duration:"170분", releaseDate:"2025.07.12 개봉 ~ 2025.10.26 종료", description:"...", videoSrc:"./videos/위키드예고편.mp4", imageSrc:"./pt_img/위키드.webp" },
+    { id:6, title:"알라딘", badges:[{type:"new",text:"NEW"}], rating:"부산 드림씨어터", genre:"뮤지컬", duration:"150분", releaseDate:"2025.07.11 개봉 ~ 2025.09.28 종료", description:"...", videoSrc:"./videos/알라딘예고편.mp4", imageSrc:"./pt_img/25005672_p.gif" },
+    { id:7, title:"헤다 가블러", badges:[{type:"new",text:"NEW"}], rating:"LG SIGNATURE 홀", genre:"연극", duration:"145분", releaseDate:"2025.05.07 개봉 ~ 2025.06.08 종료", description:"...", videoSrc:"./videos/헤다가블러 예고편.mp4", imageSrc:"./pt_img/L0000113_p.gif" },
+    { id:8, title:"킬링시저", badges:[{type:"new",text:"NEW"}], rating:"서강대학교 메리홀 대극장", genre:"연극", duration:"90분", releaseDate:"2025.05.10 개봉 ~ 2025.07.20 종료", description:"...", videoSrc:"./videos/킬링시저예고편.mp4", imageSrc:"./pt_img/25004642_p.gif" },
+    { id:9, title:"행오버", badges:[{type:"new",text:"NEW"}], rating:"정극장", genre:"연극", duration:"90분", releaseDate:"2023.05.01 개봉 ~ 2025.06.29 종료", description:"...", videoSrc:"./videos/행오버예고편.mp4", imageSrc:"" }
+  ];
+
+  // ====== 팝업 표시 함수 ======
+  function showPopup(data) {
+    $('#popup-body').html(`
+      <img src="${data.imageSrc}" alt="${data.title}" style="width:100%; margin-bottom:10px;">
+      <p>제목: ${data.title}</p>
+      <p>장르: ${data.genre}</p>
+      <p>평점: ${data.rating}</p>
+    `);
+    $('#popup').fadeIn();
+  }
+
+  $(document).ready(function(){
+    // 1) static + dynamic 합칠 allContent 준비
+    const staticData = contentData.map(({title,genre,rating,imageSrc})=>({title,genre,rating,imageSrc}));
+
+
+    (async () => {
+  // 1) staticData 변환
+  const staticData = contentData.map(({ title, genre, rating, imageSrc }) => ({
+    title, genre, rating, imageSrc
+  }));
+
+  // 2) API 호출 후 데이터 수집
+  const [movies, musicals, theaters] = await Promise.all([
+    $.getJSON(BASE + ENDPOINTS['영화']),
+    $.getJSON(BASE + ENDPOINTS['뮤지컬']),
+    $.getJSON(BASE + ENDPOINTS['연극'])
+  ]).catch(err => {
+    console.error('API 로딩 실패:', err);
+    return [[], [], []];
+  });
+
+  // 3) API 데이터 매핑
+  const apiData = [
+    ...movies.map(m => ({
+      title: m.m_title,
+      genre: m.m_genre,
+      rating: m.m_rating || '정보없음', 
+      imageSrc: BASE + '/image-proxy?url=' + encodeURIComponent(m.m_poster_url)
+    })),
+    ...musicals.map(m => ({
+      title: m.mu_title,
+      genre: m.mu_genre,
+      rating: m.mu_venue || '정보없음',
+      imageSrc: BASE + '/image-proxy?url=' + encodeURIComponent(m.mu_poster)
+    })),
+    ...theaters.map(t => ({
+      title: t.t_title,
+      genre: t.t_genre,
+      rating: t.t_venue || '정보없음',
+      imageSrc: BASE + '/image-proxy?url=' + encodeURIComponent(t.t_poster)
+    }))
+  ];
+
+  // 4) 최종 콘텐츠 배열
+  const allContent = [...staticData, ...apiData];
+
+  // 5) 검색 핸들러 등록 (데이터 로딩 후)
+  $('#search_bar').on('input', function() {
+    const q = this.value.trim().toLowerCase();
+    const $dd = $('#search_dropdown').empty();
+    if (!q) return $dd.removeClass('active');
+
+    const matches = allContent.filter(item =>
+      item.title.toLowerCase().includes(q)
+    );
+    if (matches.length) {
+      matches.forEach(item => {
+        $('<div>')
+          .addClass('search-item')
+          .text(item.title)
+          .appendTo($dd)
+          .on('click', () => {
+            showPopup(item);
+            $dd.removeClass('active');
+            $('#search_bar').val(item.title);
+          });
+      });
+      $dd.addClass('active');
+    } else {
+      $dd.removeClass('active');
+    }
+  });
+
+  // (옵션) 로딩 중 UI 비활성화 해제
+  $('#search_bar').prop('disabled', false);
+})();
+
+    // 4) Enter 키로 첫 번째 매칭 항목 팝업
+    $('#search_bar').on('keypress', function(e){
+      if (e.which!==13) return;
+      e.preventDefault();
+      const q = this.value.trim().toLowerCase();
+      const first = allContent.find(item=> item.title.toLowerCase().includes(q) );
+      if (first) showPopup(first);
+      else       alert('일치하는 콘텐츠가 없습니다.');
+    });
+
+    // 유저 드롭다운
+    const $uIcon = $('#user-icon'), $ud = $('#user-dropdown'), user=localStorage.getItem('loggedInUser');
+    $ud.empty();
+    if(user){
+      $ud.append('<a href="#" id="logout-btn">로그아웃</a><a href="Mypage.html">마이페이지</a>');
+    } else {
+      $ud.append('<a href="Loginpage.html">로그인</a><a href="Mypage.html">마이페이지</a>');
+    }
+    $uIcon.on('click', e=>{$ud.toggle();});
+    $(document).on('click', e=>{
+      if (!$(e.target).closest('#user-menu-container').length) $ud.hide();
+    });
+    $ud.on('click','#logout-btn', e=>{
+      e.preventDefault();
+      localStorage.removeItem('loggedInUser');
+      location.reload();
+    });
+
+    // 메인 히어로 슬라이더 & 콘텐츠 렌더링
+    let currentContentIndex = 0;
+    function renderIntroContent(i){
+      const c = contentData[i];
+      $('.intro_ttl').html(`
+        <div class="content_info">
+          <div class="content_badge">${c.badges.map(b=>`<span class="badge ${b.type}">${b.text}</span>`).join('')}</div>
+          <h2 class="ttl_nm">${c.title}</h2>
+          <div class="content_meta">
+            <span class="rating">${c.rating}</span>
+            <span class="genre">${c.genre}</span>
+            <span class="duration">${c.duration}</span>
+            <span class="release">${c.releaseDate}</span>
+          </div>
+          <p class="content_desc">${c.description}</p>
+          <div class="button_group">
+            <a href="#" class="btn btn_primary">예매하기</a>
+            <a href="#" class="btn btn_outline">찜하기</a>
+          </div>
+        </div>
+      `);
+      $('#videoPlayer source').attr('src', c.videoSrc);
+      $('#videoPlayer')[0].load();
+      $('#videoPlayer')[0].play();
+    }
+    var mainSwiper = new Swiper(".main-swiper",{ slidesPerView:5, spaceBetween:30, loop:true });
+    renderIntroContent(0);
+    $('.main-slide').each(function(idx){
+      $(this).off('click').on('click', ()=>{
+        currentContentIndex = idx % contentData.length;
+        renderIntroContent(currentContentIndex);
+      });
+    });
+    mainSwiper.on('slideChange', ()=>{
+      const ri = mainSwiper.realIndex % contentData.length;
+      renderIntroContent(ri);
+    });
+
+    // 장르별 리스트 & Swiper 업데이트
+    $('.genrn_menu').on('click', function(){
+      $('.genrn_menu').removeClass('active');
+      $(this).addClass('active');
+      const url = BASE + ENDPOINTS[$(this).text().trim()];
+      $.getJSON(url, data=>{
+        const $wrap = $('.slide_box .swiper-wrapper').empty();
+        data.forEach(item=>{
+          const poster = item.m_poster_url||item.t_poster||item.mu_poster||'';
+          const title  = item.m_title    ||item.t_title    ||item.mu_title||'제목없음';
+          const rating = item.m_rating   ||item.t_venue    ||item.mu_venue||'';
+          const genre  = item.m_genre    ||item.t_genre    ||item.mu_genre||'';
+          const $sld = $(`<div class="swiper-slide movie-slide"><img src="${BASE}/image-proxy?url=${encodeURIComponent(poster)}"></div>`)
+            .data({title,rating,genre});
+          $wrap.append($sld);
+        });
+        if(window.movieSwiper) movieSwiper.update();
+        else window.movieSwiper = new Swiper('.movie-swiper',{ slidesPerView:5, spaceBetween:30, freeMode:true, loop:true });
+        $('.movie-slide').off('click').on('click', function(){
+          const d = $(this).data();
+          $('.genrn_new ul li').eq(0).text('- ' + d.title);
+          $('.genrn_new ul li').eq(1).text('- ' + d.rating);
+          $('.genrn_new ul li').eq(2).text('- ' + d.genre);
+        });
+      });
+    });
+    $('.genrn_menu').first().click();
+
+    // 검색 아이콘 토글
+    $('#search_icon').on('click', e=>{
+      e.preventDefault();
+      $('#search_bar').toggleClass('active').focus();
+      $('#search_dropdown').toggleClass('active');
+    });
+    $(document).on('click', e=>{
+      if(!$(e.target).closest('.search_container, #search_icon').length){
+        $('#search_bar').removeClass('active');
+        $('#search_dropdown').removeClass('active');
+      }
+    });
+
+    // 맨 위로 버튼
+    const topBtn = $('.top_box')[0];
+    $(window).on('scroll', ()=>{
+      if(window.scrollY > 300){
+        topBtn.style.visibility = 'visible';
+        topBtn.style.opacity = 1;
+      } else {
+        topBtn.style.opacity = 0;
+        topBtn.style.visibility = 'hidden';
+      }
+    });
+    $(topBtn).on('click', ()=> window.scrollTo({top:0, behavior:'smooth'}) );
+  });
+
+  // 팝업 닫기
+  $(document).on('click', '.popup-close, .popup-overlay', ()=> $('#popup').fadeOut() );
+</script>
+</body>
+</html>
