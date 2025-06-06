@@ -49,6 +49,9 @@ public class BookController {
         session.setAttribute("region", data.get("region"));
         session.setAttribute("hall", data.get("hall"));
         session.setAttribute("s_label", data.get("s_label"));
+
+        session.removeAttribute("musicalDto");
+        session.removeAttribute("theaterDto");
         return new ResponseEntity<>("success", HttpStatus.OK);
     }
     @ResponseBody
@@ -60,6 +63,9 @@ public class BookController {
         session.setAttribute("time", data.get("time"));
         session.setAttribute("venue", data.get("venue"));
         session.setAttribute("s_label", data.get("s_label"));
+
+        session.removeAttribute("movieDto");
+        session.removeAttribute("theaterDto");
         return new ResponseEntity<>("success", HttpStatus.OK);
     }
     @ResponseBody
@@ -71,6 +77,9 @@ public class BookController {
         session.setAttribute("time", data.get("time"));
         session.setAttribute("venue", data.get("venue"));
         session.setAttribute("s_label", data.get("s_label"));
+
+        session.removeAttribute("movieDto");
+        session.removeAttribute("musicalDto");
         return new ResponseEntity<>("success", HttpStatus.OK);
     }
 
@@ -80,7 +89,7 @@ public class BookController {
         if(session.getAttribute("movieDto") != null) { // 영화 예매이면
 //            session.removeAttribute("musicalDto"); // 뮤지컬 dto 세션 종료
 //            session.removeAttribute("theaterDto"); // 연극 dto 세션 종료
-            
+
             Map<String, Object> result = new HashMap<>();
             result.put("movieDto", session.getAttribute("movieDto"));
             result.put("time", session.getAttribute("time"));
