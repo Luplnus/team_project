@@ -5,458 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <style>
-
-        body {
-            margin: 0;
-            background-color: #494949;
-        }
-
-        h2 {
-            color: #fff;
-            margin-bottom: 50px;
-        }
-
-        .main_menu {
-            width: 100%;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-sizing: border-box;
-            position: relative;
-            z-index: 20;
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .h_menubox {
-            max-width: 1285px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-sizing: border-box;
-            padding: 0 10px;
-        }
-
-        .main_logo h2 {
-            margin: 0;
-            width: 70px;
-            height: 50px;
-            line-height: 50px;
-            text-align: center;
-            color: #fff;
-            box-sizing: border-box;
-            font-weight: bold;
-        }
-
-        .menu_bar {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            box-sizing: border-box;
-            justify-content: flex-end;
-            flex: 1;
-        }
-
-        .text_p {
-            font-size: 24px;
-            color: #ffffff;
-            margin: 30px 0 20px 0;
-            font-weight: bold;
-            padding-left: 15px;
-        }
-
-        .tck_p {
-            color: #fff;
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-
-        .menu_box {
-            width: 80px;
-            height: 35px;
-            margin: 0 15px;
-            text-align: center;
-            line-height: 35px;
-            color: #fff;
-            box-sizing: border-box;
-            cursor: pointer;
-            transition: color 0.3s;
-            font-size: 15px;
-        }
-
-
-        .menu_box:hover {
-            color: #E50914;
-        }
-
-        .content {
-            width: 100px;
-            height: 30px;
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .content_box {
-            width: 30px;
-            line-height: 35px;
-            text-align: center;
-            color: #fff;
-        }
-
-        .content_box a {
-            color: #fff;
-            text-decoration: none;
-            display: block;
-        }
-
-        .pay_box {
-            width: 100%;
-            margin-top: 15px;
-            min-height: 1580px;
-        }
-
-        .pay_tool {
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-            background: rgb(16 16 16 / 95%);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .line {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #E50914, transparent);
-            margin: 30px 0;
-            border-radius: 1px;
-        }
-
-        .ticket_info {
-            display: flex;
-            justify-content: space-around;
-            gap: 40px;
-            margin: 30px 0;
-            background: #242424;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgb(85, 18, 18) ;
-        }
-
-        .tck_row {
-            display: flex;
-            align-items: center;
-            gap: 16px; /* 극장과 좌석 사이 간격, 필요에 따라 조절 */
-        }
-
-        .post_banner, .bn_img {
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            width: 260px;
-            height: 340px;
-            object-fit: cover;
-            border-radius: 10px;
-            background: #141414;
-        }
-
-        .tck_text {
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            width: 700px;
-            border-radius: 10px;
-            padding: 20px;
-            background: linear-gradient(145deg, #2a2a2a 0%, #1f1f1f 100%);
-            border-radius: 15px;
-        }
-
-        .card_text, .pay_text {
-            margin-left: 20px;
-            color: #fff;
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        .card_info {
-            width: 100%;
-            max-width: 1165px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            gap: 30px;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .card_nm {
-            height: 60px;
-            background: linear-gradient(145deg, #2a2a2a 0%, #1f1f1f 100%);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card_nm:hover {
-            background: linear-gradient(145deg, #E50914 0%, #c20812 100%);
-            border-color: #E50914;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(229, 9, 20, 0.3);
-        }
-
-        .card_nm.selected {
-            background: linear-gradient(145deg, #E50914 0%, #c20812 100%);
-            border-color: #E50914;
-            box-shadow: 0 5px 15px rgba(229, 9, 20, 0.3);
-        }
-
-        .chose_card, .pay_history {
-            width: 100%;
-            max-width: 450px;
-            height: 60px;
-            border: 2px solid #686868;
-            margin: 0 auto;
-            margin-bottom: 20px;
-            border-radius: 12px;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
-        }
-
-        .payment_tool {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-evenly;
-            gap: 40px;
-            margin-top: 30px;
-        }
-
-        .payment_box, .payment_box2 {
-            flex: 1;
-            border: 1px solid #494949;
-            border-radius: 15px;
-            padding: 30px;
-            background: linear-gradient(145deg, #2a2a2a 0%, #1f1f1f 100%);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .payment_box {
-            max-width: 500px;
-        }
-
-        .payment_box2 {
-            max-width: 500px;
-        }
-
-        .card_input_section {
-            margin-bottom: 25px;
-        }
-
-        .input_label {
-            color: #fff;
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .cd_pwbox {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .cd_pw {
-            width: 70px;
-            height: 45px;
-            border: 2px solid #494949;
-            border-radius: 8px;
-            background-color: #181818;
-            text-align: center;
-            font-weight: bold;
-            color: #fff;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .cd_pw:focus {
-            outline: none;
-            border-color: #E50914;
-            box-shadow: 0 0 10px rgba(229, 9, 20, 0.3);
-        }
-
-        .cd_pw::placeholder {
-            color: #666;
-        }
-
-        .next_p {
-            color: #fff;
-            font-size: 16px;
-            font-weight: bold;
-            margin: 0 5px;
-        }
-
-        .agree_text {
-            color: #fff;
-            font-size: 14px;
-            margin-left: 8px;
-        }
-
-        .agree_tool {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            padding: 0 15px;
-        }
-
-        .terms_checkbox {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-            accent-color: #E50914;
-        }
-
-        .terms_checkbox:hover {
-            transform: scale(1.1);
-        }
-
-        .chk_boxtol {
-            background-color: #181818;
-            border: 1px solid rgb(85, 18, 18);
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 20px;
-        }
-
-        .btn_set {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .buy_btn, .no_buy {
-            flex: 1;
-            width: 150px;
-            height: 50px;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .buy_btn {
-            background: linear-gradient(135deg, #E50914, #c20812);
-            color: #fff;
-            border: none;
-        }
-
-        .buy_btn:hover {
-            background: linear-gradient(135deg, #c20812, #a1060f);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(229, 9, 20, 0.3);
-        }
-
-        .no_buy {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .no_buy:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.4);
-        }
-
-        .all_chk {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            padding: 15px;
-            background: rgba(229, 9, 20, 0.1);
-            border-radius: 8px;
-            border: 1px solid rgba(229, 9, 20, 0.3);
-        }
-
-        .all_chk .agree_text {
-            font-weight: 600;
-            color: #E50914;
-        }
-
-        .payment_section_title {
-            color: #fff;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .fot_end {
-            margin-top: 40px;
-            width: 100%;
-            height: 400px;
-            background-color: #000;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .footer_content {
-            width: 80%;
-            max-width: 1200px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .footer_logo {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .footer_box {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .footer_box a {
-            color: #fff;
-            margin: 0 15px;
-            text-decoration: none;
-        }
-
-        .footer_end {
-            text-align: center;
-            font-size: 14px;
-            opacity: 0.7;
-        }
-
-        a {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/Pay_page.css">
 </head>
 <body>
 
@@ -545,7 +94,6 @@
                             <input type="text" class="card-number cd_pw" id="pm_cd_no3" maxlength="4" placeholder="0000">
                             <span class="next_p">-</span>
                             <input type="text" class="card-number cd_pw" id="pm_cd_no4" maxlength="4" placeholder="0000">
-                            <!-- 카드 번호 16자리 양식 넣어야 함 -->
                         </div>
                     </div>
 
@@ -643,7 +191,6 @@
 
 <script>
     // ====================== 초기화 ======================
-
     let selectedCardCompany = '';
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -652,7 +199,6 @@
         setupCardSelection();
         setupTermsAgreement();
     });
-
 
     // ====================== 카드 번호 입력 처리 ======================
     function setupCardNumberInputs() {
@@ -675,7 +221,6 @@
             });
         });
     }
-
 
     // =========================== 카드번호 조합 ================================
     function getCardNumber() {
@@ -701,7 +246,6 @@
     }
 
     // ====================== 유효기간 및 CVC 입력 처리 ======================
-
     document.getElementById('pm_cd_valid').addEventListener('input', function(e) {
         let value = this.value.replace(/\D/g, ''); // (MM/YY) 숫자만 남김
 
@@ -710,7 +254,6 @@
         }
         this.value = value.slice(0, 5); // (MM/YY)
     });
-
 
     // ====================== 카드사 선택 처리 ======================
     function setupCardSelection() {
@@ -750,8 +293,6 @@
             });
         });
     }
-
-
 </script>
 <script src="./js/Axios(payment).js"></script>
 </body>

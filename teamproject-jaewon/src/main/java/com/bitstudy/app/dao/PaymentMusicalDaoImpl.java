@@ -21,7 +21,7 @@ public class PaymentMusicalDaoImpl implements PaymentMusicalDao {
     }
 
     @Override
-    public int insert(PaymentMusicalDto paymentMusicalDto) {
+    public int insert(PaymentMusicalDto paymentMusicalDto) { // 뮤지컬 결제 정보 저장
         return session.insert(namespace + "insert", paymentMusicalDto);
     }
 }

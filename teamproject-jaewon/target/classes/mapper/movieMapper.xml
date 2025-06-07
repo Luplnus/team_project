@@ -20,35 +20,10 @@
         where m_genre_nm=#{m_genre_nm}
     </select>
 
-    <!--  별점 높은순 으로 불러오기  -->
-    <select id="selectByRating" resultType="MovieDto">
-        select * from movie_tbl
-        order by m_rating desc
-    </select>
-
-    <!--  인기 TOP10 불러오기  -->
-    <select id="selectTOP10" resultType="MovieDto">
-        select * from movie_tbl
-            order by m_rating desc
-                limit 10
-    </select>
-
     <!--  영화 제목으로 검색하기  -->
     <select id="searchTitle" parameterType="String" resultType="MovieDto">
         select * from movie_tbl
         where m_title LIKE CONCAT('%',#{keyword},'%')
     </select>
-
-
-
-    <!-- 여기아래로 안씀 -->
-<!--    <delete id="delete">-->
-<!--        truncate movie_tbl-->
-<!--    </delete>-->
-<!--    <insert id="insert" parameterType="MovieDto">-->
-<!--        insert into movie_tbl (m_movie_cd, m_title, m_open_dt, m_show_tm, m_genre_nm, m_rating)-->
-<!--        values (#{m_movie_cd}, #{m_title}, #{m_open_dt}, #{m_show_tm}, #{m_genre_nm}, #{m_rating})-->
-<!--    </insert>-->
-
 </mapper>
 

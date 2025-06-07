@@ -17,7 +17,7 @@ public class Seat_movieDaoImpl implements Seat_movieDao {
     private String namespace = "com.bitstudy.app.dao.Seat_movieMapper.";
 
     @Override
-    public int select_s_id(String m_movie_cd, String s_label) {
+    public int select_s_id(String m_movie_cd, String s_label) { // 각 코드와 좌석라벨로 데이터베이스 조회
         Map map =new HashMap();
         map.put("m_movie_cd", m_movie_cd);
         map.put("s_label", s_label);
@@ -39,6 +39,4 @@ public class Seat_movieDaoImpl implements Seat_movieDao {
     public List<Map<String, String>> select_false() {
         return session.selectList(namespace + "select_false");
     }
-
-
 }

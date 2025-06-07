@@ -21,7 +21,7 @@ public class PaymentTheaterDaoImpl implements PaymentTheaterDao {
     }
 
     @Override
-    public int insert(PaymentTheaterDto paymentTheaterDto) {
+    public int insert(PaymentTheaterDto paymentTheaterDto) { // 연극 결제 정보 저장
         return session.insert(namespace + "insert", paymentTheaterDto);
     }
 }

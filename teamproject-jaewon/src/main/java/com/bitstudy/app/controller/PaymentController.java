@@ -68,7 +68,6 @@ public class PaymentController {
         return paymentService.selectAllTheater();
     }
 
-
     @ResponseBody
     @PostMapping("/paypay/movie")
     public ResponseEntity<String> paypayMovie(@RequestBody Map<String, String> map, HttpSession session) {

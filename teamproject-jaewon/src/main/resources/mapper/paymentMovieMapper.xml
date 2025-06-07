@@ -9,7 +9,4 @@
         SELECT * FROM payment_movie_tbl;
     </select>
 
-    <insert id="paymentMovie">
-        insert * from payment_movie_tbl
-    </insert>
 </mapper>

@@ -104,18 +104,6 @@ document.getElementById('paymentForm').addEventListener('submit', function(e) {
     console.log('유효기간:', pm_cardvalid);
     console.log('비밀번호:', pm_pw);
 
-    // 카드 정보 받아올 시
-    // console.log('--- 서버에서 받아온 카드 정보 (buyerCard) ---');
-    // if (buyerCard) {
-    //     console.log('카드사:', buyerCard.pm_bank);
-    //     console.log('카드번호:', buyerCard.pm_cardno);
-    //     console.log('CVC:', buyerCard.pm_cardcvc);
-    //     console.log('유효기간:', buyerCard.pm_cardvalid);
-    //     console.log('비밀번호:', buyerCard.pm_pw);
-    // } else {
-    //     console.log('buyerCard 정보가 아직 로드되지 않았습니다.');
-    // }
-
     // 카드 데이터와 카드 입력 일치 확인
     const isMatched = Array.isArray(buyerCard) && buyerCard.some(card =>
         card.pm_bank === pm_bank &&
@@ -125,8 +113,7 @@ document.getElementById('paymentForm').addEventListener('submit', function(e) {
         card.pm_pw === pm_pw
     );
 
-////////////////////////////////////////////////////////////////////////////////////
-
+    // ==================== 결제시 데이터 저장 ============================
     console.log('입력값과 buyerCard 일치 여부:', isMatched ? '일치' : '불일치');
 
     if (isMatched) {
@@ -201,8 +188,6 @@ document.getElementById('paymentForm').addEventListener('submit', function(e) {
         showError('카드 정보가 일치하지 않습니다.');
     }
 
-////////////////////////////////////////////////////
-
 // 팝업 표시 함수
     function showSuccess(msg) {
         const popup = document.getElementById('paymentPopup');
@@ -246,7 +231,7 @@ document.getElementById('paymentForm').addEventListener('submit', function(e) {
     }
 
 
-// ===================== 각 매체 예매 페이지서 입력된 데이터 불러오기 ================
+// ===================== 각 매체 예매 페이지에서 입력된 데이터 불러오기 ================
 
     axios.get('/payment/data/movie')
         .then(function (res) {

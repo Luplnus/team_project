@@ -3,13 +3,13 @@ package com.bitstudy.app.domain;
 import java.util.Date;
 
 public class MovieDto {
-    private String m_movie_cd;
-    private String m_title;
-    private Date m_open_dt;
-    private int m_show_tm;
-    private String m_genre_nm;
-    private float m_rating;
-    private String m_poster_url;
+    private String m_movie_cd; // 영화 코드
+    private String m_title; // 영화 제목
+    private Date m_open_dt; // 영화 개봉일
+    private int m_show_tm; // 영화 상영시간
+    private String m_genre_nm; // 영화 장르명
+    private float m_rating; // 영화 평점
+    private String m_poster_url; // 영화 포스터 (url)
 
     public MovieDto() {
     }

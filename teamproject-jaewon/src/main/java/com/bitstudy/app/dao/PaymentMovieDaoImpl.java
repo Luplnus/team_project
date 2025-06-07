@@ -21,7 +21,7 @@ public class PaymentMovieDaoImpl implements PaymentMovieDao {
     }
 
     @Override
-    public int insert(PaymentMovieDto paymentMovieDto) {
+    public int insert(PaymentMovieDto paymentMovieDto) { // 영화 결제 정보 저장
         return session.insert(namespace + "insert", paymentMovieDto);
     }
 }

@@ -6,36 +6,6 @@
 <c:set var="logInOutTxt" value="${ sessionScope.u_id==null?'logIn':'logOut'}" />
 <c:set var="logInOutLink" value="${ sessionScope.u_id==null?'/logIn':'/logOut'}" />
 
-<%--<html>--%>
-<%--<head>--%>
-<%--  <title>메인 페이지</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--  <h1>메인 페이지</h1>--%>
-
-<%--  <c:choose>--%>
-<%--    <c:when test="${logInTxt == 'notDone'}">--%>
-<%--      <p>로그인이 필요합니다. <a href="<c:url value='/logIn' />">로그인</a></p>--%>
-<%--      <p>아직도 JPIEL회원이 아니라고? 인생 손해 미쳤네;;; 회원가입하쉴? <a href="<c:url value='/register' />">회원가입</a></p>--%>
-
-<%--    </c:when>--%>
-<%--    <c:otherwise>--%>
-<%--      <p><b>${ sessionScope.u_id }</b>님, 환영합니다!</p>--%>
-<%--      <p><a href="<c:url value='/theaterList' />">연극</a></p>--%>
-<%--      <p><a href="<c:url value='/myPage' />">마이페이지</a></p>--%>
-
-
-<%--      <form action="<c:url value='/logOut' />" method="get">--%>
-<%--        <button type="submit">로그아웃</button>--%>
-<%--      </form>--%>
-<%--    </c:otherwise>--%>
-<%--  </c:choose>--%>
-
-
-
-<%--</body>--%>
-<%--</html>--%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

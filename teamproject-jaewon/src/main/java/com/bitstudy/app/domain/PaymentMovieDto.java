@@ -2,23 +2,23 @@ package com.bitstudy.app.domain;
 
 import java.sql.Date;
 
-public class PaymentMovieDto {
-    private int p_seqno;
-    private int b_seqno;
-    private int u_seqno;
-    private int pm_seqno;
-    private int price;
-    private Date p_date;
+public class PaymentMovieDto { // 시퀀스넘버로 정보 받기
+    private int p_seqno; // 결제 시퀀스넘버 PK
+    private int b_seqno; // 예매 시퀀스넘버 FK
+    private int u_seqno; // 유저 시퀀서넘버 FK
+    private int pm_seqno; // 결제방식(카드) 시퀀스넘버 FK
+    private int p_price; // 결제 가격
+    private Date p_date; // 결제시 시간
 
     public PaymentMovieDto() {
     }
 
-    public PaymentMovieDto(int p_seqno, int b_seqno, int u_seqno, int pm_seqno, int price, Date p_date) {
+    public PaymentMovieDto(int p_seqno, int b_seqno, int u_seqno, int pm_seqno, int p_price, Date p_date) {
         this.p_seqno = p_seqno;
         this.b_seqno = b_seqno;
         this.u_seqno = u_seqno;
         this.pm_seqno = pm_seqno;
-        this.price = price;
+        this.p_price = p_price;
         this.p_date = p_date;
     }
 
@@ -54,12 +54,12 @@ public class PaymentMovieDto {
         this.pm_seqno = pm_seqno;
     }
 
-    public int getPrice() {
-        return price;
+    public int getP_price() {
+        return p_price;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setP_price(int p_price) {
+        this.p_price = p_price;
     }
 
     public Date getP_date() {
@@ -77,7 +77,7 @@ public class PaymentMovieDto {
                 ", b_seqno=" + b_seqno +
                 ", u_seqno=" + u_seqno +
                 ", pm_seqno=" + pm_seqno +
-                ", price=" + price +
+                ", p_price=" + p_price +
                 ", p_date=" + p_date +
                 '}';
     }

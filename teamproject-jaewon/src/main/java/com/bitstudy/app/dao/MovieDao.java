@@ -15,9 +15,5 @@ public interface MovieDao {
 
     List<MovieDto> selectTOP10();
 
-    int deleteCloseMovie();
-
     List<MovieDto> search_title(String keyword);
-
-
 }

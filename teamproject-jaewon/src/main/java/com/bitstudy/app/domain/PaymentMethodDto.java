@@ -29,14 +29,6 @@ public class PaymentMethodDto {
         this.pm_pw = pm_pw;
     }
 
-//    public int getPm_seqno() {
-//        return pm_seqno;
-//    }
-//
-//    public void setPm_seqno(int pm_seqno) {
-//        this.pm_seqno = pm_seqno;
-//    }
-
     public String getPm_method() {
         return pm_method;
     }

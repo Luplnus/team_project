@@ -28,6 +28,7 @@ public class PaymentServiceImpl implements PaymentService {
         return paymentMovieDao.selectAllMovie();
     }
 
+    @Override
     public List<PaymentMusicalDto> selectAllMusical() {
         return paymentMusicalDao.selectAllMusical();
     }
@@ -36,10 +37,4 @@ public class PaymentServiceImpl implements PaymentService {
     public List<PaymentTheaterDto> selectAllTheater() {
         return paymentTheaterDao.selectAllTheater();
     }
-
-//    public PaymentMovieDto savePayment(PaymentMovieDto paymentMovieDto) {
-//        try {
-//            int pm_seqno=
-//        }
-//    }
 }

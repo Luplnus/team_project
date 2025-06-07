@@ -38,14 +38,7 @@ public class MovieDaoImpl implements MovieDao {
     public List<MovieDto> selectTOP10(){ return session.selectList(nameSpace+"selectTOP10"); }
 
     @Override
-    public int deleteCloseMovie(){
-        return session.delete(nameSpace+"deleteCloseMovie");
-    }
-
-
-    @Override
     public List<MovieDto> search_title(String keyword) {
         return session.selectList(nameSpace+"search_title", keyword);
     }
-
 }

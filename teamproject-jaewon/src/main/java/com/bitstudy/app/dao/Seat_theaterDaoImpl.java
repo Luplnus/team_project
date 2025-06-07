@@ -17,7 +17,7 @@ public class Seat_theaterDaoImpl implements Seat_theaterDao {
     private String namespace = "com.bitstudy.app.dao.Seat_theaterMapper.";
 
     @Override
-    public int select_s_id(String t_id, String s_label) {
+    public int select_s_id(String t_id, String s_label) { // 각 코드와 좌석라벨로 데이터베이스 조회
         Map map =new HashMap();
         map.put("t_id", t_id);
         map.put("s_label", s_label);

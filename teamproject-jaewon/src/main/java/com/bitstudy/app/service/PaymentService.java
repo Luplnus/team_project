@@ -13,5 +13,4 @@ public interface PaymentService {
     List<PaymentMusicalDto> selectAllMusical();
 
     List<PaymentTheaterDto> selectAllTheater();
-
 }

@@ -19,20 +19,5 @@ public class PaymentMethodDaoImpl implements PaymentMethodDao {
     public List<PaymentMethodDto> selectAll() {  return session.selectList(namespace+"selectAll"); }
 
     @Override
-    public int cardPayment(PaymentMethodDto dto) {
-        return session.insert(namespace + "cardPayment", dto);
-    }
-
-    @Override
-    public int accountPayment(PaymentMethodDto dto) {
-        return session.insert(namespace + "accountPayment", dto);
-    }
-
-    @Override
-    public int update(PaymentMethodDto dto) {
-        return session.update(namespace + "update", dto);
-    }
-
-    @Override
     public int isCorrect(PaymentMethodDto dto) { return session.selectOne(namespace + "isCorrect", dto); }
 }

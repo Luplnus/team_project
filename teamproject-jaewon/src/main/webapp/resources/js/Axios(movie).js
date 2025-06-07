@@ -20,8 +20,8 @@ const IMAGE_PROXY = url => `http://3.36.29.175:5001/image-proxy?url=${encodeURIC
 // 전역 영화 데이터 저장
 let allMoviesData = [];
 
-
 let code = "";
+
 // 팝업 열기 함수
 function openPopup(movieData) {
     try {
@@ -112,7 +112,7 @@ function showSearchPopup(movieData) {
 // 장르별 영화 데이터 로드 및 슬라이더 생성
 async function fetchAndPopulateMovies() {
     try {
-        console.log('영화 데이터 로드 시작...');
+        console.log('영화 데이터 로드중');
         const response = await axios.get(API_URL);
         const movies = response.data;
 
