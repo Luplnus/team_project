@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/schema/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.bitstudy.app.dao.Seat_movieMapper">
+
+    <!-- 영화 m_movie_cd s_label로 s_id 불러오기 -->
+    <select id="select_s_id" parameterType="map" resultType="int">
+        SELECT s_id
+        FROM seat_movie_tbl
+        WHERE m_code = #{m_movie_cd} AND s_label = #{s_label}
+    </select>
+
+    <!-- s_id 받아서 s_is_avilable true로 업데이트 -->
+    <update id="update_true" parameterType="int">
+        UPDATE seat_movie_tbl
+        SET s_is_available = TRUE
+        WHERE s_id = #{s_id} AND s_is_available = FALSE;
+    </update>
+
+    <!-- s_id 받아서 s_is_avilable false로 업데이트 -->
+    <update id="update_false" parameterType="int">
+        UPDATE seat_movie_tbl
+        SET s_is_available = FALSE
+        WHERE s_id = #{s_id} AND s_is_available = TRUE;
+    </update>
+
+    <!-- s_is_available false인 m_movie_cd, s_label 불러오기  -->
+    <select id="select_false" resultType="Map">
+        SELECT m_code, s_label
+        FROM seat_movie_tbl
+        WHERE s_is_available = 0;
+    </select>
+</mapper>

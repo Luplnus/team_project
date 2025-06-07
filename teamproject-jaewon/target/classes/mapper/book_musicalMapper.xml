@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/schema/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.bitstudy.app.dao.Book_musicalMapper">
+
+    <!-- 뮤지컬 예매 총 개수 -->
+    <select id="count" resultType="int">
+        SELECT count(*) FROM book_musical_tbl
+    </select>
+
+    <!-- 뮤지컬 예매 등록 - Book_musicalDto 받아서 저장  -->
+    <insert id="insert" parameterType="Book_musicalDto">
+        INSERT into book_musical_tbl ( b_user_seqno, mu_id, s_id, b_time, b_price, b_musical_time)
+        values ( #{b_user_seqno}, #{mu_id}, ${s_id}, #{b_time}, #{b_price}, '${b_musical_time}')
+    </insert>
+
+    <!--  뮤지컬 예매 전체 취소  -->
+    <delete id="deleteAll">
+        TRUNCATE book_musical_tbl
+    </delete>
+
+    <!-- 뮤지컬 예매 한개 취소 - 예매 주인인지 판별  -->
+    <delete id="delete" parameterType="map">
+        DELETE FROM book_musical_tbl
+        WHERE b_seqno = #{b_seqno} and b_user_seqno = #{b_user_seqno}
+    </delete>
+
+    <!-- 뮤지컬 예매 내역 전부 최근 등록순으로 가져오기 -->
+    <select id="selectAll_newest" resultType="Book_musicalDto">
+        SELECT * FROM book_musical_tbl
+        ORDER BY b_seqno DESC
+    </select>
+
+    <!-- 뮤지컬 예매 내역 전부 오래된 등록순으로 가져오기 -->
+    <select id="selectAll_oldest" resultType="Book_musicalDto">
+        select * FROM book_musical_tbl
+        ORDER BY b_seqno ASC
+    </select>
+
+    <!-- 뮤지컬 예매 내역 전부 가격 순으로 가져오기 -->
+    <select id="selectAll_price" resultType="Book_musicalDto">
+        select * FROM book_musical_tbl
+        ORDER BY b_priceDESC
+    </select>
+
+    <!-- 뮤지컬 예매 (한개) 정보 불러오기 -->
+    <select id="select" parameterType="int" resultType="Book_musicalDto">
+        SELECT * FROM book_musical_tbl
+        WHERE b_seqno = #{b_seqno}
+    </select>
+</mapper>

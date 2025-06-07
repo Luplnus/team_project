@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/schema/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.bitstudy.app.dao.paymentMethodMapper">
+
+    <select id="selectAll" resultType="PaymentMethodDto">
+        SELECT * FROM paymentMethod_tbl;
+    </select>
+
+    <!--  카드 결제시 정보 불러오기  -->
+    <select id="isCorrect" parameterType="PaymentMethodDto">
+        select * from paymentMethod_tbl
+        where pm_bank=#{pm_bank} and pm_cardno=#{pm_cardno} and pm_cardcvc=#{pm_cardcvc} and pm_cardvalid=${pm_cardvalid} and pm_pw=#{pm_pw}
+    </select>
+
+</mapper>

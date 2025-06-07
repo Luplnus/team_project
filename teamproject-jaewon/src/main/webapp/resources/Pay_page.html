@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="./css/Pay_page.css">
+</head>
+<body>
+
+<header>
+    <div id="wrap">
+        <div class="main_menu">
+            <div class="h_menubox">
+                <div class="main_logo">
+                    <h2><a href="Main_page.html">JPIEL</a></h2>
+                </div>
+                <div class="menu_bar">
+                    <div class="menu_box"><a href="Movie.html" target="_blank">영화</a></div>
+                    <div class="menu_box"><a href="Musicalpage.html" target="_blank">뮤지컬</a></div>
+                    <div class="menu_box"><a href="Theaterpage.html" target="_blank">연극</a></div>
+                    <div class="menu_box"><a href="Ticketingpage.html" target="_blank">예매</a></div>
+                </div>
+                <div class="content">
+                    <div class="content_box">
+                        <a href="Mypage.html" target="_blank">
+                            <img src="./pt_img/user.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<form id="paymentForm" action="#" autocomplete="off">
+
+    <div class="pay_box">
+        <div class="pay_tool">
+            <h2 style="text-align: center;">결제하기</h2>
+
+            <div class="line"></div>
+
+            <p class="text_p">예매정보</p>
+
+            <div class="ticket_info">
+                <div class="post_banner">
+                    <img id="tck_poster" src="" alt="관련 포스터" class="bn_img">
+                </div>
+
+                <div class="tck_text">
+                    <h2 id="tck_title">관련 제목</h2>
+                    <p class="tck_p" id="tck_showtime">상영 시간</p>
+                    <div class="tck_row">
+                        <p class="tck_p" id="tck_venue">극장</p>
+                        <p class="tck_p" id="tck_seat">좌석</p>
+                    </div>
+                    <p class="tck_p" id="tck_date">관람일</p>
+                </div>
+            </div>
+
+            <p class="text_p">카드결제</p>
+                <div class="card-box">
+                    <div class="card_info" id="cardCompanyList">
+                        <div class="card_nm" data-value="국민은행">국민</div>
+                        <div class="card_nm" data-value="농협은행">농협</div>
+                        <div class="card_nm" data-value="신한은행">신한</div>
+                        <div class="card_nm" data-value="우리은행">우리</div>
+                        <div class="card_nm" data-value="하나은행">하나</div>
+                        <div class="card_nm" data-value="삼성은행">삼성</div>
+                        <div class="card_nm" data-value="현대은행">현대</div>
+                        <div class="card_nm" data-value="롯데은행">롯데</div>
+                    </div>
+                    <input type="hidden" id="pm_bank" required> <!-- 폼넘기기 -->
+                </div>
+
+            <div class="line"></div>
+
+            <p class="text_p">결제수단</p>
+
+            <div class="payment_tool">
+
+                <div class="payment_box">
+                    <div class="payment_section_title">카드 정보 입력</div>
+
+                    <div class="card_input_section">
+                        <label class="input_label">카드번호</label>
+                        <div class="cd_pwbox">
+                            <input type="text" class="card-number cd_pw" id="pm_cd_no1" maxlength="4" placeholder="0000">
+                            <span class="next_p">-</span>
+                            <input type="text" class="card-number cd_pw" id="pm_cd_no2" maxlength="4" placeholder="0000">
+                            <span class="next_p">-</span>
+                            <input type="text" class="card-number cd_pw" id="pm_cd_no3" maxlength="4" placeholder="0000">
+                            <span class="next_p">-</span>
+                            <input type="text" class="card-number cd_pw" id="pm_cd_no4" maxlength="4" placeholder="0000">
+                        </div>
+                    </div>
+
+                    <div class="card_input_section">
+                        <label class="input_label">유효기간&nbsp;&nbsp;/&nbsp;&nbsp;CVC</label>
+                        <div class="cd_pwbox">
+                            <input
+                                    type="text"
+                                    class="cd_pw"
+                                    id="pm_cd_valid"
+                                    maxlength="5"
+                                    placeholder="MM/YY">
+                            <span style="margin: 0 8px;"></span>
+                            <input type="text" class="cd_pw" id="pm_cd_cvc" maxlength="3"  placeholder="CVC">
+                        </div>
+                    </div>
+
+                    <div class="card_input_section">
+                        <label class="input_label">카드 비밀번호 앞 2자리</label>
+                        <div class="cd_pwbox">
+                            <input type="password" id="pm_cd_pw" class="card-password cd_pw" maxlength="2" placeholder="* *">
+                            <span class="next_p">* *</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payment_box2">
+                    <div class="payment_section_title">결제 확인</div>
+
+                    <div class="chose_card">
+                        <div class="card_text" id="selectedCard">선택하신 카드사</div>
+                    </div>
+
+                    <div class="pay_history">
+                        <div class="pay_text" id="totalAmount">15,000원</div> <!-- 결제금액 -->
+                    </div>
+
+                    <div class="chk_boxtol">
+                        <div class="all_chk">
+                            <input type="checkbox" id="terms_all" class="terms_checkbox">
+                            <label for="terms_all" class="agree_text">전체 동의</label>
+                        </div>
+
+                        <div class="agree_tool">
+                            <label for="terms_privacy" class="agree_text">개인정보 수집 및 이용에 대한 동의</label>
+                            <input type="checkbox" id="terms_privacy" class="terms_checkbox">
+                        </div>
+                        <div class="agree_tool">
+                            <label for="terms_third_party" class="agree_text">개인정보 제 3자 제공 동의</label>
+                            <input type="checkbox" id="terms_third_party" class="terms_checkbox">
+                        </div>
+                        <div class="agree_tool">
+                            <label for="terms_processing" class="agree_text">개인정보 처리 위탁 동의</label>
+                            <input type="checkbox" id="terms_processing" class="terms_checkbox">
+                        </div>
+                    </div>
+
+                    <div class="btn_set">
+                        <button type="submit" class="buy_btn" id="payButton">결제하기</button>
+                        <a href="Ticketingpage.html"><button type="button" class="no_buy" onclick="cancelPayment()">결제취소</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+<div id="errorMsg" style="display:none;"></div>
+
+<footer>
+    <div class="fot_end">
+        <div class="footer_content">
+            <div class="footer_logo">JPIEL</div>
+            <div class="footer_box">
+                <a href="#">회사소개</a>
+                <a href="#">서비스이용약관</a>
+                <a href="#">개인정보처리방침</a>
+                <a href="#">고객센터</a>
+                <a href="#">광고문의</a>
+            </div>
+            <div class="footer_end">
+                <span>JPIEL STUDIO</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- 결제 결과 팝업 -->
+<div id="paymentPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center;">
+    <div class="popup_tool" style="background:white; padding:30px; border-radius:10px; width:400px;">
+        <div class="popup_text" id="popupContent" style="text-align:center; margin-bottom:20px;"></div>
+        <button class="chk_btn_box" onclick="closePopup()">확인</button>
+    </div>
+</div>
+
+<script>
+    // ====================== 초기화 ======================
+    let selectedCardCompany = '';
+
+    document.addEventListener('DOMContentLoaded', function() {
+        setupCardNumberInputs();
+        setupCardPasswordInputs();
+        setupCardSelection();
+        setupTermsAgreement();
+    });
+
+    // ====================== 카드 번호 입력 처리 ======================
+    function setupCardNumberInputs() {
+        const cardInputs = document.querySelectorAll('.card-number');
+
+        cardInputs.forEach((input, index) => {
+            // 숫자만 입력 허용
+            input.addEventListener('input', function() {
+                this.value = this.value.replace(/[^0-9]/g, '');
+                // 입력 완료 시 다음 필드로 이동
+                if (this.value.length === 4 && index < cardInputs.length - 1) {
+                    cardInputs[index + 1].focus();
+                }
+            });
+            // 백스페이스 처리
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Backspace' && this.value === '' && index > 0) {
+                    cardInputs[index - 1].focus();
+                }
+            });
+        });
+    }
+
+    // =========================== 카드번호 조합 ================================
+    function getCardNumber() {
+        return [
+            document.getElementById('pm_cd_no1').value.trim(),
+            document.getElementById('pm_cd_no2').value.trim(),
+            document.getElementById('pm_cd_no3').value.trim(),
+            document.getElementById('pm_cd_no4').value.trim()
+        ].join('-');
+    }
+
+    // ====================== 카드 비밀번호 숫자 입력 처리 ======================
+    function setupCardPasswordInputs() {
+        const pwInputs = document.querySelectorAll('.card-password');
+        pwInputs.forEach((input, index) => {
+            input.addEventListener('input', function() {
+                this.value = this.value.replace(/[^0-9]/g, '');
+                if (this.value.length === 1 && index < pwInputs.length - 1) {
+                    pwInputs[index + 1].focus();
+                }
+            });
+        });
+    }
+
+    // ====================== 유효기간 및 CVC 입력 처리 ======================
+    document.getElementById('pm_cd_valid').addEventListener('input', function(e) {
+        let value = this.value.replace(/\D/g, ''); // (MM/YY) 숫자만 남김
+
+        if (value.length > 2) {
+            value = value.slice(0, 2) + '/' + value.slice(2, 4);
+        }
+        this.value = value.slice(0, 5); // (MM/YY)
+    });
+
+    // ====================== 카드사 선택 처리 ======================
+    function setupCardSelection() {
+        const cardButtons = document.querySelectorAll('.card_nm');
+        const chosenCardText = document.querySelector('.chose_card .card_text');
+
+        cardButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // 이전 선택 해제
+                cardButtons.forEach(btn => btn.classList.remove('selected'));
+
+                // 현재 카드 선택
+                this.classList.add('selected');
+                selectedCardCompany = this.textContent.trim();
+                chosenCardText.textContent = `${selectedCardCompany}카드`;
+            });
+        });
+    }
+
+    // ====================== 약관 동의 처리 ======================
+    function setupTermsAgreement() {
+        const checkAll = document.getElementById('terms_all');
+        const individualChecks = document.querySelectorAll('#terms_privacy, #terms_third_party, #terms_processing');
+
+        // 전체 동의 체크박스
+        checkAll.addEventListener('change', function() {
+            individualChecks.forEach(checkbox => {
+                checkbox.checked = this.checked;
+            });
+        });
+
+        // 개별 체크박스들
+        individualChecks.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const allChecked = Array.from(individualChecks).every(chk => chk.checked);
+                checkAll.checked = allChecked;
+            });
+        });
+    }
+</script>
+<script src="./js/Axios(payment).js"></script>
+</body>
+</html>
