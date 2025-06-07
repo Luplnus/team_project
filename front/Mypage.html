@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="./CSS/Mypage.css">
+    <link rel="stylesheet" href="./CSS/Main_page.css">
+    <link rel="stylesheet" href="./CSS/popup.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="popup_container" style="display: none;">    
+        <div class="popup_tool">
+            <div class="popup_text">
+                <h2>관련 내용</h2>
+            </div>
+            <button class="chk_btn_box" onclick="">확인</button>
+        </div>
+    </div>
+        <div class="main_menu">
+            <div class="h_menubox">
+                <div class="main_logo">
+                    <a href="Main_page.html"><h2>JPIEL</h2></a>
+                </div>
+                <div class="menu_bar">
+                <div class="menu_box"><a href="Moviepage.html"   target="_blank">영화</a></div>
+                <div class="menu_box"><a href="Musicalpage.html" target="_blank">뮤지컬</a></div>
+                <div class="menu_box"><a href="Theaterpage.html" target="_blank">연극</a></div>
+                <div class="menu_box"><a href="Pay_page.html"    target="_blank">예매</a></div>
+                </div>
+
+                <div class="content">
+                    <div class="content_box" id="user-menu-container">
+                        <img src="./pt_img/user.svg" alt="" id="user-icon">
+                        <div id="user-dropdown" class="dropdown-menu" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mypage_container">
+
+            <div class="info_side">
+                <ul>
+                    <li class="menu_item">회원정보</li>
+                    <li class="menu_item">최근 기록</li>
+                    <li class="menu_item">찜 목록</li>
+                </ul>
+            </div>
+
+            <div class="my_info">
+                <div class="my_ttl">
+                    <h2>마이페이지 프로필</h2>
+                </div>
+                <div class="info_content">
+                    <div class="my_pfile_box">
+                        <div class="pf_tool">
+                            <img src="./pt_img/user.svg" alt="" class="pf_user">
+                        </div>
+                        <div class="user_nm_box">
+                            <h2 id="profile_u_name"></h2>
+                            <p style="color: #d3d3d3;">해당 마이페이지를 수정할 수 있어요</p>
+                                <div class="user_nm_btn_box">
+                                    <button type="button" id="editBtn" class="edit_btn" style="font-weight: bold;">수정하기</button>
+                                    <button type="button" id="saveBtn" class="edit_btn" style="font-weight: bold; display:none; background-color: #2a2a2a;">저장하기</button>
+                                    <button type="submit" id="deleteBtn" class="edit_btn" style="font-weight: bold; cursor: pointer;" >회원탈퇴</button>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="user_info">
+                        <div class="user_sec">
+                            <div class="left_column">
+                                <div class="info_list1">
+                                    <p>아이디</p>
+                                    <div class="info_box1" id="userID"></div>
+                                </div>
+                                <div class="info_list1">
+                                    <p>이메일</p>
+                                    <!-- 표시용 -->
+                                    <span class="info_box1" id="userEmail"></span>
+                                    <!-- 입력용 (숨김) -->
+                                    <input type="email" class="info_box1" id="userEmailInput" style="display:none;" />
+                                </div>
+                            </div>
+                            <div class="right_column">
+                                <div class="info_list2">
+                                    <p>이름</p>
+                                    <!-- 표시용 -->
+                                    <span class="info_box2" id="userName"></span>
+                                    <!-- 입력용 (숨김) -->
+                                    <input type="text" class="info_box2" id="userNameInput" style="display:none;" />
+                                </div>
+                                <div class="info_list2">
+                                    <p>주소</p>
+                                    <!-- 표시용 -->
+                                    <span class="info_box2" id="userAddress"></span>
+                                    <!-- 입력용 (숨김) -->
+                                    <input type="text" class="info_box2" id="userAddressInput" style="display:none;" />
+                                </div>
+                                <div class="info_list2">
+                                    <p>전화번호</p>
+                                    <!-- 표시용 -->
+                                    <span class="info_box2" id="userCellnum"></span>
+                                    <!-- 입력용 (숨김) -->
+                                    <input type="text" class="info_box2" id="userCellnumInput" style="display:none;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="mypage_container">
+
+            <div class="info_side">
+                <ul>
+                    <li class="menu_item">회원정보</li>
+                    <li class="menu_item">최근 기록</li>
+                    <li class="menu_item">찜 목록</li>
+                </ul>
+            </div>
+
+            <div class="history_info">
+                <div class="history_ttl">
+                    <h2>최근 기록</h2>
+                    <div class="tag_box">
+                        <ul class="tag_tool">
+                            <div class="tag_nm">영화</div>
+                            <div class="tag_nm">연극</div>
+                            <div class="tag_nm">뮤지컬</div>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="history_box">
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                        </div>
+                        <div class="swiper-scrollbar"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mypage_container">
+
+            <div class="info_side">
+                <ul>
+                    <li class="menu_item">회원정보</li>
+                    <li class="menu_item">최근 기록</li>
+                    <li class="menu_item">찜 목록</li>
+                </ul>
+            </div>
+
+            <div class="zzim_info">
+                <h2>찜하기 목록</h2>
+                <div class="zzim_ttl">
+                    <div class="zzim_box">
+                        <div class="zzim_tag">
+                            <p class="zzim_nm">영화</p>
+                            <p class="zzim_nb">0개</p>
+                        </div>
+                        <div class="zzim_tag">
+                            <p class="zzim_nm">연극</p>
+                            <p class="zzim_nb">0개</p>
+                        </div>
+                        <div class="zzim_tag">
+                            <p class="zzim_nm">뮤지컬</p>
+                            <p class="zzim_nb">0개</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="history_box">
+                    <div class="swiper zzimSwiper">
+                        <div class="swiper-wrapper">
+                        </div>
+                        <div class="swiper-scrollbar"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./JS/popup.js"></script>
+    <script src="./JS/Axios(mypage).js"></script>
+    <script src="./JS/Axios(mypage-recentlist).js"></script>
+    <script src="./JS/Axios(mypage-zzim) copy.js"></script>
+    <script>
+        // 유저 드롭다운
+        const $uIcon = $('#user-icon'), $ud = $('#user-dropdown'), user=localStorage.getItem('loggedInUser');
+        $ud.empty();
+        if(user){
+        $ud.append('<a href="./Main_page.html" id="logout-btn">로그아웃</a><a href="Mypage.html">마이페이지</a>');
+        } else {
+        $ud.append('<a href="Loginpage.html">로그인</a>');
+        }
+        $uIcon.on('click', e=>{$ud.toggle();});
+        $(document).on('click', e=>{
+        if (!$(e.target).closest('#user-menu-container').length) $ud.hide();
+        });
+        $ud.on('click','#logout-btn', e=>{
+        e.preventDefault();
+        localStorage.removeItem('loggedInUser');
+        location.href='Main_page.html';
+        });
+
+
+        const itemsPerPage = 5;
+
+        
+        let historyCurrentPage = 0;
+        let historyIsLoading = false;
+        let historyHasMoreData = true;
+
+        async function loadMoreHistoryData(swiperInstance) {
+            if (historyIsLoading || !historyHasMoreData) return;
+            
+            historyIsLoading = true;
+            
+            setTimeout(() => {
+                const wrapper = swiperInstance.wrapperEl; 
+                
+                for(let i = 0; i < itemsPerPage; i++) {
+                    const slideHTML = `
+                        <div class="swiper-slide">
+                            <div class="post_box">
+                                <img src="" alt="영화 포스터">
+                            </div>
+                            <div class="movie_list">
+                                <p>최근 기록 영화 이름 ${historyCurrentPage * itemsPerPage + i + 1}</p>
+                                <p>평점</p>
+                                <p>장르</p>
+                                <p>관람일자</p>
+                            </div>
+                        </div>
+                    `;
+                    wrapper.insertAdjacentHTML('beforeend', slideHTML);
+                }
+                
+                historyCurrentPage++;
+                historyIsLoading = false;
+                
+                swiperInstance.update();
+                
+                if (historyCurrentPage >= 20) {
+                    historyHasMoreData = false;
+                }
+            }, 1000);
+        }
+        
+        //사이드바 메뉴 네비게이션
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.mypage_container');
+            
+            // 메뉴 클릭 
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('menu_item')) {
+                    const menuIndex = [...e.target.parentNode.children].indexOf(e.target);
+
+                    document.querySelectorAll('.menu_item').forEach(item => item.classList.remove('active'));
+                    sections.forEach(section => section.style.display = 'none');
+                    
+                    // 해당 섹션 표시 및 메뉴 활성화
+                    sections[menuIndex].style.display = 'flex';
+                    sections[menuIndex].querySelectorAll('.menu_item')[menuIndex].classList.add('active');
+                }
+            });
+            
+            // 첫 번째 섹션표시
+            sections.forEach((section, i) => {
+                section.style.display = i === 0 ? 'flex' : 'none';
+                if (i === 0) section.querySelector('.menu_item').classList.add('active');
+            });
+        });
+
+        function smoothScrollToSection(targetSection) {
+            targetSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        
+    </script>
+</body>
+</html>

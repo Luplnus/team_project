@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./CSS/Main_page.css">
+    <link rel="stylesheet" href="./CSS/Theaterpage.css">
+    <link rel="stylesheet" href="./CSS/popup.css">
+
+    <title>Theater Page</title>
+    
+</head>
+<body>
+    <div class="popup_container" style="display: none;">    
+        <div class="popup_tool">
+            <div class="popup_text">
+                <h2>관련 내용</h2>
+            </div>
+            <button class="chk_btn_box" onclick="">확인</button>
+        </div>
+    </div>
+<header>
+    <div id="wrap">
+        <div class="main_menu">
+            <div class="h_menubox">
+                <div class="main_logo">
+                    <h2><a href="./Main_page.html"style="color: inherit; text-decoration: none" >JPIEL</a></h2>
+                </div>
+                <div class="menu_bar">
+                    <div class="menu_box"><a href="Moviepage.html"   target="_blank">영화</a></div>
+                    <div class="menu_box"><a href="Musicalpage.html" target="_blank">뮤지컬</a></div>
+                    <div class="menu_box"><a href="Theaterpage.html" target="_self">연극</a></div>
+                    <div class="menu_box"><a href="Pay_page.html"    target="_blank">예매</a></div>
+                </div>
+
+                <!-- 검색바 -->
+                <div class="search_container">
+                    <input type="text" class="search_bar" id="search_bar" placeholder="타이틀을 입력하세요." autocomplete="off">
+                    <div class="search_dropdown" id="search_dropdown"></div>
+                </div>
+
+                <!-- 팝업창 -->
+                <div id="popup" class="popup" style="display:none;">
+                    <div class="popup-overlay"></div>
+                    <div class="popup-content">
+                        <span class="popup-close">&times;</span>
+                        <div id="popup-body"></div>
+                    </div>
+                </div>
+                
+                <div class="content">
+                    <div class="content_box" id="search_icon">
+                        <a href="#"><img src="./pt_img/search.svg" alt="" class="search_img"></a>
+                    </div>
+
+                    <div class="content_box" id="user-menu-container">
+                        <img src="./pt_img/user.svg" alt="" id="user-icon">
+                        <div id="user-dropdown" class="dropdown-menu" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="view_box">
+            <div class="banner_container">
+                <div class="movie_banner">
+                    <div class="post_box">
+                        <img src="" alt="메인 포스터" class="post_img">
+                    </div>
+                    <div class="part_box">
+                        <h1 class="movie_title">연극 이름</h1>
+
+                        <div class="movie_meta">
+                            <span class="year">시작일</span>
+                            <span class="runtime">종료일</span>
+                        </div>
+
+                        <div class="button_group">
+                            <button class="btn_primary">
+                                <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                                예매하기
+                            </button>
+                            <button class="btn_secondary" id="wishAdd">
+                                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                </svg>
+                                찜하기
+                            </button>
+                        </div>
+
+                        <div class="movie_info">
+                            <div class="info_row">
+                                <span class="info_label">공연장</span>
+                                <span class="pfm_hall">공연장 위치</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gradient_overlay"></div>
+            </div>
+            <div class="view_wcht">
+                <div class="swiper main-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 1">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 2">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 3">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 4">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 5">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 6">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 7">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 8">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 9">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 10">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 11">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 12">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 13">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 14">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 15">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 16">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 17">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 18">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 19">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 20">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 21">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 22">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 23">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 24">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 25">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 26">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 27">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 28">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 29">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 30">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./JS/popup.js"></script>
+<script src="./JS/Axios(theater).js"></script>
+<script src="./JS/zzimAdd.js"></script>
+<script>
+
+    // 메인 슬라이더 설정
+    var mainSwiper = new Swiper(".main-swiper", {
+        slidesPerView: 5,
+        spaceBetween: 30,
+        freeMode: true,
+        loop: true,
+        speed: 800,
+        scrollbar: {
+            el: ".swiper-scrollbar",
+            hide: true,
+        },
+        breakpoints: {
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 10
+            },
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 20
+            },
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 30
+            },
+            1440: {
+                slidesPerView: 5,
+                spaceBetween: 30
+            }
+        }
+    });
+
+    // 팝업 슬라이더 설정
+    var popupSwiper = new Swiper(".popup-swiper", {
+        slidesPerView: 'auto',
+        spaceBetween: 10,
+        grabCursor: true,
+        preventClicks: true,
+        preventClicksPropagation: true,
+        slidesOffsetBefore: 0,
+        slidesOffsetAfter: 0,
+        breakpoints: {
+            320: {
+                slidesPerView: 1.5,
+                spaceBetween: 10
+            },
+            640: {
+                slidesPerView: 2.5,
+                spaceBetween: 10
+            },
+            800: {
+                slidesPerView: 3,
+                spaceBetween: 10
+            }
+        }
+    });
+
+    function formatKoreanDate(dateStr){
+    const date = new Date(dateStr);
+    const days = ['일', '월', '화', '수', '목', '금', '토'];
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const weekday = days[date.getDay()];
+    return `${year}년 ${month}월 ${day}일 (${weekday})`;
+    }
+
+    $(document).ready(function(){
+
+        // 검색 아이콘 토글
+        $('#search_icon').on('click', e=>{
+        e.preventDefault();
+        $('#search_bar').toggleClass('active').focus();
+        $('#search_dropdown').toggleClass('active');
+        });
+        $(document).on('click', e=>{
+        if(!$(e.target).closest('.search_container, #search_icon').length){
+            $('#search_bar').removeClass('active');
+            $('#search_dropdown').removeClass('active');
+        }
+        });
+
+        // 연극 데이터만 받아와 allContent 준비
+        let allContent = [];
+
+        (async () => {
+            try {
+            const res = await axios.get('http://3.36.29.175:5002/api/theaters');
+            allContent = res.data.map(t => ({
+                title: t.t_title,
+                genre: t.t_genre,
+                rating: t.t_venue || '정보없음',
+                imageSrc: 'http://3.36.29.175:5002/image-proxy?url=' + encodeURIComponent(t.t_poster)
+            }));
+            } catch (err) {
+            console.error('연극 API 로딩 실패:', err);
+            allContent = [];
+            }
+
+
+            // 검색 핸들러 등록 (연극 데이터만 검색)
+            $('#search_bar').on('input', function() {
+            const q = this.value.trim().toLowerCase();
+            const $dd = $('#search_dropdown').empty();
+            if (!q) return $dd.removeClass('active');
+
+            const matches = allContent.filter(item =>
+                item.title.toLowerCase().includes(q)
+            );
+            if (matches.length) {
+                matches.forEach(item => {
+                $('<div>')
+                    .addClass('search-item')
+                    .text(item.title)
+                    .appendTo($dd)
+                    .on('click', () => {
+                    showPopup(item);
+                    $dd.removeClass('active');
+                    $('#search_bar').val(item.title);
+                    });
+                });
+                $dd.addClass('active');
+            } else {
+                $dd.removeClass('active');
+            }
+            });
+
+
+            // 로딩 중 UI 비활성화 해제
+            $('#search_bar').prop('disabled', false);
+        })();
+
+        // Enter 키로 첫 번째 매칭 연극 팝업
+        $('#search_bar').on('keypress', function(e){
+            if (e.which!==13) return;
+            e.preventDefault();
+            const q = this.value.trim().toLowerCase();
+            const first = allContent.find(item=> item.title.toLowerCase().includes(q) );
+            if (first) showPopup(first);
+            else       customAlert('일치하는 콘텐츠가 없습니다.');
+        });
+
+        // ====== 팝업 표시 함수 ======
+            function showPopup(item) {
+                $('#popup-body').html(`
+                <img src="${item.imageSrc}" alt="${item.title}" style="width:100%; margin-bottom:10px;">
+                <p>제목: ${item.title}</p>
+                <p>장르: ${item.genre}</p>
+                <p>평점: ${item.rating}</p>
+                `);
+                $('#popup').fadeIn();
+            }
+
+        // 유저 드롭다운
+        const $uIcon = $('#user-icon'), $ud = $('#user-dropdown'), user=localStorage.getItem('loggedInUser');
+        $ud.empty();
+        if(user){
+        $ud.append('<a href="./Main_page.html" id="logout-btn">로그아웃</a><a href="Mypage.html">마이페이지</a>');
+        } else {
+            $ud.append('<a href="Loginpage.html" id="login-btn">로그인</a>');
+        }
+        $uIcon.on('click', e=>{$ud.toggle();});
+
+        $(document).on('click', e=>{
+            if (!$(e.target).closest('#user-menu-container').length) $ud.hide();
+        });
+        
+        $ud.on('click','#logout-btn', e=>{
+            e.preventDefault();
+            localStorage.removeItem('loggedInUser');
+            location.href='Main_page.html';
+        }); 
+
+        $ud.on('click', '#login-btn', function(e) {
+            localStorage.setItem('toUrl', window.location.href);
+        });
+
+
+        // 팝업 닫기
+        $(document).on('click', '.popup-close, .popup-overlay', ()=> $('#popup').fadeOut() );
+    });
+</script>
+</body>
+</html>

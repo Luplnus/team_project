@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/schema/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bitstudy.app.dao.theaterMapper">
+<!-- 시작 날짜순으로 다 불러오기  -->
+<select id="selectAll" resultType="TheaterDto">
+    select * from theater_tbl
+</select>
+<select id="selectById" parameterType="String" resultType="TheaterDto">
+    select t_id, t_title, t_poster, t_genre, t_start_date
+    from theater_tbl
+    where t_id = #{t_id}
+</select>
+
+</mapper>
+

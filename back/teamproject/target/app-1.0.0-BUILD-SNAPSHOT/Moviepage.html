@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MoviePage</title>
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <style>
+    /* ===========================
+       === 기존 Moviepage.html CSS ===
+    =========================== */
+    body {
+      user-select: none;
+      margin: 0;
+      overflow-x: hidden;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+    /* 헤더 */
+    #wrap { width: 100%; background: #000; position: relative; overflow: hidden; }
+    .main_menu {
+      width: 100%; height: 50px; display: flex; justify-content: center; align-items: center;
+      position: relative; z-index: 20; background-color: rgba(0,0,0,0.8);
+    }
+    .h_menubox {
+      max-width: 1285px; width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 10px; box-sizing: border-box;
+    }
+    .main_logo h2 {
+      margin: 0; width: 70px; height: 50px; line-height: 50px; text-align: center;
+      color: #fff; font-weight: bold;
+    }
+    .menu_bar { display: flex; flex: 1; justify-content: flex-end; }
+    .menu_box {
+      width: 80px; height: 35px; margin: 0 15px; text-align: center; line-height: 35px;
+      color: #fff; cursor: pointer; transition: color 0.3s; font-size: 15px;
+    }
+    .menu_box:hover { color: #E50914; }
+    .content { display: flex; width: 100px; justify-content: space-around; }
+    .content_box {
+            width: 30px;
+            line-height: 10px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .content_box a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+        }
+    /* 배너 */
+    .banner-swiper { width: 100%; height: 895px; position: relative; }
+    .banner-slide { position: relative; }
+    .banner-slide img {
+      display: block; width: 100%; height: 100%; object-fit: cover; opacity: 0.8;
+    }
+    .mv_trailer {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    }
+
+    .mv_trailer.show {
+      opacity: 1;
+    }
+
+    .banner-slide img.hide {
+      opacity: 0;
+    }
+
+
+    .movie-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+    .content_info {
+      position: absolute; bottom: 175px; left: 330px; width: 60%; z-index: 10;
+      color: #fff; text-align: left;
+    }
+    .badge {
+      display: inline-block; padding: 3px 10px; border-radius: 4px;
+      font-size: 13px; font-weight: bold; margin-right: 8px; text-transform: uppercase;
+    }
+    .badge.new { background-color: #E50914; }
+    .badge.hot { background-color: #FFA500; }
+    .ttl_nm { font-size: 48px; margin: 0 0 15px; font-weight: 700; color: white; }
+    .content_meta { margin-bottom: 20px; font-size: 16px; color: white; opacity: 0.9; }
+    .content_meta span:not(:last-child):after {
+      content: "•"; position: absolute; right: -10px;
+    }
+    .content_desc { font-size: 18px; line-height: 1.6; margin-bottom: 25px; opacity: 0.9; max-width: 90%; color: white; }
+    .button_group { display: flex; gap: 10px; }
+    .btn { padding: 12px 24px; border-radius: 5px; font-size: 16px; font-weight: 600; text-decoration: none; text-align: center; cursor: pointer; transition: all 0.3s ease; }
+    .btn_primary { background-color: #E50914; color: white; }
+    .btn_primary:hover { background-color: #F40612; }
+    .btn_outline { background-color: rgba(255,255,255,0.2); color: white; }
+    .btn_outline:hover { background-color: rgba(255,255,255,0.3); }
+    .swiper-scrollbar-drag {
+      background-color: #E50914; border-radius: 10px;
+    }
+    footer { background-color: #000; color: #fff; padding: 40px 0; text-align: center; }
+
+    /* ===========================
+       === ★ ADDED ★ 팝업 & 장르슬라이더 CSS ===
+    =========================== */
+    .movie_slide img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .movie_popup {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
+      visibility: hidden; opacity: 0; transition: opacity 0.3s;
+      overflow-y: auto; z-index: 1000;
+    }
+    .movie_popup.active {
+      visibility: visible; opacity: 1;
+    }
+    .movie_popup .popup-content {
+      width: 500px; margin: 10% auto; background: #111;
+      padding: 20px; border-radius: 8px; color: #fff; position: relative;
+    }
+    .movie_popup .close-popup {
+      position: absolute; top: 10px; right: 10px; font-size: 2rem; cursor: pointer;
+    }
+    .tag_mv {
+      font-weight: bold; font-size: 30px; color: #fff; margin: 20px;
+    }
+            .fot_end {
+            margin-top: 40px;
+            width: 100%;
+            height: 400px;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer_content {
+            width: 80%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer_logo {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .footer_box {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .footer_box a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        .footer_end {
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+  </style>
+</head>
+
+<body>
+  <!-- 기존 헤더·배너 -->
+  <header>
+    <div id="wrap">
+      <div class="main_menu">
+        <div class="h_menubox">
+          <div class="main_logo"><h2>JPIEL</h2></div>
+          <div class="menu_bar">
+            <div class="menu_box">영화</div>
+            <div class="menu_box">뮤지컬</div>
+            <div class="menu_box">연극</div>
+            <div class="menu_box">예매</div>
+          </div>
+          <div class="content">
+            <div class="content_box"><a href="#"><img src="./pt_img/search.svg" alt=""></a></div>
+            <div class="content_box"><a href="Loginpage.html"><img src="./pt_img/user.svg" alt=""></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="swiper banner-swiper">
+    <div class="swiper-wrapper">
+      <!-- 배너 슬라이드 예시 -->
+      <div class="swiper-slide banner-slide">
+        <video src="resources/videos/마인크래프트%201차%20예고편.mp4" class="mv_trailer" autoplay muted loop></video>
+        <img src="./pt_img/mincraft.jpg" alt="영화 이미지">
+        <div class="content_info">
+          <div class="content_badge">
+            <span class="badge new">NEW</span>
+            <span class="badge hot">HOT</span>
+          </div>
+          <h2 class="ttl_nm">A MINECRAFT MOVIE</h2>
+          <div class="content_meta">
+            <span class="rating">8.7</span>
+            <span class="genre">어드벤처, 판타지</span>
+            <span class="duration">100분</span>
+            <span class="release">2025.04.25</span>
+          </div>
+          <p class="content_desc">
+            현실 세계로 돌아가기 위해서는 일단 살아남아야 하는 법!
+            다섯명의 ‘동굴이’들은 ‘오버월드’를 구하기 위해 힘을 합치게 되는데...
+          </p>
+          <div class="button_group">
+            <a href="#" class="btn btn_primary">예매하기</a>
+            <a href="#" class="btn btn_outline">찜하기</a>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide banner-slide">
+        <video src="resources/videos/썬더볼츠%20메인%20예고편.mp4" class="mv_trailer" autoplay muted loop></video>
+        <img src="./pt_img/131523285.1.jpg" alt="영화 이미지">
+        <div class="content_info">
+            <div class="content_badge">
+                <span class="badge new">NEW</span>
+                <span class="badge hot">HOT</span>
+            </div>
+            <h2 class="ttl_nm">썬더볼츠</h2>
+            <div class="content_meta">
+                <span class="rating">8.5</span>
+                <span class="genre">액션, 어드벤처</span>
+                <span class="duration">126분</span>
+                <span class="release">2025.04.30</span>
+            </div>
+            <p class="content_desc">
+                별난 놈들만 모인 이들은 어쩔 수 없이 한 팀이 되고,
+                자신들의 어두운 과거와 
+                <br>
+                맞서야 하는 위험한 임무에 투입된다.
+                서로를 전혀 믿지 못하는 상황에서 
+                <br>
+                스스로의 생존과 세상의 구원을 위해
+                이들은 진정한 팀으로 거듭나야만 하는데....
+            </p>
+            <div class="button_group">
+                <a href="#" class="btn btn_primary">예매하기</a>
+                <a href="#" class="btn btn_outline">찜하기</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="swiper-slide banner-slide">
+        <video src="resources/videos/미션%20임파서블_%20파이널%20레코닝%20%20예고편.mp4" class="mv_trailer" autoplay muted loop></video>
+        <img src="./pt_img/미션임파서블.jpg" alt="영화 이미지">
+        <div class="content_info">
+            <div class="content_badge">
+                <span class="badge new">NEW</span>
+                <span class="badge hot">HOT</span>
+            </div>
+            <h2 class="ttl_nm">미션임파서블 파이널 레코닝</h2>
+            <div class="content_meta">
+                <span class="rating">9.3</span>
+                <span class="genre">액션</span>
+                <span class="duration">169분</span>
+                <span class="release">2025.05.17</span>
+            </div>
+            <p class="content_desc">
+               디지털상의 모든 정보를 통제할 수 있는
+               <br>
+               사상초유의 무기로 인해 전세계 국가와 조직의 기능이 마비되고,
+               <br>
+               인류 전체가 위협받는 절체절명의 위기가 찾아온다!
+            </p>
+            <div class="button_group">
+                <a href="#" class="btn btn_primary">예매하기</a>
+                <a href="#" class="btn btn_outline">찜하기</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="swiper-slide banner-slide">
+        <video src="resources/videos/파과%20The%20Old%20Woman%20With%20The%20Knife%20예고편.mp4" class="mv_trailer" autoplay muted loop></video>
+        <img src="./pt_img/파과배너.jpg" alt="영화 이미지">
+        <div class="content_info">
+            <div class="content_badge">
+                <span class="badge new">NEW</span>
+                <span class="badge hot">HOT</span>
+            </div>
+            <h2 class="ttl_nm">파과</h2>
+            <div class="content_meta">
+                <span class="rating">8.6</span>
+                <span class="genre">미스터리</span>
+                <span class="duration">122분</span>
+                <span class="release">2025.04.30</span>
+            </div>
+            <p class="content_desc">
+                스승 ‘류’(김무열)와 지켜야 할 건 만들지 말자고 약속했던 
+                <br>  
+                ‘조각’은예기치 않게 상처를 입은 그날 밤,
+                자신을 치료해 준 수의사 ‘강선생’(연우진)과 
+                <br>
+                그의 딸에게 남다른 감정을 느낀다.  
+                ‘투우’는 그런 낯선 ‘조각’의 모습에 분노가 폭발하는데…
+            </p>
+            <div class="button_group">
+                <a href="#" class="btn btn_primary">예매하기</a>
+                <a href="#" class="btn btn_outline">찜하기</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="swiper-slide banner-slide">
+        <video src="resources/videos/미키17%20공식%20한국%20예고편.mp4" class="mv_trailer" autoplay muted loop></video>
+        <img src="./pt_img/미키17.jpg" alt="영화 이미지">
+        <div class="content_info">
+            <div class="content_badge">
+                <span class="badge new">NEW</span>
+                <span class="badge hot">HOT</span>
+            </div>
+            <h2 class="ttl_nm">미키17</h2>
+            <div class="content_meta">
+                <span class="rating">8.7</span>
+                <span class="genre">SF, 드라마</span>
+                <span class="duration">137분</span>
+                <span class="release">2025.02.28</span>
+            </div>
+            <p class="content_desc">
+                4년의 항해와 얼음행성 니플하임에 도착한 뒤에도 
+                늘 ‘미키’를 지켜준 여자친구 ‘나샤’.
+                <br>
+                그와 함께, ‘미키’는 반복되는 죽음과 출력의 사이클에도 익숙해진다. 
+                그러나... '미키 17'이 얼음행성의 생명체인 ‘크리퍼’와 만난 후 
+                죽을 위기에서 돌아와 보니이미 '미키 18'이 프린트되어 있다.
+                행성 당 1명만 허용된 익스펜더블이 둘이 된 ‘멀티플’ 상황
+                <br>
+                둘 중 하나는 죽어야 하는 현실 속에 걷잡을 수 없는 사건이 기다리고 있었으니…
+            </p>
+            <div class="button_group">
+                <a href="#" class="btn btn_primary">예매하기</a>
+                <a href="#" class="btn btn_outline">찜하기</a>
+            </div>
+        </div>
+    </div>
+      <!-- 추가 슬라이드 동일 구조 반복 -->
+    </div>
+    <div class="swiper-scrollbar"></div>
+  </div>
+
+  <!-- ★ ADDED ★ 팝업 모달 -->
+  <div class="movie_popup" id="movie-popup">
+    <div class="close-popup" id="popup-close">&times;</div>
+    <div class="popup-content">
+
+      <img id="popup-poster" src="" alt="포스터" style="width: 500px; border-radius: 10px; flex-shrink: 0;" />
+
+    
+    <!-- 텍스트 정보 -->
+      <h2 id="popup-title"></h2>
+      <p><strong>평점:</strong> <span id="popup-rating"></span></p>
+      <p><strong>장르:</strong> <span id="popup-genre"></span></p>
+      <p><strong>개봉일:</strong> <span id="popup-date"></span></p>
+      <label><strong>상영시간:</strong></label> <span id="popup-runtime"></span>
+        <div class="btn_popup" style="gap: 5px; display: flex;">
+          <label><button style="width: 100px; height: 50px; border: none; border-radius: 5px; color: #fff; background-color: #E50914; cursor: pointer; transition: all 0.3s ease;">예매하기</button></label> <span id="popup-button"></span>
+          <label><button style="width: 80px; height: 50px; border: none; border-radius: 5px; background-color: rgba(255, 255, 255, 0.2);color: white; cursor: pointer; transition: all 0.3s ease;">찜하기</button></label> <span id="popup-button"></span>
+        </div>
+      <p id="popup-desc"></p>
+    </div>
+  </div>
+
+  <!-- ★ ADDED ★ 장르별 슬라이더 -->
+  <div class="tag_mv">액션</div>
+  <div class="swiper movie-swiper" data-genre="액션">
+    <div class="swiper-wrapper"></div>
+  </div>
+
+  <div class="tag_mv">드라마</div>
+  <div class="swiper movie-swiper" data-genre="드라마">
+    <div class="swiper-wrapper"></div>
+  </div>
+
+  <div class="tag_mv">애니메이션</div>
+  <div class="swiper movie-swiper" data-genre="애니메이션">
+    <div class="swiper-wrapper"></div>
+  </div>
+
+  <div class="tag_mv">코미디</div>
+  <div class="swiper movie-swiper" data-genre="코미디">
+    <div class="swiper-wrapper"></div>
+  </div>
+
+  <div class="tag_mv">공포(호러)</div>
+  <div class="swiper movie-swiper" data-genre="공포(호러)">
+    <div class="swiper-wrapper"></div>
+  </div>
+
+  <div class="tag_mv">멜로/로맨스</div>
+  <div class="swiper movie-swiper" data-genre="멜로/로맨스">
+    <div class="swiper-wrapper"></div>
+  </div>
+
+  <div class="tag_mv">범죄</div>
+  <div class="swiper movie-swiper" data-genre="범죄">
+    <div class="swiper-wrapper"></div>
+  </div>
+
+  <footer>
+    <div class="fot_end">
+      <div class="footer_content">
+        <div class="footer_logo">JPIEL</div>
+        <div class="footer_box">
+          <a href="#">회사소개</a>
+          <a href="#">서비스이용약관</a>
+          <a href="#">개인정보처리방침</a>
+          <a href="#">고객센터</a>
+          <a href="#">광고문의</a>
+        </div>
+        <div class="footer_end">
+          <span>JPIEL STUDIO</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+  <!-- ----------------------------------------------------------------------- -->
+  <script>
+
+     // banner-swiper 초기화
+     var bannerSwiper = new Swiper(".banner-swiper", {
+            loop: true,
+            speed: 500,
+            scrollbar: {
+                el: ".swiper-scrollbar",
+                hide: true,
+            },
+            on: {
+            slideChangeTransitionStart: function() {
+                // 모든 비디오를 리셋
+                document.querySelectorAll('.mv_trailer').forEach(function(video) {
+                    video.currentTime = 0;
+                    video.classList.remove('show');
+                });
+                
+                               // 모든 이미지를 다시 보이게
+                               document.querySelectorAll('.banner-slide img').forEach(function(img) {
+                    img.classList.remove('hide');
+                });
+                
+                // 현재 활성화된 슬라이드의 비디오와 이미지 준비
+                setTimeout(function() {
+                    const activeSlide = document.querySelector('.swiper-slide-active');
+                    if (activeSlide) {
+                        const video = activeSlide.querySelector('.mv_trailer');
+                        const img = activeSlide.querySelector('img');
+                        
+                        if (video && img) {
+                            // 1초 후 비디오 재생 및 이미지 숨김
+                            setTimeout(function() {
+                                video.play().then(function() {
+                                    img.classList.add('hide');
+                                    video.classList.add('show');
+                                }).catch(function(error) {
+                                    console.log('비디오 재생 실패:', error);
+                                });
+                            }, 1000);
+                        }
+                    }
+                }, 1000);
+            }
+        }
+    });
+      
+        setTimeout(function() {
+        const firstSlide = document.querySelector('.swiper-slide-active');
+        if (firstSlide) {
+            const video = firstSlide.querySelector('.mv_trailer');
+            const img = firstSlide.querySelector('img');
+            
+            if (video && img) {
+                setTimeout(function() {
+                    video.play().then(function() {
+                        img.classList.add('hide');
+                        video.classList.add('show');
+                    }).catch(function(error) {
+                        console.log('초기 비디오 재생 실패:', error);
+                    });
+                }, 1000);
+            }
+        }
+    }, 2000); // 페이지 로드 후 2초 대기
+
+
+
+
+
+// ---------------------------------------------------------------------------------
+    // ★ ADDED ★ API & 이미지 프록시
+    const API_URL = 'http://54.180.234.163:5000/api/movies';
+    const IMAGE_PROXY = url => `http://54.180.234.163:5000/image-proxy?url=${encodeURIComponent(url)}`;
+
+    // ★ ADDED ★ 데이터 불러와 슬라이더 채우기
+    async function fetchAndPopulate() {
+      let movies = [];
+      try {
+        movies = await (await fetch(API_URL)).json();
+      } catch (e) {
+        console.error('영화 데이터 로드 실패', e);
+        return;
+      }
+      document.querySelectorAll('.movie-swiper').forEach(sw => {
+        const genre = sw.dataset.genre;
+        const wrapper = sw.querySelector('.swiper-wrapper');
+        wrapper.innerHTML = '';
+        const list = movies.filter(m => m.m_genre === genre);
+        list.forEach(m => {
+          const slide = document.createElement('div');
+          slide.className = 'swiper-slide movie_slide';
+          slide.innerHTML = `<img src="${IMAGE_PROXY(m.m_poster_url)}" alt="${m.m_title}">`;
+          slide.addEventListener('click', () => openPopup(m));
+          wrapper.appendChild(slide);
+        });
+        new Swiper(sw, {
+          slidesPerView: 8,
+          spaceBetween: 10,
+          freeMode: true,
+          loop: list.length > 8,
+          breakpoints: {
+            320: { slidesPerView: 1, },
+            640: { slidesPerView: 2, },
+            768: { slidesPerView: 3, },
+            1024: { slidesPerView: 5, },
+            1440: { slidesPerView: 6, },
+            1600: { slidesPerView: 7, },
+            1920: { slidesPerView: 8, }
+          }
+        });
+      });
+    }
+
+    // ★ ADDED ★ 팝업 열기/닫기
+    function openPopup(m) {
+      document.getElementById('popup-title').textContent   = m.m_title;
+      document.getElementById('popup-rating').textContent  = m.m_rating != null ? m.m_rating.toFixed(1) : '정보없음';
+      document.getElementById('popup-genre').textContent   = m.m_genre;
+      document.getElementById('popup-date').textContent    = m.m_opendate
+        ? new Date(m.m_opendate).toLocaleDateString('ko-KR')
+        : '미정';
+      document.getElementById('popup-runtime').textContent = m.m_show_tm
+        ? `${m.m_show_tm}분`
+        : '정보없음';
+
+        document.getElementById('popup-poster').src = IMAGE_PROXY(m.m_poster_url);
+        document.getElementById('popup-poster').alt = m.m_title;
+
+        
+      document.getElementById('movie-popup').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    document.getElementById('popup-close').onclick = () => {
+      document.getElementById('movie-popup').classList.remove('active');
+      document.body.style.overflow = '';
+    };
+
+    document.addEventListener('DOMContentLoaded', fetchAndPopulate);
+  </script>
+</body>
+</html>

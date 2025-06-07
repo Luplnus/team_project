@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bitstudy.app.dao.theaterWishMapper">
+
+    <select id="selectWT" parameterType="int" resultType="WishlistDto">
+        select 'theater' as w_contentType,
+            t.t_id as w_id,
+            t.t_title as w_title,
+            t.t_poster as  w_poster_url,
+            t.t_genre as w_genre,
+            t.t_start_date as w_start_date
+        from theater_wish_tbl tw
+                 join theater_tbl t
+                      on tw.wt_t_id = t.t_id
+        where tw.wt_u_id = #{u_seqno}
+    </select>
+
+    <insert id="insertWT" parameterType="map">
+        insert into theater_wish_tbl (wt_u_id, wt_t_id)
+        values (#{u_seqno}, #{t_id})
+    </insert>
+
+    <delete id="deleteWT" parameterType="map">
+        delete from theater_wish_tbl
+        where wt_u_id = #{u_seqno} and wt_t_id = #{t_id}
+    </delete>
+
+    <delete id="deleteByUserSeqno" parameterType="int">
+        delete from theater_wish_tbl
+        where wt_u_id = #{u_seqno}
+    </delete>
+
+</mapper>

@@ -1,0 +1,15 @@
+.content_box_myPageIcon:hover{
+    cursor: pointer;
+}
+.more_btn_nav{
+    width: 100px;
+    height: 70px;
+    background-color: rgba(25, 25, 25, 0.9);
+    box-shadow: 0 0 3px #dbdbdb;
+    display: none;
+    font-size: 14px;
+}
+.more_btn_nav_myPage{
+    border-bottom: 1px solid #dbdbdb;
+}
+
