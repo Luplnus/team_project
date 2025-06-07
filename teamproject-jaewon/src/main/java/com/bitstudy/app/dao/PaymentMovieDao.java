@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface PaymentMovieDao {
     List<PaymentMovieDto> selectAllMovie();
+    int insert(PaymentMovieDto paymentMovieDto);
 }

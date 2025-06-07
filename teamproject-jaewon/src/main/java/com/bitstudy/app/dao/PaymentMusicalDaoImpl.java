@@ -19,4 +19,9 @@ public class PaymentMusicalDaoImpl implements PaymentMusicalDao {
     public List<PaymentMusicalDto> selectAllMusical() {
         return session.selectList(namespace + "selectAllMusical");
     }
+
+    @Override
+    public int insert(PaymentMusicalDto paymentMusicalDto) {
+        return session.insert(namespace + "insert", paymentMusicalDto);
+    }
 }

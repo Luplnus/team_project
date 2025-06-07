@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface PaymentMusicalDao {
     List<PaymentMusicalDto> selectAllMusical();
+    int insert(PaymentMusicalDto paymentMusicalDto);
 }

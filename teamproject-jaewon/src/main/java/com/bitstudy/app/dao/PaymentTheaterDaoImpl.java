@@ -19,4 +19,9 @@ public class PaymentTheaterDaoImpl implements PaymentTheaterDao {
     public List<PaymentTheaterDto> selectAllTheater() {
         return session.selectList(namespace + "selectAllTheater");
     }
+
+    @Override
+    public int insert(PaymentTheaterDto paymentTheaterDto) {
+        return session.insert(namespace + "insert", paymentTheaterDto);
+    }
 }

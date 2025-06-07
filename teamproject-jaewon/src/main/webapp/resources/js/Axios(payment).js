@@ -10,15 +10,21 @@ function formatKoreanDate(dateStr) {
     const date = new Date(dateStr);
     const days = ['일', '월', '화', '수', '목', '금', '토'];
     const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
+    let month = date.getMonth() + 1;
+    if(month < 10) {
+        month = '0' + month;
+    }
+    let day = date.getDate();
+    if(day < 10){
+        day = "0" + day;
+    }
     const weekday = days[date.getDay()];
     const hour = date.getHours();
     const minute = date.getMinutes();
     const hourStr = hour.toString().padStart(2, '0');
     const minuteStr = minute.toString().padStart(2, '0');
 
-    return `${year}. ${month}. ${day} (${weekday}) ${hourStr}:${minuteStr}`;
+    return `${year}-${month}-${day} ${hour}:${minuteStr}:${minuteStr}`;
 }
 
 // ========================== 카드 데이터 ============================
@@ -119,30 +125,99 @@ document.getElementById('paymentForm').addEventListener('submit', function(e) {
         card.pm_pw === pm_pw
     );
 
+////////////////////////////////////////////////////////////////////////////////////
+
     console.log('입력값과 buyerCard 일치 여부:', isMatched ? '일치' : '불일치');
-    // 성공, 실패시 표기 (팝업 적용)
+
     if (isMatched) {
-        showSuccess('결제 성공.');
+        let u_id = localStorage.getItem('u_id');
+        let content_id = localStorage.getItem('content_id');
+        let content_type = localStorage.getItem('content_type'); // "movie", "musical", "theater"
+        let s_label = document.getElementById('tck_seat').textContent;
+        let b_time = document.getElementById('tck_date').textContent;
+        let pm_seqno = 1; // 결제 수단에 따라 설정
+
+        let bookUrl = "";
+        let payUrl = "";
+        let bookData = {};
+
+        if (content_type === "movie") {
+            bookUrl = "http://localhost:8080/book/movie";
+            payUrl = "http://localhost:8080/paypay/movie";
+            bookData = {
+                u_id: u_id,
+                m_code: content_id,
+                s_label: s_label,
+                b_movie_time: b_time
+            };
+        } else if (content_type === "musical") {
+            bookUrl = "http://localhost:8080/book/musical";
+            payUrl = "http://localhost:8080/paypay/musical";
+            bookData = {
+                u_id: u_id,
+                mu_code: content_id,
+                s_label: s_label,
+                b_musical_time: b_time
+            };
+        } else if (content_type === "theater") {
+            bookUrl = "http://localhost:8080/book/theater";
+            payUrl = "http://localhost:8080/paypay/theater";
+            bookData = {
+                u_id: u_id,
+                t_code: content_id,
+                s_label: s_label,
+                b_theater_time: b_time
+            };
+        } else {
+            showError('잘못된 콘텐츠 타입입니다.');
+            return;
+        }
+
+        // 예매 요청 → 결제 요청
+        axios.post(bookUrl, bookData, {
+            headers: {'Content-Type': 'application/json'}
+        })
+            .then(function (result) {
+                const b_seqno = result.data.b_seqno;
+
+                return axios.post(payUrl, {
+                    pm_seqno: pm_seqno,
+                    u_id: u_id,
+                    b_seqno: b_seqno
+                }, {
+                    headers: {'Content-Type': 'application/json'}
+                });
+            })
+            .then(function (payResult) {
+                console.log(payResult.data);
+                showSuccess('결제 성공.');
+            })
+            .catch(function (error) {
+                showError('예매 또는 결제 중 오류 발생.');
+                console.error(error);
+            });
+
     } else {
         showError('카드 정보가 일치하지 않습니다.');
     }
-});
+
+////////////////////////////////////////////////////
 
 // 팝업 표시 함수
-function showSuccess(msg) {
-    const popup = document.getElementById('paymentPopup');
-    const content = document.getElementById('popupContent');
+    function showSuccess(msg) {
+        const popup = document.getElementById('paymentPopup');
+        const content = document.getElementById('popupContent');
 
-    // 영화 관련 정보 가져오기
-    const poster = document.getElementById('tck_poster').src;
-    const title = document.getElementById('tck_title').textContent;
-    const venue = document.getElementById('tck_venue').textContent;
-    const seat = document.getElementById('tck_seat').textContent;
-    const date = document.getElementById('tck_date').textContent;
-    const card = document.getElementById('selectedCard').textContent;
-    const price = document.getElementById('totalAmount').textContent;
+        // 영화 관련 정보 가져오기
+        const poster = document.getElementById('tck_poster').src;
+        const title = document.getElementById('tck_title').textContent;
+        const venue = document.getElementById('tck_venue').textContent;
+        const seat = document.getElementById('tck_seat').textContent;
+        const date = document.getElementById('tck_date').textContent;
+        const card = document.getElementById('selectedCard').textContent;
+        const price = document.getElementById('totalAmount').textContent;
 
-    content.innerHTML = `
+        content.innerHTML = `
         <img src="${poster}" alt="포스터" style="width:150px; height:200px; object-fit:cover; border-radius:8px; margin-bottom:5px;" />
         <h2 style="margin-bottom: 10px; color: seagreen">결제 완료</h2>
         <p><strong>제목:</strong> ${title}</p>
@@ -152,76 +227,78 @@ function showSuccess(msg) {
         <p><strong>${card}</strong></p>
         <p style="margin-top:10px;"><strong>${price} 결제되었습니다.</strong></p>
     `;
-    popup.style.display = 'flex';
-}
+        popup.style.display = 'flex';
+    }
 
-function showError(msg) {
-    const popup = document.getElementById('paymentPopup');
-    const content = document.getElementById('popupContent');
-    content.innerHTML = `
+    function showError(msg) {
+        const popup = document.getElementById('paymentPopup');
+        const content = document.getElementById('popupContent');
+        content.innerHTML = `
         <h2 style="margin-bottom: 10px; color: red;">결제 실패</h2>
         <p>${msg}</p>
     `;
-    popup.style.display = 'flex';
-}
+        popup.style.display = 'flex';
+    }
 
 // 팝업 닫기 함수
-function closePopup() {
-    document.getElementById('paymentPopup').style.display = 'none';
-}
+    function closePopup() {
+        document.getElementById('paymentPopup').style.display = 'none';
+    }
 
 
 // ===================== 각 매체 예매 페이지서 입력된 데이터 불러오기 ================
 
-axios.get('/payment/data/movie')
-    .then(function (res) {
-        const data = res.data;
-        const movie = data.movieDto;
+    axios.get('/payment/data/movie')
+        .then(function (res) {
+            const data = res.data;
+            const movie = data.movieDto;
 
-        document.getElementById('tck_title').textContent = movie.m_title || '제목 없음';
-        document.getElementById('tck_seat').textContent = data.s_label || '좌석 없음';
-        document.getElementById('tck_date').textContent = formatKoreanDate(data.time) || '날짜 없음';
-        document.getElementById('tck_showtime').textContent = movie.m_show_tm + "분" || '상영 시간 없음';
-        document.getElementById('tck_poster').src = movie.m_poster_url || '포스터 없음';
-        document.getElementById('tck_venue').textContent = data.venue || '장소 없음';
+            document.getElementById('tck_title').textContent = movie.m_title || '제목 없음';
+            document.getElementById('tck_seat').textContent = data.s_label || '좌석 없음';
+            document.getElementById('tck_date').textContent = formatKoreanDate(data.time) || '날짜 없음';
+            document.getElementById('tck_showtime').textContent = movie.m_show_tm + "분" || '상영 시간 없음';
+            document.getElementById('tck_poster').src = movie.m_poster_url || '포스터 없음';
+            document.getElementById('tck_venue').textContent = data.venue || '장소 없음';
 
-    })
-    .catch(() => {
-        // 영화 선택되지 않음 - 무시
-    });
+        })
+        .catch(() => {
+            // 영화 선택되지 않음 - 무시
+        });
 
-axios.get('/payment/data/musical')
-    .then(function (res) {
-        const data = res.data;
-        const musical = data.musicalDto;
+    axios.get('/payment/data/musical')
+        .then(function (res) {
+            const data = res.data;
+            const musical = data.musicalDto;
 
-        document.getElementById('tck_title').textContent = musical.mu_title || '제목 없음';
-        document.getElementById('tck_seat').textContent = data.s_label || '좌석 없음';
-        document.getElementById('tck_date').textContent = formatKoreanDate(data.time) || '날짜 없음';
-        document.getElementById('tck_showtime').textContent = '';
-        document.getElementById('tck_poster').src = musical.mu_poster || '포스터 없음';
-        document.getElementById('tck_venue').textContent = musical.mu_venue || '장소 없음';
+            document.getElementById('tck_title').textContent = musical.mu_title || '제목 없음';
+            document.getElementById('tck_seat').textContent = data.s_label || '좌석 없음';
+            document.getElementById('tck_date').textContent = formatKoreanDate(data.time) || '날짜 없음';
+            document.getElementById('tck_showtime').textContent = '';
+            document.getElementById('tck_poster').src = musical.mu_poster || '포스터 없음';
+            document.getElementById('tck_venue').textContent = musical.mu_venue || '장소 없음';
 
-    })
-    .catch(() => {
-        // 뮤지컬 선택되지 않음 - 무시
-    });
+        })
+        .catch(() => {
+            // 뮤지컬 선택되지 않음 - 무시
+        });
 
-axios.get('/payment/data/theater')
-    .then(function (res) {
-        const data = res.data;
-        const theater = data.theaterDto;
+    axios.get('/payment/data/theater')
+        .then(function (res) {
+            const data = res.data;
+            const theater = data.theaterDto;
 
-        document.getElementById('tck_title').textContent = theater.t_title || '제목 없음';
-        document.getElementById('tck_seat').textContent = data.s_label || '좌석 없음';
-        document.getElementById('tck_date').textContent = formatKoreanDate(data.time) || '날짜 없음';
-        document.getElementById('tck_showtime').textContent = '';
-        document.getElementById('tck_poster').src = theater.t_poster || '포스터 없음';
-        document.getElementById('tck_venue').textContent = theater.t_venue || '장소 없음';
+            document.getElementById('tck_title').textContent = theater.t_title || '제목 없음';
+            document.getElementById('tck_seat').textContent = data.s_label || '좌석 없음';
+            document.getElementById('tck_date').textContent = formatKoreanDate(data.time) || '날짜 없음';
+            document.getElementById('tck_showtime').textContent = '';
+            document.getElementById('tck_poster').src = theater.t_poster || '포스터 없음';
+            document.getElementById('tck_venue').textContent = theater.t_venue || '장소 없음';
 
 
-    })
-    .catch(() => {
-        // 연극 선택되지 않음 - 무시
-    });
+        })
+        .catch(() => {
+            // 연극 선택되지 않음 - 무시
+        });
+});
+
 

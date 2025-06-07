@@ -19,5 +19,10 @@ public class PaymentMovieDaoImpl implements PaymentMovieDao {
     public List<PaymentMovieDto> selectAllMovie() {
         return session.selectList(namespace + "selectAllMovie");
     }
+
+    @Override
+    public int insert(PaymentMovieDto paymentMovieDto) {
+        return session.insert(namespace + "insert", paymentMovieDto);
+    }
 }
 
