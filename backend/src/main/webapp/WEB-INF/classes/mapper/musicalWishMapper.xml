@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bitstudy.app.dao.musicalWishMapper">
+
+    <select id="selectWMU" parameterType="int" resultType="WishlistDto">
+        select 'musical' as w_contentType,
+               mu.mu_id as w_id,
+               mu.mu_title as w_title,
+               mu.mu_poster as  w_poster_url,
+               mu.mu_genre as w_genre,
+               mu.mu_prfpdfrom as w_start_date
+        from musical_wish_tbl muw
+                 join musical_tbl mu
+                      on muw.wmu_mu_id = mu.mu_id
+        where muw.wmu_u_id = #{u_seqno}
+    </select>
+
+    <insert id="insertWMU" parameterType="map">
+        insert into musical_wish_tbl (wmu_u_id, wmu_mu_id)
+        values (#{u_seqno}, #{mu_id})
+    </insert>
+
+    <delete id="deleteWMU" parameterType="map">
+        delete from musical_wish_tbl
+        where wmu_u_id = #{u_seqno} and wmu_mu_id = #{mu_id}
+    </delete>
+
+    <delete id="deleteByUserSeqno" parameterType="int">
+        delete from musical_wish_tbl
+        where wmu_u_id = #{u_seqno}
+    </delete>
+
+</mapper>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/schema/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.bitstudy.app.dao.Book_movieMapper">
+
+    <!-- 영화 예매 총 개수 -->
+    <select id="count" resultType="int">
+        SELECT count(*) FROM book_movie_tbl
+    </select>
+
+    <!-- 영화 예매 등록 - Book_movieDto 받아서 저장  -->
+    <insert id="insert" parameterType="Book_movieDto">
+        INSERT into book_movie_tbl ( b_user_seqno, m_code, b_time, b_price, b_movie_time)
+        values ( #{b_user_seqno}, #{m_code}, #{b_time}, #{b_price}, #{b_movie_time})
+    </insert>
+
+    <!--  영화 예매 전체 취소  -->
+    <delete id="deleteAll">
+        TRUNCATE book_movie_tbl
+    </delete>
+
+    <!-- 영화 예매 한개 취소 - 예매 주인인지 판별  -->
+    <delete id="delete" parameterType="map">
+        DELETE FROM book_movie_tbl
+        WHERE b_seqno = #{b_seqno} and b_user_seqno = #{b_user_seqno}
+    </delete>
+
+    <!-- 영화 예매 내역 전부 최근 등록순으로 가져오기 -->
+    <select id="selectAll_newest" resultType="Book_movieDto">
+        SELECT * FROM book_movie_tbl
+        ORDER BY b_seqno DESC
+    </select>
+
+    <!-- 영화 예매 내역 전부 오래된 등록순으로 가져오기 -->
+    <select id="selectAll_oldest" resultType="Book_movieDto">
+        select * FROM book_movie_tbl
+        ORDER BY b_seqno ASC
+    </select>
+
+    <!-- 영화 예매 내역 전부 가격 순으로 가져오기 -->
+    <select id="selectAll_price" resultType="Book_movieDto">
+        select * FROM book_movie_tbl
+        ORDER BY b_priceDESC
+    </select>
+
+    <!-- 영화 예매 (한개) 정보 불러오기 -->
+    <select id="select" parameterType="int" resultType="Book_movieDto">
+        SELECT * FROM book_movie_tbl
+        WHERE b_seqno = #{b_seqno}
+    </select>
+</mapper>
