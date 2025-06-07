@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./CSS/Moviepage.css">
+    <link rel="icon" href="./pt_img/JPIEL.png">
+    <title>JPIEL</title>
+</head>
+<body>
+<header>
+    <div id="wrap">
+        <div class="main_menu">
+            <div class="h_menubox">
+                <div class="main_logo">
+                    <h2>JPIEL</h2>
+                </div>
+                <div class="menu_bar">
+                    <div class="menu_box">영화</div>
+                    <div class="menu_box">뮤지컬</div>
+                    <div class="menu_box">연극</div>
+                    <div class="menu_box">예매</div>
+                </div>
+                <form action="">
+                    <div class="search_container" style="position: relative;">
+                      <input type="text" class="search_bar" id="search_bar" placeholder="타이틀을 입력하세요." autocomplete="off">
+                      <div id="search_dropdown" class="search_dropdown"></div>
+                    </div>
+                  </form>
+
+                <div id="popup" class="popup-overlay" style="display:none;">
+                    <div class="popup-content">
+                      <button class="popup-close">X</button>
+                      <div id="popup-body"></div>
+                    </div>
+                </div>
+                  
+                <div class="content">
+                    <div class="content_box" id="search_icon">
+                        <a href="#">
+                           <img src="./pt_img/search.svg" alt="" class="search_img">
+                        </a>
+                    </div>
+
+                     <div class="content_box" id="user-menu-container">
+                      <img src="./pt_img/user.svg" alt="" id="user-icon">
+                      <div id="user-dropdown" class="dropdown-menu" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>      
+
+<div class="swiper banner-swiper">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide banner-slide">
+            <video src="./videos/마인크래프트 1차 예고편.mp4" class="mv_trailer" autoplay muted loop></video>
+            <img src="./pt_img/mincraft.jpg" alt="영화 이미지">
+            <div class="content_info">
+                <div class="content_badge">
+                    <span class="badge new">NEW</span>
+                    <span class="badge hot">HOT</span>
+                </div>
+                <h2 class="ttl_nm">A MINECRAFT MOVIE</h2>
+                <div class="content_meta">
+                    <span class="rating">8.7</span>
+                    <span class="genre">어드벤처, 판타지</span>
+                    <span class="duration">100분</span>
+                    <span class="release">2025.04.25</span>
+                </div>
+                <p class="content_desc">
+                    현실 세계로 돌아가기 위해서는 일단 살아남아야 하는 법!
+                    <br> 
+                    다섯명의 ‘동글이’들은 ‘오버월드’를 구하기 위해 힘을 합치게 되는데…
+                    <br>
+                    수없이 쌓아 올린 네모난 세계, 상상을 초월하는 모험이 펼쳐진다!
+                </p>
+                <div class="button_group">
+                    <a href="#" class="btn btn_primary">예매하기</a>
+                    <a href="#" class="btn btn_outline">찜하기</a>
+                </div>
+            </div>
+        </div>
+
+         <div class="swiper-slide banner-slide">
+            <video src="./videos/썬더볼츠 메인 예고편.mp4" class="mv_trailer" autoplay muted loop></video>
+            <img src="./pt_img/131523285.1.jpg" alt="영화 이미지">
+            <div class="content_info">
+                <div class="content_badge">
+                    <span class="badge new">NEW</span>
+                    <span class="badge hot">HOT</span>
+                </div>
+                <h2 class="ttl_nm">썬더볼츠</h2>
+                <div class="content_meta">
+                    <span class="rating">8.5</span>
+                    <span class="genre">액션, 어드벤처</span>
+                    <span class="duration">126분</span>
+                    <span class="release">2025.04.30</span>
+                </div>
+                <p class="content_desc">
+                    별난 놈들만 모인 이들은 어쩔 수 없이 한 팀이 되고,
+                    자신들의 어두운 과거와 
+                    <br>
+                    맞서야 하는 위험한 임무에 투입된다.
+                    서로를 전혀 믿지 못하는 상황에서 
+                    <br>
+                    스스로의 생존과 세상의 구원을 위해
+                    이들은 진정한 팀으로 거듭나야만 하는데....
+                </p>
+                <div class="button_group">
+                    <a href="#" class="btn btn_primary">예매하기</a>
+                    <a href="#" class="btn btn_outline">찜하기</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="swiper-slide banner-slide">
+            <video src="./videos/미션 임파서블_ 파이널 레코닝  예고편.mp4" class="mv_trailer" autoplay muted loop></video>
+            <img src="./pt_img/미션임파서블.jpg" alt="영화 이미지">
+            <div class="content_info">
+                <div class="content_badge">
+                    <span class="badge new">NEW</span>
+                    <span class="badge hot">HOT</span>
+                </div>
+                <h2 class="ttl_nm">미션임파서블 파이널 레코닝</h2>
+                <div class="content_meta">
+                    <span class="rating">9.3</span>
+                    <span class="genre">액션</span>
+                    <span class="duration">169분</span>
+                    <span class="release">2025.05.17</span>
+                </div>
+                <p class="content_desc">
+                   디지털상의 모든 정보를 통제할 수 있는
+                   <br>
+                   사상초유의 무기로 인해 전세계 국가와 조직의 기능이 마비되고,
+                   <br>
+                   인류 전체가 위협받는 절체절명의 위기가 찾아온다!
+                </p>
+                <div class="button_group">
+                    <a href="#" class="btn btn_primary">예매하기</a>
+                    <a href="#" class="btn btn_outline">찜하기</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="swiper-slide banner-slide">
+            <video src="./videos/파과 The Old Woman With The Knife 예고편.mp4" class="mv_trailer" autoplay muted loop></video>
+            <img src="./pt_img/파과배너.jpg" alt="영화 이미지">
+            <div class="content_info">
+                <div class="content_badge">
+                    <span class="badge new">NEW</span>
+                    <span class="badge hot">HOT</span>
+                </div>
+                <h2 class="ttl_nm">파과</h2>
+                <div class="content_meta">
+                    <span class="rating">8.6</span>
+                    <span class="genre">미스터리</span>
+                    <span class="duration">122분</span>
+                    <span class="release">2025.04.30</span>
+                </div>
+                <p class="content_desc">
+                    스승 ‘류’(김무열)와 지켜야 할 건 만들지 말자고 약속했던 
+                    <br>  
+                    ‘조각’은예기치 않게 상처를 입은 그날 밤,
+                    자신을 치료해 준 수의사 ‘강선생’(연우진)과 
+                    <br>
+                    그의 딸에게 남다른 감정을 느낀다.  
+                    ‘투우’는 그런 낯선 ‘조각’의 모습에 분노가 폭발하는데…
+                </p>
+                <div class="button_group">
+                    <a href="#" class="btn btn_primary">예매하기</a>
+                    <a href="#" class="btn btn_outline">찜하기</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="swiper-slide banner-slide">
+            <video src="./videos/미키17 공식 한국 예고편.mp4" class="mv_trailer" autoplay muted loop></video>
+            <img src="./pt_img/미키17.jpg" alt="영화 이미지">
+            <div class="content_info">
+                <div class="content_badge">
+                    <span class="badge new">NEW</span>
+                    <span class="badge hot">HOT</span>
+                </div>
+                <h2 class="ttl_nm">미키17</h2>
+                <div class="content_meta">
+                    <span class="rating">8.7</span>
+                    <span class="genre">SF, 드라마</span>
+                    <span class="duration">137분</span>
+                    <span class="release">2025.02.28</span>
+                </div>
+                <p class="content_desc">
+                    4년의 항해와 얼음행성 니플하임에 도착한 뒤에도 
+                    늘 ‘미키’를 지켜준 여자친구 ‘나샤’.
+                    <br>
+                    그와 함께, ‘미키’는 반복되는 죽음과 출력의 사이클에도 익숙해진다. 
+                    그러나... '미키 17'이 얼음행성의 생명체인 ‘크리퍼’와 만난 후 
+                    죽을 위기에서 돌아와 보니이미 '미키 18'이 프린트되어 있다.
+                    행성 당 1명만 허용된 익스펜더블이 둘이 된 ‘멀티플’ 상황
+                    <br>
+                    둘 중 하나는 죽어야 하는 현실 속에 걷잡을 수 없는 사건이 기다리고 있었으니…
+                </p>
+                <div class="button_group">
+                    <a href="#" class="btn btn_primary">예매하기</a>
+                    <a href="#" class="btn btn_outline">찜하기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="swiper-scrollbar"></div>
+</div>    
+<div class="movie_popup">
+            <div class="close-popup">&times;</div>
+            <div class="container">
+                <div class="view_area">
+                    <div class="mv_views">
+                        <img src="" alt="영화 포스터" class="mvbanner_img">
+                        <div class="popup_banner_overlay">
+                            <div class="popup_button_group">
+                                <a href="#" class="popup_btn popup_btn_primary">예매하기</a>
+                                <a href="#" class="popup_btn popup_btn_outline">찜하기</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-container">
+                        <div class="swiper popup-swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide popup-slide">
+                                    <img src="/api/placeholder/400/320" alt="장면 1">
+                                </div>
+                                <div class="swiper-slide popup-slide">
+                                    <img src="/api/placeholder/400/320" alt="장면 2">
+                                </div>
+                                <div class="swiper-slide popup-slide">
+                                    <img src="/api/placeholder/400/320" alt="장면 3">
+                                </div>
+                                <div class="swiper-slide popup-slide">
+                                    <img src="/api/placeholder/400/320" alt="장면 4">
+                                </div>
+                                <div class="swiper-slide popup-slide">
+                                    <img src="/api/placeholder/400/320" alt="장면 5">
+                                </div>
+                                <div class="swiper-slide popup-slide">
+                                    <img src="/api/placeholder/400/320" alt="장면 6">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ext_info">
+                        <div class="title_line">
+                            <div class="title_item">
+                                <label for="">평점</label>
+                            </div>
+                            <div class="title_item">
+                                <label for="">개봉일</label>
+                            </div>
+                            <div class="runtime">
+                                <label for="">상영시간</label>
+                                <label for="" class="mv_time">런타임</label>
+                            </div>
+                        </div>
+                        <div class="info">
+                            
+                            <div class="datalist">
+                                <div class="data_item">
+                                    <span class="data_label">관련 감독</span>
+                                    <span class="data_value">감독 이름</span>
+                                </div>
+                                <div class="data_item">
+                                    <span class="data_label">관련 장르</span>
+                                    <span class="data_value">장르</span>
+                                </div>
+                            </div>
+                            
+                            <div class="cast"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ </header>
+ 
+    <div class="tag_mv">가족</div>
+        <div class="swiper movie-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide movie-slide">
+                    <img src="/api/placeholder/400/320" alt="영화 이미지 1">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="/api/placeholder/400/320" alt="영화 이미지 2">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="/api/placeholder/400/320" alt="영화 이미지 3">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="/api/placeholder/400/320" alt="영화 이미지 4">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="/api/placeholder/400/320" alt="영화 이미지 5">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="/api/placeholder/400/320" alt="영화 이미지 6">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="/api/placeholder/400/320" alt="영화 이미지 7">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="/api/placeholder/400/320" alt="영화 이미지 8">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="/api/placeholder/400/320" alt="영화 이미지 9">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="/api/placeholder/400/320" alt="영화 이미지 10">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="/api/placeholder/400/320" alt="영화 이미지 11">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="/api/placeholder/400/320" alt="영화 이미지 12">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="/api/placeholder/400/320" alt="영화 이미지 13">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="/api/placeholder/400/320" alt="영화 이미지 14">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="/api/placeholder/400/320" alt="영화 이미지 15">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="/api/placeholder/400/320" alt="영화 이미지 16">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="/api/placeholder/400/320" alt="영화 이미지 17">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="/api/placeholder/400/320" alt="영화 이미지 18">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="/api/placeholder/400/320" alt="영화 이미지 19">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="/api/placeholder/400/320" alt="영화 이미지 20">
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="tag_mv">공포(호러)</div>
+        <div class="swiper movie-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 1">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 2">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 3">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 4">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 5">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 6">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 7">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 8">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 9">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 10">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 11">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 12">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 13">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 14">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 15">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 16">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 17">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 18">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 19">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 20">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="tag_mv">드라마</div>
+        <div class="swiper movie-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 1">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 2">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 3">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 4">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 5">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 6">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 7">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 8">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 9">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 10">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 11">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 12">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 13">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 14">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 15">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 16">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 17">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 18">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 19">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 20">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tag_mv">멜로/로맨스</div>
+        <div class="swiper movie-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 1">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 2">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 3">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 4">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 5">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 6">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 7">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 8">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 9">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 10">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 11">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 12">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 13">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 14">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 15">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 16">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 17">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 18">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 19">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 20">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tag_mv">뮤지컬</div>
+        <div class="swiper movie-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 1">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 2">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 3">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 4">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 5">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 6">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 7">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 8">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 9">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 10">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 11">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 12">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 13">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 14">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 15">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 16">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 17">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 18">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 19">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 20">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tag_mv">미스터리</div>
+        <div class="swiper movie-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 1">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 2">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 3">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 4">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 5">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 6">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 7">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 8">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 9">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 10">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 11">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 12">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 13">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 14">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 15">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 16">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 17">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 18">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 19">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 20">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tag_mv">범죄</div>
+        <div class="swiper movie-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 1">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 2">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 3">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 4">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 5">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 6">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 7">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 8">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 9">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 10">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 11">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 12">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 13">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 14">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 15">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 16">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 17">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 18">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 19">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 20">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tag_mv">스릴러</div>
+        <div class="swiper movie-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 1">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 2">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 3">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 4">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 5">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 6">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 7">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 8">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 9">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 10">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 11">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 12">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 13">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 14">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 15">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 16">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 17">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 18">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 19">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 20">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tag_mv">애니메이션</div>
+        <div class="swiper movie-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 1">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 2">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 3">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 4">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 5">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 6">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 7">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 8">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 9">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 10">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 11">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 12">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 13">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 14">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 15">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 16">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 17">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 18">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 19">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 20">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tag_mv">액션</div>
+        <div class="swiper movie-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 1">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 2">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 3">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 4">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 5">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 6">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 7">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 8">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 9">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 10">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 11">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 12">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 13">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 14">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 15">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 16">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 17">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 18">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 19">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 20">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tag_mv">어드벤처</div>
+        <div class="swiper movie-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 1">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 2">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 3">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 4">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 5">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 6">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 7">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 8">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 9">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 10">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 11">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 12">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 13">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 14">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 15">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 16">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 17">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 18">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 19">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 20">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tag_mv">전쟁</div>
+        <div class="swiper movie-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 1">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 2">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 3">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 4">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 5">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 6">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 7">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 8">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 9">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 10">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 11">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 12">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 13">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 14">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 15">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 16">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 17">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 18">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 19">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 20">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tag_mv">코미디</div>
+        <div class="swiper movie-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 1">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 2">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 3">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 4">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 5">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 6">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 7">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 8">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 9">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 10">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 11">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 12">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 13">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 14">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 15">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 16">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 17">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 18">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 19">
+                </div>
+                <div class="swiper-slide movie-slide">
+                    <img src="" alt="영화 이미지 20">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="fot_end">
+            <div class="footer_content">
+                <div class="footer_logo">JPIEL</div>
+                <div class="footer_box">
+                    <a href="#">회사소개</a>
+                    <a href="#">서비스이용약관</a>
+                    <a href="#">개인정보처리방침</a>
+                    <a href="#">고객센터</a>
+                    <a href="#">광고문의</a>
+                </div>
+                <div class="footer_end">
+                    <span>JPIEL STUDIO</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="./JS/Moviepage.js"></script>
+</body>
+</html>
