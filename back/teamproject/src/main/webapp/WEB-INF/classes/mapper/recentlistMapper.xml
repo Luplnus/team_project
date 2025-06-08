@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bitstudy.app.dao.recentMapper">
+
+    <select id="selectRecentByUser" parameterType="int" resultType="RecentlistDto">
+
+        <!-- 1) 영화 결제 기록 -->
+        select
+        'movie' as rc_contentType,
+        m.m_seqno as rc_id,
+        m.m_title as rc_title,
+        m.m_poster_url as rc_poster_url,
+        m.m_genre_nm as rc_genre,
+        p.p_date as rc_payed_time
+        from payment_movie_tbl p
+            join book_movie_tbl b
+                on p.b_seqno = b.b_seqno
+            join movie_tbl m
+                on b.m_code = m.m_movie_cd
+        where p.u_seqno = #{u_seqno}
+
+        union all
+
+        <!-- 2) 연극 결제 기록 -->
+        select
+        'theater' as rc_contentType,
+        t.t_id as rc_id,
+        t.t_title as rc_title,
+        t.t_poster as rc_poster_url,
+        t.t_genre as rc_genre,
+        p.p_date as rc_payed_time
+        from payment_theater_tbl p
+            join book_theater_tbl b
+                on p.b_seqno = b.b_seqno
+            join theater_tbl t
+                on b.t_id = t.t_id
+        where p.u_seqno = #{u_seqno}
+
+        union all
+
+        <!-- 3) 뮤지컬 결제 기록 -->
+        select
+        'musical' as rc_contentType,
+        mu.mu_id as rc_id,
+        mu.mu_title as rc_title,
+        mu.mu_poster as rc_poster_url,
+        mu.mu_genre as rc_genre,
+        p.p_date as rc_payed_time
+        from payment_musical_tbl p
+            join book_musical_tbl b
+                on p.b_seqno = b.b_seqno
+            join musical_tbl mu
+                on b.mu_id = mu.mu_id
+        where p.u_seqno = #{u_seqno}
+
+        order by rc_payed_time desc
+
+    </select>
+
+</mapper>
