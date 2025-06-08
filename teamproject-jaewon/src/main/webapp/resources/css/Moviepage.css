@@ -1,0 +1,290 @@
+body {
+    user-select: none;
+    margin: 0;
+    overflow-x: hidden;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 헤더 */
+#wrap { width: 100%; background: #000; position: relative; overflow: hidden; }
+.main_menu {
+    width: 100%; height: 50px; display: flex; justify-content: center; align-items: center;
+    position: relative; z-index: 20; background-color: rgba(0,0,0,0.8);
+}
+.h_menubox {
+    max-width: 1285px; width: 100%; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 10px; box-sizing: border-box;
+}
+.main_logo h2 {
+    margin: 0; width: 70px; height: 50px; line-height: 50px; text-align: center;
+    color: #fff; font-weight: bold;
+}
+.menu_bar { display: flex; flex: 1; justify-content: flex-end; }
+.menu_box {
+    width: 80px; height: 35px; margin: 0 15px; text-align: center; line-height: 35px;
+    color: #fff; cursor: pointer; transition: color 0.3s; font-size: 15px;
+}
+.menu_box:hover { color: #E50914; }
+.content { display: flex; width: 100px; justify-content: space-around; }
+.content_box {
+    width: 30px;
+    line-height: 10px;
+    text-align: center;
+    color: #fff;
+}
+
+.content_box a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+/* 배너 */
+.banner-swiper { width: 100%; height: 895px; position: relative; }
+.banner-slide { position: relative; }
+.banner-slide img {
+    display: block; width: 100%; height: 100%; object-fit: cover; opacity: 0.8;
+}
+.mv_trailer {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.mv_trailer.show {
+    opacity: 1;
+}
+
+.banner-slide img.hide {
+    opacity: 0;
+}
+
+.movie-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content_info {
+    position: absolute; bottom: 175px; left: 330px; width: 60%; z-index: 10;
+    color: #fff; text-align: left;
+}
+.badge {
+    display: inline-block; padding: 3px 10px; border-radius: 4px;
+    font-size: 13px; font-weight: bold; margin-right: 8px; text-transform: uppercase;
+}
+.badge.new { background-color: #E50914; }
+.badge.hot { background-color: #FFA500; }
+.ttl_nm { font-size: 48px; margin: 0 0 15px; font-weight: 700; color: white; }
+.content_meta { margin-bottom: 20px; font-size: 16px; color: white; opacity: 0.9; }
+.content_meta span:not(:last-child):after {
+    content: "•"; position: absolute; right: -10px;
+}
+.content_desc { font-size: 18px; line-height: 1.6; margin-bottom: 25px; opacity: 0.9; max-width: 90%; color: white; }
+.button_group { display: flex; gap: 10px; }
+.btn { padding: 12px 24px; border-radius: 5px; font-size: 16px; font-weight: 600; text-decoration: none; text-align: center; cursor: pointer; transition: all 0.3s ease; }
+.btn_primary { background-color: #E50914; color: white; }
+.btn_primary:hover { background-color: #F40612; }
+.btn_outline { background-color: rgba(255,255,255,0.2); color: white; }
+.btn_outline:hover { background-color: rgba(255,255,255,0.3); }
+.swiper-scrollbar-drag {
+    background-color: #E50914; border-radius: 10px;
+}
+footer { background-color: #000; color: #fff; padding: 40px 0; text-align: center; }
+
+/* ===========================
+=== ★ ADDED ★ 팝업 & 장르슬라이더 CSS ===
+=========================== */
+.movie_slide img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+.movie_popup {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
+    visibility: hidden; opacity: 0; transition: opacity 0.3s;
+    overflow-y: auto; z-index: 1000;
+}
+.movie_popup.active {
+    visibility: visible; opacity: 1;
+}
+.movie_popup .popup-content {
+    width: 500px; margin: 10% auto; background: #111;
+    padding: 20px; border-radius: 8px; color: #fff; position: relative;
+}
+.movie_popup .close-popup {
+    position: absolute; top: 10px; right: 10px; font-size: 2rem; cursor: pointer;
+}
+.tag_mv {
+    font-weight: bold; font-size: 30px; color: #fff; margin: 20px;
+}
+
+/* 푸터 */
+.fot_end {
+    margin-top: 40px;
+    width: 100%;
+    height: 400px;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer_content {
+    width: 80%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer_logo {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.footer_box {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.footer_box a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+.footer_end {
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* 검색바 파트 */
+.search_container {
+    position: relative;
+    overflow: visible;
+}
+
+.search_dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid #333;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 30;
+    margin-top: 5px;
+}
+
+.search_dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.search-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 14px;
+    color: #000;
+}
+
+.search-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.search_bar {
+    border: 1px solid #fff;
+    width: 0;
+    height: 35px;
+    border-radius: 10px;
+    padding: 0;
+    font-size: 15px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.search_bar.active {
+    width: 350px;
+    padding: 0 13px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* 영화 상세 팝업 */
+.popup {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); display: flex; align-items: center; justify-content: center; z-index: 1000;
+}
+.popup-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+}
+.popup-content {
+    position: relative; background: inherit; padding: 20px; border-radius: 10px; width: 400px; max-width: 600px; z-index: 1001; color: #fff;
+}
+.popup-close {
+    position: absolute; top: 10px; right: 20px; font-size: 24px; cursor: pointer;
+}
+
+/* 유저 */
+#user-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 1px solid #333;
+    border-radius: 5px;
+    min-width: 120px;
+    display: none;
+    z-index: 1000;
+    margin-top: 5px;
+}
+
+#user-dropdown a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    display: block;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+#user-dropdown a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#user-menu-container {
+    position: relative;
+}
+
+#user-icon {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}

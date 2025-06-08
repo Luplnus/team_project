@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/schema/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bitstudy.app.dao.movieMapper">
+    <!-- 나온 날짜순으로 다 불러오기  -->
+    <select id="selectAll" resultType="MovieDto">
+        select * from movie_tbl
+    </select>
+
+    <!--  무비코드로 하나 불러오기  -->
+    <select id="select" parameterType="String" resultType="MovieDto">
+        select * from movie_tbl
+        where m_movie_cd=#{m_movie_cd}
+    </select>
+
+    <!--  장르별로 불러오기  -->
+    <select id="selectByGenre" parameterType="String" resultType="MovieDto">
+        select * from movie_tbl
+        where m_genre_nm=#{m_genre_nm}
+    </select>
+
+    <!--  영화 제목으로 검색하기  -->
+    <select id="searchTitle" parameterType="String" resultType="MovieDto">
+        select * from movie_tbl
+        where m_title LIKE CONCAT('%',#{keyword},'%')
+    </select>
+</mapper>
+

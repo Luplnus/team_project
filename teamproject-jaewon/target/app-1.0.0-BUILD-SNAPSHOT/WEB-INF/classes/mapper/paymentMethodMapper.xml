@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/schema/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.bitstudy.app.dao.paymentMethodMapper">
+
+    <select id="selectAll" resultType="PaymentMethodDto">
+        SELECT * FROM paymentMethod_tbl;
+    </select>
+
+    <select id="isCorrect" parameterType="PaymentMethodDto">
+        select * from paymentMethod_tbl
+        where pm_bank=#{pm_bank} and pm_cardno=#{pm_cardno} and pm_cardcvc=#{pm_cardcvc} and pm_cardvalid=${pm_cardvalid} and pm_pw=#{pm_pw}
+    </select>
+
+<!--    &lt;!&ndash;  카드 결제 정보 저장  &ndash;&gt;-->
+<!--    <insert id="cardPayment" parameterType="PaymentMethodDto">-->
+<!--        insert into paymentMethod_tbl (pm_seqno, pm_method, pm_bank, pm_cardno, pm_cardcvc, pm_cardvalid)-->
+<!--        values (#{pm_seqno}, #{pm_method}, #{pm_bank}, #{pm_cardno}, #{pm_cardcvc}, #{pm_cardvalid})-->
+<!--    </insert>-->
+
+<!--    &lt;!&ndash;  계좌(통장) 결제 정보 저장  &ndash;&gt;-->
+<!--    <insert id="accountPayment" parameterType="PaymentMethodDto">-->
+<!--        insert into paymentMethod_tbl (pm_seqno, pm_method, pm_bank, pm_account)-->
+<!--        values (#{pm_seqno}, #{pm_method}, #{pm_bank}, #{pm_account})-->
+<!--    </insert>-->
+
+<!--    &lt;!&ndash;  결제 정보 수정  &ndash;&gt;-->
+<!--    <update id="update" parameterType="PaymentMethodDto">-->
+<!--        update paymentMethod_tbl set pm_method = #{pm_method}-->
+<!--            where pm_seqno=#{pm_seqno}-->
+<!--    </update>-->
+
+</mapper>
