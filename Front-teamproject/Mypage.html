@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./CSS/Mypage.css">
+    <link rel="icon" href="./pt_img/JPIEL.png">
+    <title>JPIEL</title>
+</head>
+<body>
+        <div class="main_menu">
+            <div class="h_menubox">
+                <div class="main_logo">
+                    <h2>JPIEL</h2>
+                </div>
+                <div class="menu_bar">
+                    <div class="menu_box">영화</div>
+                    <div class="menu_box">뮤지컬</div>
+                    <div class="menu_box">연극</div>
+                    <div class="menu_box">예매</div>
+                </div>
+
+                <form action="">
+                    <div class="search_container" style="position: relative;">
+                      <input type="text" class="search_bar" id="search_bar" placeholder="타이틀을 입력하세요." autocomplete="off">
+                      <div id="search_dropdown" class="search_dropdown"></div>
+                    </div>
+                  </form>
+
+                <div id="popup" class="popup-overlay" style="display:none;">
+                    <div class="popup-content">
+                      <button class="popup-close">X</button>
+                      <div id="popup-body"></div>
+                    </div>
+                </div>
+                  
+                <div class="content">
+                    <div class="content_box" id="search_icon">
+                        <a href="#">
+                           <img src="./pt_img/search.svg" alt="" class="search_img">
+                        </a>
+                    </div>
+
+                     <div class="content_box" id="user-menu-container">
+                      <img src="./pt_img/user.svg" alt="" id="user-icon">
+                      <div id="user-dropdown" class="dropdown-menu" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mypage_container">
+
+            <div class="info_side">
+                <ul>
+                    <li class="menu_item">회원정보</li>
+                    <li class="menu_item">최근 기록</li>
+                    <li class="menu_item">찜 목록</li>
+                </ul>
+            </div>
+
+            <div class="my_info">
+                <div class="my_ttl">
+                    <h2>마이페이지 프로필</h2>
+                </div>
+                <div class="info_content">
+                    <div class="my_pfile_box">
+                        <div class="pf_tool">
+                            <img src="./pt_img/user.svg" alt="" class="pf_user">
+                        </div>
+                        <div class="user_nm_box">
+                            <h2 style="color: #fff;">장인혁</h2>
+                            <p style="color: #d3d3d3;">해당 마이페이지를 수정할 수 있어요</p>
+                            <div class="edit_btn">
+                                <label for="" style="font-weight: bold; cursor: pointer;" >수정하기</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                
+                    <div class="user_info">
+                        <div class="user_sec">
+                            <div class="left_column">
+                                <div class="info_list1">
+                                    <p>아이디</p>
+                                    <input type="text" placeholder="아이디" readonly class="info_edit">
+                                </div>
+                                <div class="info_list1">
+                                    <p>이메일</p>
+                                    <input type="text" placeholder="이메일" readonly class="info_edit">
+                                </div>
+                            </div>
+                            <div class="right_column">
+                                <div class="info_list2">
+                                    <p>이름</p>
+                                     <input type="text" placeholder="이름" readonly class="info_edit2">
+                                </div>
+                                <div class="info_list2">
+                                    <p>주소</p>
+                                    <div class="info_box2">
+                                         <input type="text" placeholder="주소" readonly class="info_edit2">
+                                    </div>
+                                </div>
+                                <div class="info_list2">
+                                    <p>전화번호</p>
+                                     <input type="text" placeholder="전화번호" readonly class="info_edit2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="mypage_container">
+
+            <div class="info_side">
+                <ul>
+                    <li class="menu_item">회원정보</li>
+                    <li class="menu_item">최근 기록</li>
+                    <li class="menu_item">찜 목록</li>
+                </ul>
+            </div>
+
+            <div class="history_info">
+                <div class="history_ttl">
+                    <h2>최근 기록</h2>
+                    <div class="tag_box">
+                        <ul class="tag_tool">
+                            <div class="tag_nm">영화</div>
+                            <div class="tag_nm">연극</div>
+                            <div class="tag_nm">뮤지컬</div>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="history_box">
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <!-- <div class="swiper-slide">
+                                <div class="post_box">
+                                    <img src="" alt="영화 포스터">
+                                </div>
+                                <div class="movie_list">
+                                    <p>영화 이름</p>
+                                    <p>평점</p>
+                                    <p>장르</p>
+                                    <p>관람일자</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="post_box">
+                                    <img src="" alt="영화 포스터">
+                                </div>
+                                
+                                <div class="movie_list">
+                                    <p>영화 이름</p>
+                                    <p>평점</p>
+                                    <p>장르</p>
+                                    <p>관람일자</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="post_box">
+                                    <img src="" alt="영화 포스터">
+                                </div>
+                                <div class="movie_list">
+                                    <p>영화 이름</p>
+                                    <p>평점</p>
+                                    <p>장르</p>
+                                    <p>관람일자</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="post_box">
+                                    <img src="" alt="영화 포스터">
+                                </div>
+                                <div class="movie_list">
+                                    <p>영화 이름</p>
+                                    <p>평점</p>
+                                    <p>장르</p>
+                                    <p>관람일자</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="post_box">
+                                    <img src="" alt="영화 포스터">
+                                </div>
+                                <div class="movie_list">
+                                    <p>영화 이름</p>
+                                    <p>평점</p>
+                                    <p>장르</p>
+                                    <p>관람일자</p>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="swiper-scrollbar"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mypage_container">
+
+            <div class="info_side">
+                <ul>
+                    <li class="menu_item">회원정보</li>
+                    <li class="menu_item">최근 기록</li>
+                    <li class="menu_item">찜 목록</li>
+                </ul>
+            </div>
+
+            <div class="zzim_info">
+                <h2>찜하기 목록</h2>
+                <div class="zzim_ttl">
+                    <div class="zzim_box">
+                        <div class="zzim_tag">
+                            <p class="zzim_nm">영화</p>
+                            <p class="zzim_nb">0개</p>
+                        </div>
+                        <div class="zzim_tag">
+                            <p class="zzim_nm">연극</p>
+                            <p class="zzim_nb">0개</p>
+                        </div>
+                        <div class="zzim_tag">
+                            <p class="zzim_nm">뮤지컬</p>
+                            <p class="zzim_nb">0개</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="history_box">
+                    <div class="swiper zzimSwiper">
+                        <div class="swiper-wrapper">
+                            <!-- <div class="swiper-slide zzim-slide">
+                                <div class="post_box">
+                                    <img src="" alt="영화 포스터">
+                                </div>
+                                <div class="movie_list">              
+                                    <p>영화 이름</p>
+                                    <p>평점</p>
+                                    <p>장르</p>
+                                    <p>관람일자</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide zzim-slide">
+                                <div class="post_box">
+                                    <img src="" alt="영화 포스터">
+                                </div>
+                                
+                                <div class="movie_list">
+                                    <p>영화 이름</p>
+                                    <p>평점</p>
+                                    <p>장르</p>
+                                    <p>관람일자</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide zzim-slide">
+                                <div class="post_box">
+                                    <img src="" alt="영화 포스터">
+                                </div>
+                                <div class="movie_list">
+                                    <p>영화 이름</p>
+                                    <p>평점</p>
+                                    <p>장르</p>
+                                    <p>관람일자</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide zzim-slide">
+                                <div class="post_box">
+                                    <img src="" alt="영화 포스터">
+                                </div>
+                                <div class="movie_list">
+                                    <p>영화 이름</p>
+                                    <p>평점</p>
+                                    <p>장르</p>
+                                    <p>관람일자</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide zzim-slide">
+                                <div class="post_box">
+                                    <img src="" alt="영화 포스터">
+                                </div>
+                                <div class="movie_list">
+                                    <p>영화 이름</p>
+                                    <p>평점</p>
+                                    <p>장르</p>
+                                    <p>관람일자</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide zzim-slide">
+                                <div class="post_box">
+                                    <img src="" alt="영화 포스터">
+                                </div>
+                                <div class="movie_list">
+                                    <p>영화 이름</p>
+                                    <p>평점</p>
+                                    <p>장르</p>
+                                    <p>관람일자</p>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="swiper-scrollbar"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./JS/Mypage.js"></script>
+</body>
+</html>

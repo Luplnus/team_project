@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./CSS/Musicalpage.css">
+    <link rel="icon" href="./pt_img/JPIEL.png">
+    <title>JPIEL</title>
+
+</head>
+<body>
+<header>
+    <div id="wrap">
+        <div class="main_menu">
+            <div class="h_menubox">
+                <div class="main_logo">
+                    <h2>JPIEL</h2>
+                </div>
+                <div class="menu_bar">
+                    <div class="menu_box">영화</div>
+                    <div class="menu_box">뮤지컬</div>
+                    <div class="menu_box">연극</div>
+                    <div class="menu_box">예매</div>
+                </div>
+                <form action="">
+                    <div class="search_container" style="position: relative;">
+                      <input type="text" class="search_bar" id="search_bar" placeholder="타이틀을 입력하세요." autocomplete="off">
+                      <div id="search_dropdown" class="search_dropdown"></div>
+                    </div>
+                  </form>
+
+                <div id="popup" class="popup-overlay" style="display:none;">
+                    <div class="popup-content">
+                      <button class="popup-close">X</button>
+                      <div id="popup-body"></div>
+                    </div>
+                </div>
+                  
+                <div class="content">
+                    <div class="content_box" id="search_icon">
+                        <a href="#">
+                           <img src="./pt_img/search.svg" alt="" class="search_img">
+                        </a>
+                    </div>
+
+                     <div class="content_box" id="user-menu-container">
+                      <img src="./pt_img/user.svg" alt="" id="user-icon">
+                      <div id="user-dropdown" class="dropdown-menu" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="view_box">
+            <div class="banner_container">
+                <div class="movie_banner">
+                    <div class="post_box">
+                        <img src="" alt="메인 포스터" class="post_img">
+                    </div>
+                    <div class="part_box">
+                        <h1 class="movie_title">뮤지컬 이름</h1>
+                        
+                        <div class="movie_meta">
+                            <span class="year">시작일</span>
+                            <span class="runtime">종료일</span>
+                            <span class="genre">극장</span>
+                        </div>
+                        
+                        <p class="movie_description">
+                            내용
+                        </p>
+                        
+                        <div class="button_group">
+                            <button class="btn_primary">
+                                <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                                예매하기
+                            </button>
+                            <button class="btn_secondary">
+                                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                </svg>
+                                찜하기
+                            </button>
+                        </div>
+                        
+                        <div class="movie_info">
+                            <div class="info_row">
+                                <span class="info_label">공연장</span>
+                                <span>공연장 위치</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gradient_overlay"></div>
+            </div>
+            <div class="view_wcht">
+                <div class="swiper main-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 1">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 2">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 3">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 4">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 5">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 6">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 7">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 8">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 9">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 10">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 11">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 12">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 13">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 14">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 15">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 16">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 17">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 18">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 19">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 20">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 21">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 22">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 23">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 24">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 25">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 26">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 27">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 28">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 29">
+                        </div>
+                        <div class="swiper-slide main-slide">
+                            <img src="/api/placeholder/300/204" alt="영화 이미지 30">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ </header>
+
+     <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="./JS/Musicalpage.js"></script>
+</body>
+</html>
